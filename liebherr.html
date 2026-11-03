@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alex's Amazing Garage</title>
+  <link rel="stylesheet" href="public/truck-screen.css">
+</head>
+<body>
+  <a class="screen-back" href="garage.html" aria-label="All vehicles">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14.5 5.5 L8 12 L14.5 18.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <main id="screen" class="screen screen-tall-image"></main>
+  <script src="public/js/alex-browser-speech.js"></script>
+  <script src="public/js/truck-points.js"></script>
+  <script>
+    fetch("content/liebherr-ltm-1090-4-2.registry.json")
+      .then(function (response) { return response.json(); })
+      .then(function (registry) {
+        if (registry.screen && registry.screen.title) document.title = registry.screen.title;
+        var localTest = new URLSearchParams(window.location.search).get("test") === "local";
+        TruckPoints.renderScreen(document.getElementById("screen"), registry, null, { localTest: localTest });
+      });
+  </script>
+</body>
+</html>

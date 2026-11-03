@@ -1,0 +1,29 @@
+{
+  "role": "preparatory",
+  "connectedToPages": false,
+  "quality": "UNVERIFIED",
+  "screen": {
+    "title": "Caterpillar 320",
+    "image": {
+      "id": "caterpillar-320",
+      "version": "local-1",
+      "src": "public/images/truck-36822-art/caterpillar-320.png",
+      "width": 2004,
+      "height": 785
+    }
+  },
+  "sections": [
+    {"id": "section-cab", "name": "Cab", "partIds": ["cat-cab", "cat-cab-door"]},
+    {"id": "section-boom", "name": "Boom", "partIds": ["cat-boom", "cat-stick"]},
+    {"id": "section-bucket", "name": "Bucket", "partIds": ["cat-bucket"]},
+    {"id": "section-track", "name": "Track", "partIds": ["cat-track"]}
+  ],
+  "parts": [
+    {"id": "cat-cab", "name": "Cab", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-cab"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 63.87, "y": 42.04, "confirmed": false, "area": {"x": 58.38, "y": 18.85, "w": 24.21, "h": 48.03}}, "action": "show-part", "explanation": "This is the cab. The operator sits in it.", "audio": "public/audio/cat-cab.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}},
+    {"id": "cat-cab-door", "name": "Cab door", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-cab-door"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 73.35, "y": 44.59, "confirmed": false, "area": {"x": 67.86, "y": 26.12, "w": 10.73, "h": 38.21}}, "action": "show-part", "explanation": "This is the cab door. The operator uses it to get in.", "audio": "public/audio/cat-cab-door.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}},
+    {"id": "cat-boom", "name": "Boom", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-boom"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 39.92, "y": 22.29, "confirmed": false, "area": {"x": 23.45, "y": 13.38, "w": 34.43, "h": 22.93}}, "action": "show-part", "explanation": "This is the boom. It lifts the stick.", "audio": "public/audio/cat-boom.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}},
+    {"id": "cat-stick", "name": "Stick", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-stick"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 14.47, "y": 38.22, "confirmed": false, "area": {"x": 6.24, "y": 7.01, "w": 16.47, "h": 61.78}}, "action": "show-part", "explanation": "This is the stick. It moves the bucket.", "audio": "public/audio/cat-stick.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}},
+    {"id": "cat-bucket", "name": "Bucket", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-bucket"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 16.47, "y": 85.35, "confirmed": false, "area": {"x": 5.89, "y": 70.70, "w": 25.05, "h": 27.64}}, "action": "show-part", "explanation": "This is the bucket. It digs the ground.", "audio": "public/audio/cat-bucket.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}},
+    {"id": "cat-track", "name": "Track", "menuButtonId": null, "target": {"view": "CAT320", "zoneId": "cat-track"}, "placement": {"imageId": "caterpillar-320", "version": "local-1", "x": 74.85, "y": 86.62, "confirmed": false, "area": {"x": 40.92, "y": 73.25, "w": 53.39, "h": 25.09}}, "action": "show-part", "explanation": "This is the track. It helps the excavator move.", "audio": "public/audio/cat-track.wav", "source": {"geometry": null, "document": "https://www.cat.com/en_US/products/new/equipment/excavators/medium-excavators/126532.html", "factStatus": "UNVERIFIED"}, "review": {"technical": "UNVERIFIED", "language": "UNVERIFIED", "visual": "UNVERIFIED", "functional": "UNVERIFIED", "screenshot": null, "screenshotReviewed": false}}
+  ]
+}

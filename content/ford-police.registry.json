@@ -1,0 +1,316 @@
+{
+  "role": "preparatory",
+  "connectedToPages": false,
+  "quality": "UNVERIFIED",
+  "screen": {
+    "title": "Ford Police Interceptor Utility",
+    "image": {
+      "id": "ford-police-interceptor",
+      "version": "local-1",
+      "src": "public/images/truck-36822-art/Ford Police Interceptor Utility.png",
+      "width": 1649,
+      "height": 854
+    }
+  },
+  "sections": [
+    {
+      "id": "section-cab",
+      "name": "Cab",
+      "partIds": [
+        "ford-cab",
+        "ford-door-rear",
+        "ford-door-front"
+      ]
+    },
+    {
+      "id": "section-lights",
+      "name": "Lights",
+      "partIds": [
+        "ford-light-bar"
+      ]
+    },
+    {
+      "id": "section-bumper",
+      "name": "Bumper",
+      "partIds": [
+        "ford-push-bumper"
+      ]
+    },
+    {
+      "id": "section-wheels",
+      "name": "Wheels",
+      "partIds": [
+        "ford-wheel-front",
+        "ford-wheel-rear"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "ford-cab",
+      "name": "Cab",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-cab"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 30.32,
+        "y": 29.27,
+        "confirmed": false,
+        "area": {
+          "x": 9.7,
+          "y": 10.54,
+          "w": 57.0,
+          "h": 55.04
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab. Officers ride in it.",
+      "audio": "public/audio/ford-cab.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-door-rear",
+      "name": "Rear door",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-door-rear"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 16.98,
+        "y": 46.84,
+        "confirmed": false,
+        "area": {
+          "x": 9.7,
+          "y": 18.74,
+          "w": 15.77,
+          "h": 46.84
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the rear door. Officers use it to get in too.",
+      "audio": "public/audio/ford-door-rear.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-door-front",
+      "name": "Front door",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-door-front"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 31.53,
+        "y": 46.84,
+        "confirmed": false,
+        "area": {
+          "x": 25.47,
+          "y": 17.56,
+          "w": 18.19,
+          "h": 50.35
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the front door. Officers use it to get in.",
+      "audio": "public/audio/ford-door-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-light-bar",
+      "name": "Light bar",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-light-bar"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 42.45,
+        "y": 4.68,
+        "confirmed": false,
+        "area": {
+          "x": 30.2,
+          "y": 0.94,
+          "w": 28.02,
+          "h": 10.19
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the light bar. It warns people.",
+      "audio": "public/audio/ford-light-bar.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-push-bumper",
+      "name": "Push bumper",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-push-bumper"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 87.93,
+        "y": 44.5,
+        "confirmed": false,
+        "area": {
+          "x": 71.56,
+          "y": 29.27,
+          "w": 27.9,
+          "h": 29.27
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the push bumper. It protects the front.",
+      "audio": "public/audio/ford-push-bumper.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-wheel-front",
+      "name": "Front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-wheel-front"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 87.33,
+        "y": 88.99,
+        "confirmed": false,
+        "area": {
+          "x": 76.41,
+          "y": 60.89,
+          "w": 21.83,
+          "h": 37.47
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the front wheel. It helps the police car roll.",
+      "audio": "public/audio/ford-wheel-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "ford-wheel-rear",
+      "name": "Rear wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "FPIU",
+        "zoneId": "ford-wheel-rear"
+      },
+      "placement": {
+        "imageId": "ford-police-interceptor",
+        "version": "local-1",
+        "x": 48.51,
+        "y": 88.99,
+        "confirmed": false,
+        "area": {
+          "x": 41.24,
+          "y": 63.23,
+          "w": 24.26,
+          "h": 35.13
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the rear wheel. It helps the police car roll too.",
+      "audio": "public/audio/ford-wheel-rear.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/police-vehicles/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    }
+  ]
+}

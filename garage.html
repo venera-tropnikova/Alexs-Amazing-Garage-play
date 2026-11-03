@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alex's Amazing Garage</title>
+  <link rel="stylesheet" href="public/truck-screen.css?v=bays4">
+  <style>
+    .slot-art img.floor-contact {
+      left: var(--contact-x);
+      top: var(--contact-top);
+      bottom: auto;
+      z-index: 1;
+      transform: translate(calc(var(--anchor-x) * -1), calc(var(--anchor-y) * -1)) scale(var(--vehicle-scale, 1));
+      transform-origin: var(--anchor-x) var(--anchor-y);
+    }
+
+    .pick .bay-slot.is-selected .slot-art::after,
+    .pick .bay-slot[aria-pressed="true"] .slot-art::after {
+      opacity: 0;
+    }
+
+    .bay-glow {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .bay-glow polyline {
+      fill: none;
+      opacity: 0;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .bay-glow .edge { stroke: #061018; stroke-width: 5px; }
+    .bay-glow .core {
+      stroke: #1677FF;
+      stroke-width: 4px;
+      filter:
+        drop-shadow(0 0 1px rgba(5, 12, 22, 0.9))
+        drop-shadow(0 0 5px rgba(22, 119, 255, 0.45))
+        drop-shadow(0 0 11px rgba(22, 90, 210, 0.26));
+    }
+
+    .pick-stage:has(.bay-1.is-selected) .g1 polyline,
+    .pick-stage:has(.bay-2.is-selected) .g2 polyline,
+    .pick-stage:has(.bay-3.is-selected) .g3 polyline,
+    .pick-stage:has(.bay-4.is-selected) .g4 polyline,
+    .pick-stage:has(.bay-5.is-selected) .g5 polyline,
+    .pick-stage:has(.bay-6.is-selected) .g6 polyline,
+    .pick-stage:has(.bay-7.is-selected) .g7 polyline,
+    .pick-stage:has(.bay-8.is-selected) .g8 polyline,
+    .pick-stage:has(.bay-9.is-selected) .g9 polyline { opacity: 1; }
+
+    .pick .bay-slot.is-selected .slot-name,
+    .pick .bay-slot[aria-pressed="true"] .slot-name {
+      color: #FFD43B;
+      text-shadow: 0 1px 0 #041018, 0 0 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .bay-8 .slot-art img.floor-contact {
+      filter: contrast(1.12) brightness(1.07);
+      transform: translate(calc(var(--anchor-x) * -1), calc(var(--anchor-y) * -1)) rotate(var(--ground-rotate, 0deg)) scale(var(--vehicle-scale, 1));
+    }
+
+    .bay-8 .contact-shadow {
+      height: 5%;
+      background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(8, 10, 16, 0.62) 0%, rgba(8, 10, 16, 0.26) 46%, rgba(8, 10, 16, 0) 80%);
+    }
+
+    .contact-shadow {
+      position: absolute;
+      z-index: 0;
+      height: 4.2%;
+      transform: translate(-50%, 0);
+      background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(8, 10, 16, 0.78) 0%, rgba(8, 10, 16, 0.34) 42%, rgba(8, 10, 16, 0) 78%);
+      pointer-events: none;
+    }
+
+    .hit-find {
+      left: 68.99%;
+      top: 3.87%;
+      width: 14.44%;
+      height: 6.63%;
+    }
+  </style>
+</head>
+<body>
+  <main class="pick">
+    <h1 class="sr-only">Choose a vehicle</h1>
+    <div class="pick-stage">
+      <img class="pick-bg" src="public/images/garage-background-9-bays.png" alt="" width="1448" height="1086">
+      <svg class="bay-glow" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true">
+        <g class="g1"><polyline class="edge" points="292,202 613,202 613,423 292,423 292,202"/><polyline class="core" points="292,202 613,202 613,423 292,423 292,202"/></g>
+        <g class="g2"><polyline class="edge" points="669,202 992,202 992,423 669,423 669,202"/><polyline class="core" points="669,202 992,202 992,423 669,423 669,202"/></g>
+        <g class="g3"><polyline class="edge" points="1040,202 1364,202 1364,423 1040,423 1040,202"/><polyline class="core" points="1040,202 1364,202 1364,423 1040,423 1040,202"/></g>
+        <g class="g4"><polyline class="edge" points="283,446 605,446 605,658 283,658 283,446"/><polyline class="core" points="283,446 605,446 605,658 283,658 283,446"/></g>
+        <g class="g5"><polyline class="edge" points="668,446 993,446 993,658 668,658 668,446"/><polyline class="core" points="668,446 993,446 993,658 668,658 668,446"/></g>
+        <g class="g6"><polyline class="edge" points="1040,446 1364,446 1364,658 1040,658 1040,446"/><polyline class="core" points="1040,446 1364,446 1364,658 1040,658 1040,446"/></g>
+        <g class="g7"><polyline class="edge" points="283,680 601,680 601,874 283,874 283,680"/><polyline class="core" points="283,680 601,680 601,874 283,874 283,680"/></g>
+        <g class="g8"><polyline class="edge" points="670,680 988,680 988,874 670,874 670,680"/><polyline class="core" points="670,680 988,680 988,874 670,874 670,680"/></g>
+        <g class="g9"><polyline class="edge" points="1040,680 1364,680 1364,874 1040,874 1040,680"/><polyline class="core" points="1040,680 1364,680 1364,874 1040,874 1040,680"/></g>
+      </svg>
+      <a class="hit hit-home" href="index.html" aria-label="Home"></a>
+      <a class="hit hit-explore" id="explore" href="fire-truck-explore.html" aria-label="Explore"></a>
+      <a class="hit hit-find" href="find-it.html" aria-label="Find It!"></a>
+      <div id="bays"></div>
+    </div>
+  </main>
+  <p id="speech-status" hidden role="status" aria-live="polite" style="position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:20;margin:0;padding:8px 14px;border-radius:10px;background:rgba(6,16,36,0.88);color:#fff;font:700 14px/1.3 'Segoe UI',sans-serif;max-width:90vw;text-align:center;"></p>
+  <script src="public/js/alex-browser-speech.js"></script>
+  <script>
+    var fleet = [
+      ["Fire Truck", "fire-truck-explore.html", "public/audio/pick-fire-truck.wav", "public/images/garage-review/fire-truck.png"],
+      ["Airport Fire Truck", "panther.html?test=local", "public/audio/pick-airport-fire-truck.wav", "public/images/garage-review/airport-fire-truck.png"],
+      ["Police Car", "ford-police.html?test=local", "public/audio/pick-police-car.wav", "public/images/garage-review/police-car.png"],
+      ["Excavator", "caterpillar.html?test=local", "public/audio/pick-excavator.wav", "public/images/garage-review/excavator.png"],
+      ["Mobile Crane", "liebherr.html?test=local", "public/audio/pick-mobile-crane.wav", "public/images/garage-review/mobile-crane.png"],
+      ["Tractor", "john-deere.html?test=local", "public/audio/pick-tractor.wav", "public/images/garage-review/tractor.png"],
+      ["Dump Truck", "volvo-a40g.html?test=local", "public/audio/pick-dump-truck.wav", "public/images/garage-review/dump-truck.png"],
+      ["Mars Rover", "perseverance.html?test=local", "public/audio/pick-mars-rover.wav", "public/images/truck-36822-art/mars-rover.png"],
+      ["Ambulance", "ford-f450.html?test=local", "public/audio/pick-ambulance.wav", "public/images/garage-review/ambulance.png"]
+    ];
+    var VEHICLE_DISPLAY_CONFIG = {
+      "Fire Truck": { scale: 0.966, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.60%", contactX: "49.00%", contactTop: "96.77%", shadows: [{ x: "39.6%", y: "96.8%", w: "6.9%" }, { x: "72.7%", y: "92.4%", w: "5.5%" }, { x: "79.1%", y: "91.0%", w: "4.9%" }] },
+      "Airport Fire Truck": { scale: 1.004, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.70%", contactX: "49.51%", contactTop: "96.15%" },
+      "Police Car": { scale: 1.007, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.70%", contactX: "49.67%", contactTop: "95.54%" },
+      "Excavator": { scale: 1.02, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.70%", contactX: "50.02%", contactTop: "96.30%" },
+      "Mobile Crane": { scale: 1.09, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.60%", contactX: "49.51%", contactTop: "94.19%" },
+      "Tractor": { scale: 1.076, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "50.00%", anchorY: "93.60%", contactX: "49.67%", contactTop: "94.19%" },
+      "Dump Truck": { scale: 0.915, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "50.00%", anchorY: "93.70%", contactX: "50.02%", contactTop: "91.97%" },
+      "Mars Rover": { scale: 0.925, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "54.15%", anchorY: "99.40%", contactX: "52.76%", contactTop: "97.64%", groundRotate: "0deg", shadows: [{ x: "35.52%", y: "90.87%", w: "4.4%" }, { x: "46.42%", y: "94.07%", w: "4.0%" }, { x: "52.72%", y: "98.07%", w: "5.2%" }, { x: "77.72%", y: "95.67%", w: "4.6%" }, { x: "90.22%", y: "91.87%", w: "4.2%" }] },
+      "Ambulance": { scale: 1.205, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "50.00%", anchorY: "87.80%", contactX: "49.67%", contactTop: "91.97%" }
+    };
+    var selected = 0;
+    var choiceKey = "garage-choice";
+    var clip = null;
+    var explore = document.getElementById("explore");
+    var bays = document.getElementById("bays");
+
+    fleet.forEach(function (item, index) {
+      var button = document.createElement("button");
+      var art = document.createElement("span");
+      var picture = document.createElement("img");
+      var label = document.createElement("span");
+      var config = VEHICLE_DISPLAY_CONFIG[item[0]];
+      button.type = "button";
+      button.className = "bay-slot bay-" + (index + 1);
+      button.setAttribute("data-index", String(index));
+      button.setAttribute("aria-pressed", "false");
+      button.setAttribute("aria-label", item[0]);
+      art.className = "slot-art";
+      picture.alt = "";
+      picture.src = item[3];
+      picture.style.setProperty("--vehicle-scale", String(config.scale));
+      picture.style.setProperty("--vehicle-bottom", config.bottom);
+      picture.style.setProperty("--vehicle-max-width", config.maxWidth);
+      picture.style.setProperty("--vehicle-inset", config.inset);
+      picture.style.setProperty("--vehicle-shift-x", config.shiftX);
+      if (config.anchorX) {
+        picture.classList.add("floor-contact");
+        picture.style.setProperty("--anchor-x", config.anchorX);
+        picture.style.setProperty("--anchor-y", config.anchorY);
+        picture.style.setProperty("--contact-top", config.contactTop);
+        picture.style.setProperty("--contact-x", config.contactX);
+        if (config.groundRotate) picture.style.setProperty("--ground-rotate", config.groundRotate);
+        if (config.shadows) config.shadows.forEach(function (shadow) {
+          var mark = document.createElement("span");
+          mark.className = "contact-shadow";
+          mark.style.left = shadow.x;
+          mark.style.top = shadow.y;
+          mark.style.width = shadow.w;
+          art.appendChild(mark);
+        });
+      }
+      label.className = "slot-name";
+      label.textContent = item[0];
+      art.appendChild(picture);
+      button.appendChild(art);
+      button.appendChild(label);
+      button.addEventListener("click", function () {
+        show(index);
+        speak(index);
+      });
+      bays.appendChild(button);
+    });
+
+    var slots = bays.querySelectorAll(".bay-slot");
+
+    function gameSpeech() {
+      return window.AlexBrowserSpeech ? window.AlexBrowserSpeech.sharedController() : null;
+    }
+
+    function setSpeechStatus(message) {
+      var status = document.getElementById("speech-status");
+      if (!status) return;
+      if (!message) {
+        status.hidden = true;
+        status.textContent = "";
+        return;
+      }
+      status.hidden = false;
+      status.textContent = message;
+    }
+
+    function unavailableText() {
+      var speech = gameSpeech();
+      if (speech && typeof speech.unavailableMessage === "function") {
+        return speech.unavailableMessage();
+      }
+      if (window.AlexBrowserSpeech && window.AlexBrowserSpeech.messages) {
+        return window.AlexBrowserSpeech.messages.noEnglish;
+      }
+      return "No English voices are available on this device.";
+    }
+
+    function stopName() {
+      var speech = gameSpeech();
+      if (speech) speech.stop();
+      if (!clip) return;
+      clip.pause();
+      clip.removeAttribute("src");
+      clip.load();
+      if (clip.parentNode) clip.parentNode.removeChild(clip);
+      clip = null;
+    }
+
+    function speak(index) {
+      stopName();
+      setSpeechStatus("");
+      var name = fleet[index][0];
+      var speech = gameSpeech();
+      // Keep WAV path mounted for local reserve / garage lock; browser speech is primary.
+      clip = new Audio(fleet[index][2]);
+      document.body.appendChild(clip);
+      if (speech && speech.supported()) {
+        speech.speak(name).then(function (ok) {
+          if (ok) return;
+          var playing = clip.play();
+          if (playing && typeof playing.catch === "function") {
+            playing.catch(function () { setSpeechStatus(unavailableText()); });
+          }
+        });
+        return;
+      }
+      var playing = clip.play();
+      if (playing && typeof playing.catch === "function") {
+        playing.catch(function () { setSpeechStatus(unavailableText()); });
+      }
+    }
+
+    function savedChoice() {
+      try {
+        var index = Number(sessionStorage.getItem(choiceKey));
+        if (fleet[index]) return index;
+      } catch (error) {}
+      return 0;
+    }
+
+    function show(index) {
+      selected = index;
+      try {
+        sessionStorage.setItem(choiceKey, String(index));
+      } catch (error) {}
+      explore.href = fleet[index][1];
+      Array.prototype.forEach.call(slots, function (slot, slotIndex) {
+        var chosen = slotIndex === index;
+        slot.setAttribute("aria-pressed", chosen ? "true" : "false");
+        slot.classList.toggle("is-selected", chosen);
+      });
+    }
+
+    show(savedChoice());
+
+    explore.addEventListener("click", stopName);
+    document.querySelector(".hit-home").addEventListener("click", stopName);
+    document.querySelector(".hit-find").addEventListener("click", stopName);
+    window.addEventListener("pagehide", stopName);
+  </script>
+</body>
+</html>

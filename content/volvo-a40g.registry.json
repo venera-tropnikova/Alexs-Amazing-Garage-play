@@ -1,0 +1,310 @@
+{
+  "role": "preparatory",
+  "connectedToPages": false,
+  "quality": "UNVERIFIED",
+  "screen": {
+    "title": "Volvo A40G",
+    "image": {
+      "id": "volvo-a40g",
+      "version": "local-1",
+      "src": "public/images/truck-36822-art/Volvo A40G.png",
+      "width": 1671,
+      "height": 910
+    }
+  },
+  "sections": [
+    {
+      "id": "section-cab",
+      "name": "Cab",
+      "partIds": [
+        "vol-cab",
+        "vol-door"
+      ]
+    },
+    {
+      "id": "section-body",
+      "name": "Body",
+      "partIds": [
+        "vol-body"
+      ]
+    },
+    {
+      "id": "section-wheels",
+      "name": "Wheels",
+      "partIds": [
+        "vol-wheel-front",
+        "vol-wheel-middle",
+        "vol-wheel-rear",
+        "vol-wheel-far-front"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "vol-cab",
+      "name": "Cab",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-cab"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 23.94,
+        "y": 27.47,
+        "confirmed": false,
+        "area": {
+          "x": 13.17,
+          "y": 8.79,
+          "w": 33.51,
+          "h": 48.35
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab. The driver sits in it.",
+      "audio": "public/audio/vol-cab.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-door",
+      "name": "Cab door",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-door"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 33.51,
+        "y": 37.36,
+        "confirmed": false,
+        "area": {
+          "x": 26.93,
+          "y": 19.78,
+          "w": 14.96,
+          "h": 29.67
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab door. The driver uses it to get in.",
+      "audio": "public/audio/vol-door.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-body",
+      "name": "Dump body",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-body"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 71.81,
+        "y": 32.97,
+        "confirmed": false,
+        "area": {
+          "x": 61.04,
+          "y": 8.79,
+          "w": 37.7,
+          "h": 38.46
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the dump body. It carries the load.",
+      "audio": "public/audio/vol-body.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-wheel-front",
+      "name": "Front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-wheel-front"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 55.54,
+        "y": 85.71,
+        "confirmed": false,
+        "area": {
+          "x": 49.07,
+          "y": 71.43,
+          "w": 15.56,
+          "h": 27.47
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the front wheel. It helps the truck roll.",
+      "audio": "public/audio/vol-wheel-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-wheel-middle",
+      "name": "Middle wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-wheel-middle"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 83.78,
+        "y": 83.08,
+        "confirmed": false,
+        "area": {
+          "x": 75.4,
+          "y": 65.93,
+          "w": 12.57,
+          "h": 31.87
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the middle wheel. It helps the truck roll too.",
+      "audio": "public/audio/vol-wheel-middle.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-wheel-rear",
+      "name": "Rear wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-wheel-rear"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 92.88,
+        "y": 80.44,
+        "confirmed": false,
+        "area": {
+          "x": 89.17,
+          "y": 63.74,
+          "w": 10.65,
+          "h": 32.97
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the rear wheel. It helps the truck roll too.",
+      "audio": "public/audio/vol-wheel-rear.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "vol-wheel-far-front",
+      "name": "Far front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "A40G",
+        "zoneId": "vol-wheel-far-front"
+      },
+      "placement": {
+        "imageId": "volvo-a40g",
+        "version": "local-1",
+        "x": 41.65,
+        "y": 76.92,
+        "confirmed": false,
+        "area": {
+          "x": 34.71,
+          "y": 61.54,
+          "w": 13.76,
+          "h": 29.67
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the far front wheel. It helps the truck roll too.",
+      "audio": "public/audio/vol-wheel-far-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.volvoce.com/united-states/en-us/products/articulated-haulers/a40g-t4f-sv/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    }
+  ]
+}

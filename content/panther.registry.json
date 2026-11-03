@@ -1,0 +1,433 @@
+{
+  "role": "preparatory",
+  "connectedToPages": false,
+  "quality": "UNVERIFIED",
+  "screen": {
+    "title": "Rosenbauer Panther 6x6",
+    "image": {
+      "id": "panther-6x6",
+      "version": "local-1",
+      "src": "public/images/truck-36822-art/panther-red-polished.png",
+      "width": 2048,
+      "height": 1152
+    }
+  },
+  "sections": [
+    {
+      "id": "section-cab",
+      "name": "Cab",
+      "partIds": [
+        "pan-cab",
+        "pan-door"
+      ]
+    },
+    {
+      "id": "section-compartment",
+      "name": "Compartment",
+      "partIds": [
+        "pan-compartment"
+      ]
+    },
+    {
+      "id": "section-turrets",
+      "name": "Turrets",
+      "partIds": [
+        "pan-roof-turret",
+        "pan-bumper-turret"
+      ]
+    },
+    {
+      "id": "section-wheels",
+      "name": "Wheels",
+      "partIds": [
+        "pan-wheel-front",
+        "pan-wheel-middle",
+        "pan-wheel-rear",
+        "pan-wheel-far-middle",
+        "pan-wheel-far-front"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "pan-cab",
+      "name": "Cab",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-cab"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 75.68,
+        "y": 32.12,
+        "confirmed": false,
+        "area": {
+          "x": 47.85,
+          "y": 19.97,
+          "w": 40.04,
+          "h": 28.65
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab. Firefighters ride in it.",
+      "audio": "public/audio/pan-cab.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-door",
+      "name": "Cab door",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-door"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 51.76,
+        "y": 29.51,
+        "confirmed": false,
+        "area": {
+          "x": 47.85,
+          "y": 23.44,
+          "w": 12.7,
+          "h": 22.57
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab door. Firefighters use it to get in.",
+      "audio": "public/audio/pan-door.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-compartment",
+      "name": "Compartment",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-compartment"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 37.11,
+        "y": 48.61,
+        "confirmed": false,
+        "area": {
+          "x": 31.25,
+          "y": 39.06,
+          "w": 10.74,
+          "h": 21.7
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the compartment. A shutter closes it.",
+      "audio": "public/audio/pan-compartment.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-roof-turret",
+      "name": "Roof turret",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-roof-turret"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 62.5,
+        "y": 13.02,
+        "confirmed": false,
+        "area": {
+          "x": 56.64,
+          "y": 3.47,
+          "w": 29.3,
+          "h": 16.49
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the roof turret. It sprays water.",
+      "audio": "public/audio/pan-roof-turret.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-bumper-turret",
+      "name": "Bumper turret",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-bumper-turret"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 76.66,
+        "y": 50.78,
+        "confirmed": false,
+        "area": {
+          "x": 72.27,
+          "y": 48.61,
+          "w": 11.72,
+          "h": 16.49
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the bumper turret. It sprays water too.",
+      "audio": "public/audio/pan-bumper-turret.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-wheel-rear",
+      "name": "Rear wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-wheel-rear"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 12.94,
+        "y": 79.69,
+        "confirmed": false,
+        "area": {
+          "x": 7.32,
+          "y": 70.31,
+          "w": 9.03,
+          "h": 19.97
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the rear wheel. It helps the truck roll too.",
+      "audio": "public/audio/pan-wheel-rear.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-wheel-middle",
+      "name": "Middle wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-wheel-middle"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 20.41,
+        "y": 79.17,
+        "confirmed": false,
+        "area": {
+          "x": 16.85,
+          "y": 67.71,
+          "w": 10.5,
+          "h": 23.87
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the middle wheel. It helps the truck roll too.",
+      "audio": "public/audio/pan-wheel-middle.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-wheel-far-middle",
+      "name": "Far middle wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-wheel-far-middle"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 33.69,
+        "y": 83.33,
+        "confirmed": false,
+        "area": {
+          "x": 28.81,
+          "y": 74.65,
+          "w": 10.25,
+          "h": 14.76
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the far middle wheel. It helps the truck roll too.",
+      "audio": "public/audio/pan-wheel-far-middle.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-wheel-front",
+      "name": "Front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-wheel-front"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 47.56,
+        "y": 81.16,
+        "confirmed": false,
+        "area": {
+          "x": 40.04,
+          "y": 65.97,
+          "w": 16.6,
+          "h": 31.68
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the front wheel. It helps the truck roll.",
+      "audio": "public/audio/pan-wheel-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "pan-wheel-far-front",
+      "name": "Far front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "PANTHER",
+        "zoneId": "pan-wheel-far-front"
+      },
+      "placement": {
+        "imageId": "panther-6x6",
+        "version": "local-1",
+        "x": 71.78,
+        "y": 90.28,
+        "confirmed": false,
+        "area": {
+          "x": 62.5,
+          "y": 79.86,
+          "w": 18.55,
+          "h": 17.8
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the far front wheel. It helps the truck roll too.",
+      "audio": "public/audio/pan-wheel-far-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.rosenbauer.com/en/products/vehicles/arff-vehicles/panther",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "role": "preparatory",
+  "connectedToPages": false,
+  "quality": "UNVERIFIED",
+  "screen": {
+    "title": "Ford F-450 Ambulance",
+    "image": {
+      "id": "ford-f450-ambulance",
+      "version": "local-1",
+      "src": "public/images/truck-36822-art/ford-f450-ambulance.png",
+      "width": 1536,
+      "height": 1024
+    }
+  },
+  "sections": [
+    {
+      "id": "section-cab",
+      "name": "Cab",
+      "partIds": [
+        "amb-cab",
+        "amb-door"
+      ]
+    },
+    {
+      "id": "section-compartment",
+      "name": "Compartment",
+      "partIds": [
+        "amb-compartment",
+        "amb-compartment-door"
+      ]
+    },
+    {
+      "id": "section-lights",
+      "name": "Lights",
+      "partIds": [
+        "amb-lights"
+      ]
+    },
+    {
+      "id": "section-wheels",
+      "name": "Wheels",
+      "partIds": [
+        "amb-wheel-front",
+        "amb-wheel-rear",
+        "amb-wheel-far-front"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "amb-cab",
+      "name": "Cab",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-cab"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 40.36,
+        "y": 39.06,
+        "confirmed": false,
+        "area": {
+          "x": 29.95,
+          "y": 25.39,
+          "w": 35.16,
+          "h": 38.09
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab. The driver rides in it.",
+      "audio": "public/audio/amb-cab.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/commercial-trucks/chassis-cab/2025/models/f450-xl/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-door",
+      "name": "Cab door",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-door"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 54.69,
+        "y": 49.8,
+        "confirmed": false,
+        "area": {
+          "x": 47.53,
+          "y": 41.99,
+          "w": 16.93,
+          "h": 20.51
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the cab door. The driver uses it to get in.",
+      "audio": "public/audio/amb-door.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/commercial-trucks/chassis-cab/2025/models/f450-xl/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-compartment",
+      "name": "Patient compartment",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-compartment"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 91.15,
+        "y": 37.11,
+        "confirmed": false,
+        "area": {
+          "x": 65.1,
+          "y": 6.84,
+          "w": 33.85,
+          "h": 61.52
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the patient compartment. A patient rides in it.",
+      "audio": "public/audio/amb-compartment.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.alabamapublichealth.gov/ems/assets/gsa.kkk.1822f061915.pdf",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-compartment-door",
+      "name": "Compartment door",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-compartment-door"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 74.22,
+        "y": 41.02,
+        "confirmed": false,
+        "area": {
+          "x": 69.34,
+          "y": 24.41,
+          "w": 11.07,
+          "h": 41.99
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the compartment door. The crew uses it to get in.",
+      "audio": "public/audio/amb-compartment-door.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.alabamapublichealth.gov/ems/assets/gsa.kkk.1822f061915.pdf",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-lights",
+      "name": "Warning lights",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-lights"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 72.92,
+        "y": 14.65,
+        "confirmed": false,
+        "area": {
+          "x": 59.9,
+          "y": 10.74,
+          "w": 15.62,
+          "h": 9.77
+        }
+      },
+      "action": "show-part",
+      "explanation": "These are the warning lights. They warn people.",
+      "audio": "public/audio/amb-lights.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.alabamapublichealth.gov/ems/assets/gsa.kkk.1822f061915.pdf",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-wheel-front",
+      "name": "Front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-wheel-front"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 33.85,
+        "y": 82.03,
+        "confirmed": false,
+        "area": {
+          "x": 26.04,
+          "y": 68.36,
+          "w": 19.53,
+          "h": 22.46
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the front wheel. It helps the ambulance roll.",
+      "audio": "public/audio/amb-wheel-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/commercial-trucks/chassis-cab/2025/models/f450-xl/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-wheel-rear",
+      "name": "Rear wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-wheel-rear"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 83.33,
+        "y": 77.15,
+        "confirmed": false,
+        "area": {
+          "x": 65.1,
+          "y": 70.31,
+          "w": 27.99,
+          "h": 13.67
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the rear wheel. It helps the ambulance roll too.",
+      "audio": "public/audio/amb-wheel-rear.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/commercial-trucks/chassis-cab/2025/models/f450-xl/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    },
+    {
+      "id": "amb-wheel-far-front",
+      "name": "Far front wheel",
+      "menuButtonId": null,
+      "target": {
+        "view": "F450",
+        "zoneId": "amb-wheel-far-front"
+      },
+      "placement": {
+        "imageId": "ford-f450-ambulance",
+        "version": "local-1",
+        "x": 11.72,
+        "y": 81.05,
+        "confirmed": false,
+        "area": {
+          "x": 2.6,
+          "y": 70.31,
+          "w": 15.62,
+          "h": 17.58
+        }
+      },
+      "action": "show-part",
+      "explanation": "This is the far front wheel. It helps the ambulance roll too.",
+      "audio": "public/audio/amb-wheel-far-front.wav",
+      "source": {
+        "geometry": null,
+        "document": "https://www.ford.com/commercial-trucks/chassis-cab/2025/models/f450-xl/",
+        "factStatus": "UNVERIFIED"
+      },
+      "review": {
+        "technical": "UNVERIFIED",
+        "language": "UNVERIFIED",
+        "visual": "UNVERIFIED",
+        "functional": "UNVERIFIED",
+        "screenshot": null,
+        "screenshotReviewed": false
+      }
+    }
+  ]
+}

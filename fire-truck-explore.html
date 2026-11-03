@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>Fire Truck Explore</title>
+  <link rel="stylesheet" href="public/truck-screen.css">
+  <style>
+    /*
+      Permanent Fire Truck Explore page (from verified preview/fire-truck-route).
+      CLOSED/OPEN + four open items with local Zira WAVs. Rights unconfirmed.
+      Working truck.html stays untouched as the reserve lesson page.
+    */
+    html:has(body.fire-truck-compartments-preview),
+    body.fire-truck-compartments-preview {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body.fire-truck-compartments-preview {
+      margin: 0;
+      background: #1a1f26;
+    }
+
+    body.fire-truck-compartments-preview .screen {
+      position: relative;
+      height: 100dvh;
+      min-height: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    body.fire-truck-compartments-preview .screen-title {
+      position: relative;
+      z-index: 3;
+      flex: 0 0 auto;
+      padding-top: 14px;
+      padding-bottom: 4px;
+      color: #f4f7fb;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    }
+
+    body.fire-truck-compartments-preview .truck-frame {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      align-items: stretch;
+      justify-content: flex-start;
+      min-height: 0;
+      margin: 0 12px 8px;
+      padding: 0.6rem 14px 6.85rem;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: padding-bottom 0.2s ease;
+      background:
+        linear-gradient(180deg, rgba(8, 12, 18, 0.2) 0%, rgba(8, 12, 18, 0.04) 30%, rgba(8, 12, 18, 0.22) 100%),
+        url("public/images/backgrounds/fire-truck-bg.png") center 58% / cover no-repeat;
+    }
+
+    body.fire-truck-compartments-preview .truck-frame.is-open {
+      padding-bottom: 11.25rem;
+    }
+
+    body.fire-truck-compartments-preview .truck-frame.is-open:has(.open-card:not([hidden])) {
+      padding-bottom: 13.5rem;
+    }
+
+    body.fire-truck-compartments-preview .truck-play {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.fire-truck-compartments-preview .truck-stage {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    body.fire-truck-compartments-preview .truck-image-closed {
+      display: block;
+      position: relative;
+      z-index: 1;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    body.fire-truck-compartments-preview .truck-view-open {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem;
+      box-sizing: border-box;
+    }
+
+    body.fire-truck-compartments-preview .truck-view-open[hidden] {
+      display: none !important;
+    }
+
+    body.fire-truck-compartments-preview .open-stage {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    body.fire-truck-compartments-preview .truck-image-open {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      pointer-events: none;
+    }
+
+    body.fire-truck-compartments-preview .open-hit {
+      position: absolute;
+      z-index: 2;
+      margin: 0;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      background: transparent;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body.fire-truck-compartments-preview .open-hit.is-selected {
+      border-color: #ffd43b;
+      box-shadow:
+        0 0 0 3px rgba(255, 212, 59, 0.95),
+        0 0 18px rgba(255, 212, 59, 0.55);
+      background: rgba(255, 212, 59, 0.12);
+    }
+
+    body.fire-truck-compartments-preview .close-compartments {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 8;
+      min-height: 3rem;
+      margin: 0;
+      padding: 10px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: #ffd43b;
+      color: #1c2026;
+      font: 700 1.05rem/1.2 "Segoe UI", sans-serif;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+    }
+
+    body.fire-truck-compartments-preview .close-compartments:focus-visible,
+    body.fire-truck-compartments-preview .open-hit:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
+    body.fire-truck-compartments-preview .truck-frame.is-open .truck-stage {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    body.fire-truck-compartments-preview .truck-frame.is-open .vehicle-point,
+    body.fire-truck-compartments-preview .truck-frame.is-open .part-hit,
+    body.fire-truck-compartments-preview .truck-frame.is-open .part-spot {
+      display: none !important;
+      pointer-events: none !important;
+    }
+
+    body.fire-truck-compartments-preview .truck-frame.is-open .part-card {
+      display: none !important;
+    }
+
+    body.fire-truck-compartments-preview .preview-dock {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 10px;
+      z-index: 12;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      pointer-events: none;
+    }
+
+    body.fire-truck-compartments-preview .preview-dock .part-card,
+    body.fire-truck-compartments-preview .preview-dock .section-menu,
+    body.fire-truck-compartments-preview .preview-dock .open-card {
+      pointer-events: auto;
+    }
+
+    body.fire-truck-compartments-preview .section-menu {
+      width: auto;
+      max-width: none;
+      margin: 0;
+      padding: 6px 8px;
+      gap: 6px;
+      border-radius: 14px;
+      background: rgba(248, 246, 241, 0.78);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    body.fire-truck-compartments-preview .section-button {
+      min-height: 2.35rem;
+      padding: 6px 10px;
+      font-size: 0.92rem;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    body.fire-truck-compartments-preview .section-image {
+      width: 1.85rem;
+      height: 1.85rem;
+    }
+
+    body.fire-truck-compartments-preview .part-card,
+    body.fire-truck-compartments-preview .open-card {
+      width: auto;
+      max-width: 28rem;
+      margin: 0 auto 0 0;
+      padding: 8px 12px 10px;
+      border-radius: 14px;
+      background: rgba(248, 246, 241, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    body.fire-truck-compartments-preview .part-card[hidden],
+    body.fire-truck-compartments-preview .open-card[hidden] {
+      display: none !important;
+    }
+
+    body.fire-truck-compartments-preview .part-card-title,
+    body.fire-truck-compartments-preview .open-card-title {
+      margin: 0 0 4px;
+      font-size: 1.15rem;
+      line-height: 1.15;
+    }
+
+    body.fire-truck-compartments-preview .part-card-text,
+    body.fire-truck-compartments-preview .open-card-text {
+      max-width: none;
+      margin: 0 0 8px;
+      font-size: 0.98rem;
+      line-height: 1.3;
+    }
+
+    body.fire-truck-compartments-preview .part-card-actions,
+    body.fire-truck-compartments-preview .open-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    body.fire-truck-compartments-preview .part-card-close,
+    body.fire-truck-compartments-preview .part-card-replay,
+    body.fire-truck-compartments-preview .open-card-close,
+    body.fire-truck-compartments-preview .open-card-replay {
+      min-height: 2.2rem;
+      padding: 6px 14px;
+      border: 0;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    body.fire-truck-compartments-preview .open-card-close,
+    body.fire-truck-compartments-preview .part-card-close {
+      background: #1c2026;
+      color: #fff;
+    }
+
+    body.fire-truck-compartments-preview .open-card-replay,
+    body.fire-truck-compartments-preview .part-card-replay {
+      background: #ffd43b;
+      color: #1c2026;
+    }
+
+    body.fire-truck-compartments-preview .part-spot {
+      display: none !important;
+      border: 0 !important;
+      background: transparent !important;
+    }
+
+    body.fire-truck-compartments-preview .vehicle-point.is-selected::before {
+      width: 26px;
+      height: 26px;
+      box-shadow:
+        0 0 0 3px #fff,
+        0 0 0 8px #2f6fed,
+        0 0 18px rgba(47, 111, 237, 0.7);
+    }
+
+    body.fire-truck-compartments-preview .vehicle-point.is-compartment-hot::before {
+      box-shadow:
+        0 0 0 3px #fff,
+        0 0 0 7px #ffb020,
+        0 0 14px rgba(255, 176, 32, 0.55);
+    }
+
+    .preview-banner {
+      position: fixed;
+      top: 8px;
+      left: 50%;
+      z-index: 30;
+      margin: 0;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 232, 163, 0.92);
+      color: #3a2f00;
+      font: 600 0.82rem/1.3 "Segoe UI", sans-serif;
+      text-align: center;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .route-nav {
+      position: fixed;
+      z-index: 40;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .route-nav a {
+      min-height: 3rem;
+      min-width: 7.5rem;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(248, 246, 241, 0.96);
+      color: #1c2026;
+      font: 700 1.05rem/1 "Segoe UI", sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+    }
+
+    .route-nav a.route-home {
+      background: #1c2026;
+      color: #fff;
+    }
+
+    .route-nav a.route-garage {
+      background: #1677ff;
+      color: #fff;
+    }
+
+    .route-nav svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      flex: 0 0 auto;
+    }
+
+    .route-nav a:focus-visible {
+      outline: 3px solid #ffd43b;
+      outline-offset: 3px;
+    }
+
+    body.fire-truck-compartments-preview:has(.route-nav) .screen-title {
+      padding-left: 17rem;
+    }
+  </style>
+</head>
+<body class="fire-truck-compartments-preview notranslate" translate="no">
+  <p class="preview-banner">Fire Truck Explore. Local Zira audio — rights unconfirmed.</p>
+  <nav class="route-nav" aria-label="Main navigation">
+    <a class="route-home" href="index.html" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4 3 12h3v8h5v-5h2v5h5v-8h3z"/></svg>
+      Home
+    </a>
+    <a class="route-garage" href="garage.html" aria-label="Garage">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 10 12 3l9 7v11h-6v-6H9v6H3z"/></svg>
+      Garage
+    </a>
+  </nav>
+  <main id="screen" class="screen"></main>
+  <audio id="look-inside-audio" preload="auto" src="public/audio/fire-truck-explore/look-whats-inside.wav"></audio>
+  <audio id="open-item-audio" preload="none"></audio>
+  <script src="public/js/alex-browser-speech.js"></script>
+  <script src="public/js/truck-points.js"></script>
+  <script>
+    (function () {
+      var OPEN_IMAGE = "public/images/truck-36822-art/fire-truck-pierce-open.png";
+      var COMPARTMENT_IDS = {
+        "compartment-left-front": true,
+        "compartment-left-rear": true,
+        "compartment-left-rear-lift": true
+      };
+      /* Percent of the OPEN image box — not closed-truck marker coords. */
+      /* Local Zira WAVs only. Rights unconfirmed; not approved lesson audio. */
+      var OPEN_ITEMS = [
+        {
+          id: "fire-hose",
+          name: "Fire hose",
+          text: "This hose carries water to the fire.",
+          audio: "public/audio/fire-truck-explore/open-fire-hose.wav",
+          area: { x: 41.5, y: 24.5, w: 15.0, h: 28.0 }
+        },
+        {
+          id: "air-tanks",
+          name: "Air tanks",
+          text: "These tanks give firefighters clean air to breathe.",
+          audio: "public/audio/fire-truck-explore/open-air-tanks.wav",
+          area: { x: 53.5, y: 24.5, w: 15.0, h: 34.0 }
+        },
+        {
+          id: "tools",
+          name: "Tools",
+          text: "Firefighters use these tools to help people.",
+          audio: "public/audio/fire-truck-explore/open-tools.wav",
+          area: { x: 68.5, y: 26.0, w: 16.0, h: 50.0 }
+        },
+        {
+          id: "pump",
+          name: "Pump",
+          text: "The pump controls the water flow.",
+          audio: "public/audio/fire-truck-explore/open-pump.wav",
+          area: { x: 41.5, y: 51.5, w: 15.0, h: 22.0 }
+        }
+      ];
+
+      fetch("content/parts.registry.json")
+        .then(function (response) { return response.json(); })
+        .then(function (registry) {
+          document.title = "Fire Truck Explore";
+          var screen = document.getElementById("screen");
+          TruckPoints.renderScreen(screen, registry, null, { localTest: true });
+
+          var frame = screen.querySelector(".truck-frame");
+          var stage = screen.querySelector(".truck-stage");
+          var closed = screen.querySelector(".truck-image");
+          var card = screen.querySelector(".part-card");
+          var menu = screen.querySelector(".section-menu");
+          var lookAudio = document.getElementById("look-inside-audio");
+          var itemAudio = document.getElementById("open-item-audio");
+          var LOOK_TEXT = "Look what's inside!";
+
+          function gameSpeech() {
+            return window.AlexBrowserSpeech ? window.AlexBrowserSpeech.sharedController() : null;
+          }
+
+          function stopSpeech() {
+            var speech = gameSpeech();
+            if (speech) speech.stop();
+          }
+
+          function unavailableText() {
+            var speech = gameSpeech();
+            if (speech && typeof speech.unavailableMessage === "function") {
+              return speech.unavailableMessage();
+            }
+            if (window.AlexBrowserSpeech && window.AlexBrowserSpeech.messages) {
+              return window.AlexBrowserSpeech.messages.noEnglish;
+            }
+            return "No English voices are available on this device.";
+          }
+
+          function setOpenSpeechNote(message) {
+            var note = openCardActions.querySelector(".open-card-speech-note");
+            if (!message) {
+              if (note) note.remove();
+              return;
+            }
+            if (!note) {
+              note = document.createElement("p");
+              note.className = "open-card-speech-note";
+              note.setAttribute("role", "status");
+              note.style.margin = "0";
+              note.style.fontSize = "0.9rem";
+              openCardActions.appendChild(note);
+            }
+            note.textContent = message;
+          }
+
+          function speakLine(text) {
+            var speech = gameSpeech();
+            var line = String(text || "").trim();
+            if (!speech || !speech.supported() || !line) {
+              return Promise.resolve(false);
+            }
+            return speech.speak(line);
+          }
+
+          if (!frame || !stage || !closed) return;
+
+          closed.classList.add("truck-image-closed");
+          closed.removeAttribute("width");
+          closed.removeAttribute("height");
+          closed.alt = "Fire truck with closed compartments";
+
+          var play = document.createElement("div");
+          play.className = "truck-play";
+          frame.insertBefore(play, stage);
+          play.appendChild(stage);
+
+          var openView = document.createElement("div");
+          openView.className = "truck-view-open";
+          openView.hidden = true;
+          openView.setAttribute("aria-hidden", "true");
+
+          var openStage = document.createElement("div");
+          openStage.className = "open-stage";
+
+          var openImg = document.createElement("img");
+          openImg.className = "truck-image-open";
+          openImg.alt = "Fire truck with open compartments";
+          openImg.src = OPEN_IMAGE;
+
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "button";
+          closeBtn.className = "close-compartments";
+          closeBtn.textContent = "Close compartments";
+
+          openStage.appendChild(openImg);
+          OPEN_ITEMS.forEach(function (item) {
+            var hit = document.createElement("button");
+            hit.type = "button";
+            hit.className = "open-hit";
+            hit.dataset.item = item.id;
+            hit.setAttribute("aria-label", item.name);
+            hit.style.left = item.area.x + "%";
+            hit.style.top = item.area.y + "%";
+            hit.style.width = item.area.w + "%";
+            hit.style.height = item.area.h + "%";
+            hit.addEventListener("click", function () { selectOpenItem(item.id); });
+            openStage.appendChild(hit);
+          });
+
+          openView.appendChild(openStage);
+          openView.appendChild(closeBtn);
+          play.appendChild(openView);
+
+          var dock = document.createElement("div");
+          dock.className = "preview-dock";
+          var openCard = document.createElement("section");
+          openCard.className = "open-card";
+          openCard.hidden = true;
+          var openCardTitle = document.createElement("h2");
+          openCardTitle.className = "open-card-title";
+          var openCardText = document.createElement("p");
+          openCardText.className = "open-card-text";
+          var openCardActions = document.createElement("div");
+          openCardActions.className = "open-card-actions";
+          var openCardClose = document.createElement("button");
+          openCardClose.type = "button";
+          openCardClose.className = "open-card-close";
+          openCardClose.textContent = "Close";
+          var openCardReplay = document.createElement("button");
+          openCardReplay.type = "button";
+          openCardReplay.className = "open-card-replay";
+          openCardReplay.textContent = "Replay";
+          openCardReplay.hidden = true;
+          openCardActions.appendChild(openCardClose);
+          openCardActions.appendChild(openCardReplay);
+          openCard.appendChild(openCardTitle);
+          openCard.appendChild(openCardText);
+          openCard.appendChild(openCardActions);
+          if (card) dock.appendChild(card);
+          dock.appendChild(openCard);
+          if (menu) dock.appendChild(menu);
+          frame.appendChild(dock);
+
+          Object.keys(COMPARTMENT_IDS).forEach(function (partId) {
+            stage.querySelectorAll('.vehicle-point[data-part="' + partId + '"]').forEach(function (point) {
+              point.classList.add("is-compartment-hot");
+            });
+          });
+
+          var open = false;
+          var selectedOpenId = null;
+          var referenceBox = { w: 0, h: 0 };
+          frame.setAttribute("data-mode", "closed");
+
+          function playLookInside() {
+            stopItemAudio();
+            setOpenSpeechNote("");
+            speakLine(LOOK_TEXT).then(function (ok) {
+              if (ok) return;
+              if (!lookAudio) {
+                setOpenSpeechNote(unavailableText());
+                return;
+              }
+              try {
+                lookAudio.pause();
+                lookAudio.currentTime = 0;
+                var playPromise = lookAudio.play();
+                if (playPromise && typeof playPromise.catch === "function") {
+                  playPromise.catch(function () { setOpenSpeechNote(unavailableText()); });
+                }
+              } catch (error) {
+                setOpenSpeechNote(unavailableText());
+              }
+            });
+          }
+
+          function stopItemAudio() {
+            stopSpeech();
+            setOpenSpeechNote("");
+            if (!itemAudio) return;
+            try {
+              itemAudio.pause();
+              itemAudio.removeAttribute("src");
+              itemAudio.load();
+            } catch (error) {}
+          }
+
+          function playReserveItem(src) {
+            if (!itemAudio || !src) return Promise.resolve(false);
+            try {
+              itemAudio.pause();
+              if (itemAudio.getAttribute("src") !== src) {
+                itemAudio.src = src;
+                itemAudio.load();
+              } else {
+                itemAudio.currentTime = 0;
+              }
+              var playPromise = itemAudio.play();
+              if (playPromise && typeof playPromise.then === "function") {
+                return playPromise.then(function () { return true; }).catch(function () { return false; });
+              }
+              return Promise.resolve(true);
+            } catch (error) {
+              return Promise.resolve(false);
+            }
+          }
+
+          function playItemAudio(src, text) {
+            try {
+              if (lookAudio) {
+                lookAudio.pause();
+                lookAudio.currentTime = 0;
+              }
+            } catch (error) {}
+            setOpenSpeechNote("");
+            // Keep WAV path as local reserve without playing over successful speech.
+            if (itemAudio && src) {
+              try {
+                if (itemAudio.getAttribute("src") !== src) {
+                  itemAudio.src = src;
+                  itemAudio.load();
+                }
+              } catch (error) {}
+            }
+            var line = String(text || "").trim();
+            if (!line) {
+              playReserveItem(src).then(function (played) {
+                if (!played) setOpenSpeechNote(unavailableText());
+              });
+              return;
+            }
+            speakLine(line).then(function (ok) {
+              if (ok) return;
+              playReserveItem(src).then(function (played) {
+                if (!played) setOpenSpeechNote(unavailableText());
+              });
+            });
+          }
+
+          function closePartCard() {
+            if (!card || card.hidden) return;
+            var closeCardBtn = card.querySelector(".part-card-close");
+            if (closeCardBtn) closeCardBtn.click();
+            else card.hidden = true;
+          }
+
+          function clearOpenSelection() {
+            selectedOpenId = null;
+            openCard.hidden = true;
+            openCardReplay.hidden = true;
+            stopItemAudio();
+            openStage.querySelectorAll(".open-hit").forEach(function (hit) {
+              hit.classList.remove("is-selected");
+            });
+          }
+
+          function selectOpenItem(itemId) {
+            var item = OPEN_ITEMS.find(function (entry) { return entry.id === itemId; });
+            if (!item) return;
+            selectedOpenId = itemId;
+            openStage.querySelectorAll(".open-hit").forEach(function (hit) {
+              hit.classList.toggle("is-selected", hit.dataset.item === itemId);
+            });
+            openCardTitle.textContent = item.name;
+            openCardText.textContent = item.text;
+            openCard.hidden = false;
+            openCardReplay.hidden = !(item.text || item.audio);
+            openCardReplay.onclick = (item.text || item.audio)
+              ? function () { playItemAudio(item.audio, item.text); }
+              : null;
+            if (item.text || item.audio) playItemAudio(item.audio, item.text);
+            else stopItemAudio();
+            layoutReferenceSize();
+          }
+
+          openCardClose.addEventListener("click", function () {
+            clearOpenSelection();
+            layoutReferenceSize();
+          });
+
+          function computeOpenContainSize(availW, availH, natW, natH) {
+            var aspect = natW / natH;
+            if (availW / availH > aspect) {
+              return { w: availH * aspect, h: availH };
+            }
+            return { w: availW, h: availW / aspect };
+          }
+
+          function layoutReferenceSize() {
+            var playBox = play.getBoundingClientRect();
+            var pad = 8;
+            var availW = Math.max(120, playBox.width - pad * 2);
+            var availH = Math.max(120, playBox.height - pad * 2);
+            if (!openImg.naturalWidth || !openImg.naturalHeight) return;
+            var size = computeOpenContainSize(availW, availH, openImg.naturalWidth, openImg.naturalHeight);
+            referenceBox = { w: Math.floor(size.w), h: Math.floor(size.h) };
+            openStage.style.width = referenceBox.w + "px";
+            openStage.style.height = referenceBox.h + "px";
+            closed.style.maxWidth = referenceBox.w + "px";
+            closed.style.maxHeight = referenceBox.h + "px";
+          }
+
+          function setOpen(nextOpen) {
+            if (nextOpen === open) return;
+            open = nextOpen;
+            frame.classList.toggle("is-open", open);
+            frame.setAttribute("data-mode", open ? "open" : "closed");
+            openView.hidden = !open;
+            openView.setAttribute("aria-hidden", open ? "false" : "true");
+            if (open) {
+              closePartCard();
+              clearOpenSelection();
+              layoutReferenceSize();
+              playLookInside();
+            } else {
+              clearOpenSelection();
+              layoutReferenceSize();
+            }
+          }
+
+          function openCompartments(event) {
+            if (event) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+            setOpen(true);
+          }
+
+          closeBtn.addEventListener("click", function () {
+            setOpen(false);
+          });
+
+          stage.querySelectorAll(".part-hit, .vehicle-point").forEach(function (node) {
+            var partId = node.getAttribute("data-part");
+            if (!COMPARTMENT_IDS[partId]) return;
+            node.addEventListener("click", openCompartments, true);
+          });
+
+          function whenReady(fn) {
+            if (openImg.complete && openImg.naturalWidth) fn();
+            else openImg.addEventListener("load", fn, { once: true });
+          }
+
+          whenReady(function () {
+            layoutReferenceSize();
+          });
+          window.addEventListener("resize", layoutReferenceSize);
+        });
+    })();
+  </script>
+</body>
+</html>
