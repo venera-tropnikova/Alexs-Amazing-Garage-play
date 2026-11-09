@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pumpkin Harvest</title>
+  <link rel="stylesheet" href="mission.css">
+</head>
+<body>
+  <main class="stage">
+    <nav class="mission-route"><a href="../../../find-it.html?v=tractor">← Back</a><a href="../../../garage.html">Garage</a></nav>
+    <img class="farm" alt="" src="assets/pumpkin-farm-bg.png">
+    <p id="line" class="line">Look at the pumpkins.</p>
+    <div id="field" class="field">
+      <img class="pumpkin" data-slot="0" alt="" src="assets/pumpkin-photographic.png">
+      <img class="pumpkin" data-slot="1" alt="" src="assets/pumpkin-photographic.png">
+      <img class="pumpkin" data-slot="2" alt="" src="assets/pumpkin-photographic.png">
+      <img class="pumpkin" data-slot="3" alt="" src="assets/pumpkin-photographic.png">
+      <img class="pumpkin" data-slot="4" alt="" src="assets/pumpkin-photographic.png">
+    </div>
+    <div id="rig" class="rig">
+      <img class="tractor" alt="Tractor" src="assets/tractor-with-driver-trailer.png">
+      <div id="bed" class="bed"></div>
+      <img class="trailer-wall" src="assets/trailer-front-wall.png" alt="" aria-hidden="true">
+    </div>
+    <button id="action" type="button">Load Pumpkins</button>
+    <p id="success" class="success" hidden>You did it!</p>
+    <button id="replay" type="button" hidden>Play Again <span aria-hidden="true">↻</span></button>
+  </main>
+  <script src="../../public/js/alex-browser-speech.js"></script>
+  <script src="mission.js"></script>
+</body>
+</html>

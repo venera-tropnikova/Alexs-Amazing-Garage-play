@@ -1,0 +1,175 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #c4783a;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.stage {
+  position: relative;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.farm {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 94% 100%;
+}
+
+.line {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  margin: 0;
+  text-align: center;
+  color: #fffdf6;
+  font-size: clamp(25px, 3.5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 0 #213018;
+}
+
+.field {
+  position: absolute;
+  z-index: 2;
+  left: 2vw;
+  bottom: 27vh;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(4px, 0.8vw, 9px);
+}
+
+.pumpkin {
+  width: clamp(39px, 5.3vw, 64px);
+  height: clamp(39px, 5.3vw, 64px);
+  object-fit: contain;
+  background: none;
+  transition: left 700ms ease, top 700ms ease, width 700ms ease, height 700ms ease;
+}
+
+.field .pumpkin:nth-child(1) { transform: rotate(-8deg); }
+.field .pumpkin:nth-child(2) { transform: rotate(6deg); }
+.field .pumpkin:nth-child(3) { transform: rotate(-3deg); }
+.field .pumpkin:nth-child(4) { transform: rotate(7deg); }
+.field .pumpkin:nth-child(5) { transform: rotate(-5deg); }
+
+.rig {
+  position: absolute;
+  z-index: 3;
+  left: 34vw;
+  bottom: -4px;
+  height: min(46vh, 42vw);
+  transition: transform 2.8s ease-in-out;
+  transform-origin: bottom left;
+}
+
+.tractor {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.bed {
+  position: absolute;
+  left: 1%;
+  top: 31%;
+  width: 38%;
+  height: 20%;
+  overflow: visible;
+}
+
+/* The wall is cut directly from the approved tractor art and masks the lower
+   halves of loaded pumpkins; they therefore sit inside, not on the green panel. */
+.trailer-wall {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#action {
+  position: absolute;
+  z-index: 5;
+  left: 16px;
+  bottom: clamp(130px, 31vh, 250px);
+  min-width: 250px;
+  min-height: 72px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 18px;
+  background: #ffd43b;
+  color: #1a1a1a;
+  font: 700 27px/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  box-shadow: 0 6px 0 #c89612;
+}
+
+#action:disabled {
+  background: #efe0a2;
+  box-shadow: none;
+}
+
+.success {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 18%;
+  transform: translate(-50%, 0) scale(0.8);
+  margin: 0;
+  padding: 28px 40px;
+  border-radius: 24px;
+  background: #ffd43b;
+  color: #1a1a1a;
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 10px 0 #c89612;
+  animation: pop 420ms ease-out forwards;
+}
+
+@keyframes pop {
+  to { transform: translate(-50%, 0) scale(1); }
+}
+
+@media (max-aspect-ratio: 3/4) {
+  .line { font-size: 28px; }
+  .field { left: 3vw; top: auto; bottom: 32vh; gap: 5px; }
+  .pumpkin { width: 48px; height: 48px; }
+  .rig { left: 25vw; bottom: 110px; height: min(26vh, 70vw); }
+  #action { left: 50%; bottom: 16px; transform: translateX(-50%); min-width: 260px; min-height: 70px; }
+  .success { font-size: 48px; padding: 18px 24px; }
+}
+
+#replay {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 18px;
+  min-height: 58px;
+  padding: 10px 26px;
+  background: #ffd43b;
+  color: #14202a;
+  font: 700 23px/1.1 "Trebuchet MS", "Segoe UI", sans-serif;
+  box-shadow: 0 5px 0 #c89612;
+}
+#replay[hidden], .success[hidden], #action[hidden] {display:none}
+@media (prefers-reduced-motion: reduce) {
+  .rig, .pumpkin { transition-duration: 1ms !important; }
+  .success { animation: none; transform: translate(-50%, 0) scale(1); }
+}
+
+/* Guided flow navigation */
+.mission-route{position:absolute;left:12px;top:12px;z-index:40;display:flex;gap:8px}
+.mission-route a{padding:10px 16px;border-radius:24px;background:#11283ddd;color:#fff;text-decoration:none;font:800 16px/1.2 "Trebuchet MS",sans-serif;border:2px solid #fff8}
+.mission-route a:focus-visible{outline:3px solid #ffd43b}

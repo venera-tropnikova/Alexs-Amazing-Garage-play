@@ -105,6 +105,7 @@
       cursor: pointer;
     }
 
+
     .find-copy {
       position: absolute;
       z-index: 4;
@@ -132,6 +133,26 @@
 
     .find-feedback:empty { display: none; }
     .find-task { color: #FFD43B; }
+
+    /* Matches the unchanged Explore artwork in garage-background-9-bays.png. */
+    .find-hit-explore {
+      position: absolute;
+      z-index: 10;
+      display: block;
+      left: 54.9%;
+      top: 1.2%;
+      width: 13.4%;
+      height: 9.2%;
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      touch-action: manipulation;
+    }
+    .find-hit-explore:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+      border-radius: 15px;
+    }
   </style>
 </head>
 <body>
@@ -140,6 +161,8 @@
     <div class="pick-stage">
       <img class="pick-bg" src="public/images/garage-background-9-bays.png" alt="" width="1448" height="1086">
       <svg class="bay-glow" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <!-- Clickable area on the EXISTING painted Explore button. No new visible controls. -->
+      <a class="find-hit-explore" id="find-hit-explore" href="vehicle-explore/explore.html?v=fire-truck" aria-label="Explore selected vehicle"></a>
       <div class="find-copy">
         <p class="find-task" id="find-task" aria-live="polite"></p>
         <p class="find-feedback" id="find-feedback" aria-live="polite"></p>
@@ -154,5 +177,25 @@
   <script src="public/js/alex-browser-speech.js"></script>
   <script src="public/js/garage-fleet.js"></script>
   <script src="public/js/find-it.js"></script>
+
+  <script>
+    // Only the existing Explore artwork is interactive; Find It logic stays untouched.
+    (function () {
+      var vehicleIds = ["fire-truck", "airport-fire-truck", "police-car", "excavator", "mobile-crane", "tractor", "dump-truck", "mars-rover", "ambulance"];
+      var params = new URLSearchParams(window.location.search);
+      var selectedVehicle = params.get("v");
+      if (vehicleIds.indexOf(selectedVehicle) === -1) {
+        try {
+          var index = Number(sessionStorage.getItem("garage-choice"));
+          selectedVehicle = Number.isInteger(index) && index >= 0 && index < vehicleIds.length ? vehicleIds[index] : vehicleIds[0];
+        } catch (_ignored) {
+          selectedVehicle = vehicleIds[0];
+        }
+      }
+      var link = document.getElementById("find-hit-explore");
+      link.href = "vehicle-explore/explore.html?v=" + encodeURIComponent(selectedVehicle);
+      link.setAttribute("aria-label", "Explore " + selectedVehicle.replace(/-/g, " "));
+    })();
+  </script>
 </body>
 </html>

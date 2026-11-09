@@ -2,55 +2,55 @@ var GARAGE_FLEET_DATA = {
   "fleet": [
     [
       "Fire Truck",
-      "truck.html?test=local",
+      "vehicle-explore/explore.html?v=fire-truck",
       "public/audio/pick-fire-truck.wav",
       "public/images/garage-review/fire-truck.png"
     ],
     [
       "Airport Fire Truck",
-      "panther.html?test=local",
+      "vehicle-explore/explore.html?v=airport-fire-truck",
       "public/audio/pick-airport-fire-truck.wav",
       "public/images/garage-review/airport-fire-truck.png"
     ],
     [
       "Police Car",
-      "ford-police.html?test=local",
+      "vehicle-explore/explore.html?v=police-car",
       "public/audio/pick-police-car.wav",
       "public/images/garage-review/police-car.png"
     ],
     [
       "Excavator",
-      "caterpillar.html?test=local",
+      "vehicle-explore/explore.html?v=excavator",
       "public/audio/pick-excavator.wav",
       "public/images/garage-review/excavator.png"
     ],
     [
       "Mobile Crane",
-      "liebherr.html?test=local",
+      "vehicle-explore/explore.html?v=mobile-crane",
       "public/audio/pick-mobile-crane.wav",
       "public/images/garage-review/mobile-crane.png"
     ],
     [
       "Tractor",
-      "john-deere.html?test=local",
+      "vehicle-explore/explore.html?v=tractor",
       "public/audio/pick-tractor.wav",
       "public/images/garage-review/tractor.png"
     ],
     [
       "Dump Truck",
-      "volvo-a40g.html?test=local",
+      "vehicle-explore/explore.html?v=dump-truck",
       "public/audio/pick-dump-truck.wav",
       "public/images/garage-review/dump-truck.png"
     ],
     [
       "Mars Rover",
-      "perseverance.html?test=local",
+      "vehicle-explore/explore.html?v=mars-rover",
       "public/audio/pick-mars-rover.wav",
       "public/images/truck-36822-art/mars-rover.png"
     ],
     [
       "Ambulance",
-      "ford-f450.html?test=local",
+      "vehicle-explore/explore.html?v=ambulance",
       "public/audio/pick-ambulance.wav",
       "public/images/garage-review/ambulance.png"
     ]

@@ -14,6 +14,10 @@
   var target = 0;
   var lastIndex = -1;
   var slots = [];
+  var vehicleIds = ["fire-truck", "airport-fire-truck", "police-car", "excavator", "mobile-crane", "tractor", "dump-truck", "mars-rover", "ambulance"];
+  var activeId = new URLSearchParams(window.location.search).get("v");
+  var guidedIndex = vehicleIds.indexOf(activeId);
+  var guided = guidedIndex >= 0;
   var successHold = 2800;
   var praisePause = 600;
   var speechNoticeShown = false;
@@ -155,6 +159,7 @@
   }
 
   function nextTarget() {
+    if (guided) { target = guidedIndex; showPrompt(); locked = false; return; }
     if (!queue.length) queue = takeQueue();
     target = queue.shift();
     showPrompt();
@@ -224,7 +229,16 @@
     slots[index].setAttribute("aria-pressed", "true");
     var praise = lineFor(data.sound.praise, index);
     feedback.textContent = praise.text;
-    playLine(praise, nextTarget);
+    if (guided) {
+      var finish = document.getElementById("find-next");
+      if (finish) {
+        finish.hidden = false;
+        finish.focus();
+      }
+      playLine(praise);
+    } else {
+      playLine(praise, nextTarget);
+    }
   }
 
   function replayTask() {
@@ -288,6 +302,20 @@
     slots.push(button);
   });
 
+  if (guided) {
+    back.textContent = "← Back to Explore";
+    back.href = "vehicle-explore/explore.html?v=" + encodeURIComponent(activeId);
+    var next = document.getElementById("find-next");
+    if (next) {
+      if (activeId === "tractor") {
+        next.href = "vehicle-action/tractor-pumpkin-harvest/";
+        next.textContent = "Next: Pumpkin Harvest →";
+      } else {
+        next.href = "vehicle-action/coming-soon.html?v=" + encodeURIComponent(activeId);
+        next.textContent = "Next: Machine in Action →";
+      }
+    }
+  }
   replay.addEventListener("click", replayTask);
   back.addEventListener("click", stopClip);
   window.addEventListener("pagehide", stopClip);
