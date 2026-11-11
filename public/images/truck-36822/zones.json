@@ -1,0 +1,135 @@
+{
+  "view": "V01",
+  "side": "driver",
+  "source": "Pierce drawing 36822AD, scale 1:24",
+  "canvas": {
+    "width": 2610,
+    "height": 784
+  },
+  "units": "percent of canvas, origin at the top left",
+  "zones": [
+    {
+      "id": "cab",
+      "label": "Cab",
+      "x": 1.53,
+      "y": 29.08,
+      "w": 32.57,
+      "h": 44.64
+    },
+    {
+      "id": "door-cab-front-left",
+      "label": "Front cab door, driver side",
+      "x": 17.43,
+      "y": 34.89,
+      "w": 6.26,
+      "h": 32.97,
+      "layer": "door-cab-front-left.png"
+    },
+    {
+      "id": "door-cab-rear-left",
+      "label": "Rear cab door, driver side",
+      "x": 23.7,
+      "y": 34.89,
+      "w": 7.32,
+      "h": 32.97,
+      "layer": "door-cab-rear-left.png"
+    },
+    {
+      "id": "pump",
+      "label": "Pump area, part of the base image",
+      "x": 34.48,
+      "y": 32.27,
+      "w": 5.75,
+      "h": 45.28
+    },
+    {
+      "id": "compartment-left-front",
+      "label": "Left front roll-up compartment",
+      "x": 40.44,
+      "y": 41.9,
+      "w": 5.75,
+      "h": 40.05,
+      "layer": "door-left-front-roll.png"
+    },
+    {
+      "id": "compartment-left-mid",
+      "label": "Left mid roll-up compartment, closed on the base",
+      "x": 50.42,
+      "y": 41.9,
+      "w": 7.62,
+      "h": 40.05
+    },
+    {
+      "id": "compartment-left-upper",
+      "label": "Left upper compartment over the rear axles, closed on the base",
+      "x": 58.93,
+      "y": 40.56,
+      "w": 12.55,
+      "h": 20.41
+    },
+    {
+      "id": "compartment-left-rear",
+      "label": "Left rear roll-up compartment",
+      "x": 79.83,
+      "y": 51.34,
+      "w": 8.12,
+      "h": 30.61,
+      "layer": "door-left-rear-roll.png"
+    },
+    {
+      "id": "compartment-left-rear-lift",
+      "label": "Left rear lift-up door, hinge not readable",
+      "x": 88.6,
+      "y": 49.36,
+      "w": 2.49,
+      "h": 32.59,
+      "layer": "door-left-rear-lift.png"
+    },
+    {
+      "id": "ladder",
+      "label": "Bedded ladder",
+      "hit": "rects",
+      "layer": "ladder-stowed.png",
+      "rects": [
+        {
+          "part": "beam",
+          "x": 2.3,
+          "y": 3.57,
+          "w": 94.25,
+          "h": 22.96
+        },
+        {
+          "part": "turntable",
+          "x": 90.04,
+          "y": 26.53,
+          "w": 6.51,
+          "h": 19.13
+        }
+      ]
+    },
+    {
+      "id": "wheel-front",
+      "label": "Front wheel",
+      "x": 16.47,
+      "y": 65.43,
+      "w": 8.24,
+      "h": 27.42
+    },
+    {
+      "id": "wheel-rear-forward",
+      "label": "Forward rear wheel, dual",
+      "x": 59.77,
+      "y": 65.43,
+      "w": 8.24,
+      "h": 27.42
+    },
+    {
+      "id": "wheel-rear-aft",
+      "label": "Aft rear wheel, dual",
+      "x": 69.9,
+      "y": 65.43,
+      "w": 8.24,
+      "h": 27.42
+    }
+  ]
+}

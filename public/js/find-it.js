@@ -304,14 +304,14 @@
 
   if (guided) {
     back.textContent = "← Back to Explore";
-    back.href = "vehicle-explore/explore.html?v=" + encodeURIComponent(activeId);
+    back.href = "preview/vehicle-explore/explore.html?v=" + encodeURIComponent(activeId);
     var next = document.getElementById("find-next");
     if (next) {
       if (activeId === "tractor") {
-        next.href = "vehicle-action/tractor-pumpkin-harvest/";
+        next.href = "preview/vehicle-action/tractor-pumpkin-harvest/";
         next.textContent = "Next: Pumpkin Harvest →";
       } else {
-        next.href = "vehicle-action/coming-soon.html?v=" + encodeURIComponent(activeId);
+        next.href = "preview/vehicle-action/coming-soon.html?v=" + encodeURIComponent(activeId);
         next.textContent = "Next: Machine in Action →";
       }
     }

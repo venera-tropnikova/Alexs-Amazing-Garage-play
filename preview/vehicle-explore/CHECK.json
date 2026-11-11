@@ -1,0 +1,290 @@
+{
+  "ok": true,
+  "visualPassCount": 0,
+  "note": "Kids-game Explore UI; visualPass false; auto check ≠ visual acceptance",
+  "vehicles": {
+    "fire-truck": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 11,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 11,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 11,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 5
+      }
+    },
+    "airport-fire-truck": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 6
+      }
+    },
+    "police-car": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Front",
+        "Look inside"
+      ],
+      "altHits": {
+        "Front": 3,
+        "Look inside": 7
+      }
+    },
+    "excavator": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 5
+      }
+    },
+    "mobile-crane": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 10,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 10,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 10,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 7
+      }
+    },
+    "tractor": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Trailer"
+      ],
+      "altHits": {
+        "Trailer": 4
+      }
+    },
+    "dump-truck": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 6,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 3
+      }
+    },
+    "mars-rover": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 8,
+          "partsToggle": 1,
+          "views": 2,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Look inside"
+      ],
+      "altHits": {
+        "Look inside": 4
+      }
+    },
+    "ambulance": {
+      "visualPass": false,
+      "issues": [],
+      "viewports": {
+        "1280x800": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        },
+        "1024x768": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        },
+        "768x1024": {
+          "hits": 7,
+          "partsToggle": 1,
+          "views": 3,
+          "issues": []
+        }
+      },
+      "views": [
+        "Outside",
+        "Front",
+        "Look inside"
+      ],
+      "altHits": {
+        "Front": 2,
+        "Look inside": 5
+      }
+    }
+  }
+}

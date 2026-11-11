@@ -107,7 +107,7 @@
         <g class="g9"><polyline class="edge" points="1040,680 1364,680 1364,874 1040,874 1040,680"/><polyline class="core" points="1040,680 1364,680 1364,874 1040,874 1040,680"/></g>
       </svg>
       <a class="hit hit-home" href="index.html" aria-label="Home"></a>
-      <a class="hit hit-explore" id="explore" href="vehicle-explore/explore.html?v=fire-truck" aria-label="Explore"></a>
+      <a class="hit hit-explore" id="explore" href="preview/vehicle-explore/explore.html?v=fire-truck" aria-label="Explore"></a>
       <a class="hit hit-find" href="find-it.html" aria-label="Find It!"></a>
       <div id="bays"></div>
     </div>
@@ -116,15 +116,15 @@
   <script src="public/js/alex-browser-speech.js"></script>
   <script>
     var fleet = [
-      ["Fire Truck", "vehicle-explore/explore.html?v=fire-truck", "public/audio/pick-fire-truck.wav", "public/images/garage-review/fire-truck.png"],
-      ["Airport Fire Truck", "vehicle-explore/explore.html?v=airport-fire-truck", "public/audio/pick-airport-fire-truck.wav", "public/images/garage-review/airport-fire-truck.png"],
-      ["Police Car", "vehicle-explore/explore.html?v=police-car", "public/audio/pick-police-car.wav", "public/images/garage-review/police-car.png"],
-      ["Excavator", "vehicle-explore/explore.html?v=excavator", "public/audio/pick-excavator.wav", "public/images/garage-review/excavator.png"],
-      ["Mobile Crane", "vehicle-explore/explore.html?v=mobile-crane", "public/audio/pick-mobile-crane.wav", "public/images/garage-review/mobile-crane.png"],
-      ["Tractor", "vehicle-explore/explore.html?v=tractor", "public/audio/pick-tractor.wav", "public/images/garage-review/tractor.png"],
-      ["Dump Truck", "vehicle-explore/explore.html?v=dump-truck", "public/audio/pick-dump-truck.wav", "public/images/garage-review/dump-truck.png"],
-      ["Mars Rover", "vehicle-explore/explore.html?v=mars-rover", "public/audio/pick-mars-rover.wav", "public/images/truck-36822-art/mars-rover.png"],
-      ["Ambulance", "vehicle-explore/explore.html?v=ambulance", "public/audio/pick-ambulance.wav", "public/images/garage-review/ambulance.png"]
+      ["Fire Truck", "preview/vehicle-explore/explore.html?v=fire-truck", "public/audio/pick-fire-truck.wav", "public/images/garage-review/fire-truck.png"],
+      ["Airport Fire Truck", "preview/vehicle-explore/explore.html?v=airport-fire-truck", "public/audio/pick-airport-fire-truck.wav", "public/images/garage-review/airport-fire-truck.png"],
+      ["Police Car", "preview/vehicle-explore/explore.html?v=police-car", "public/audio/pick-police-car.wav", "public/images/garage-review/police-car.png"],
+      ["Excavator", "preview/vehicle-explore/explore.html?v=excavator", "public/audio/pick-excavator.wav", "public/images/garage-review/excavator.png"],
+      ["Mobile Crane", "preview/vehicle-explore/explore.html?v=mobile-crane", "public/audio/pick-mobile-crane.wav", "public/images/garage-review/mobile-crane.png"],
+      ["Tractor", "preview/vehicle-explore/explore.html?v=tractor", "public/audio/pick-tractor.wav", "public/images/garage-review/tractor.png"],
+      ["Dump Truck", "preview/vehicle-explore/explore.html?v=dump-truck", "public/audio/pick-dump-truck.wav", "public/images/garage-review/dump-truck.png"],
+      ["Mars Rover", "preview/vehicle-explore/explore.html?v=mars-rover", "public/audio/pick-mars-rover.wav", "public/images/truck-36822-art/mars-rover.png"],
+      ["Ambulance", "preview/vehicle-explore/explore.html?v=ambulance", "public/audio/pick-ambulance.wav", "public/images/garage-review/ambulance.png"]
     ];
     var VEHICLE_DISPLAY_CONFIG = {
       "Fire Truck": { scale: 0.966, bottom: "0%", maxWidth: "100%", inset: "0%", shiftX: "0%", anchorX: "49.95%", anchorY: "93.60%", contactX: "49.00%", contactTop: "96.77%", shadows: [{ x: "39.6%", y: "96.8%", w: "6.9%" }, { x: "72.7%", y: "92.4%", w: "5.5%" }, { x: "79.1%", y: "91.0%", w: "4.9%" }] },
@@ -285,5 +285,7 @@
     document.querySelector(".hit-find").addEventListener("click", stopName);
     window.addEventListener("pagehide", stopName);
   </script>
+
+<script src="public/js/watch-mission-v2.js?v=2"></script>
 </body>
 </html>

@@ -1,0 +1,1862 @@
+/* Explore kids-game shell (preview). Bright, clear, not garish. */
+
+:root {
+  --ink: #182033;
+  --paper: #fff6e8;
+  --sky: #16324f;
+  --sky-deep: #0f2438;
+  --sun: #ffd24a;
+  --sun-deep: #e6a800;
+  --mint: #3dd68c;
+  --mint-deep: #1faa63;
+  --ocean: #3aa0ff;
+  --ocean-deep: #1b6fd1;
+  --coral: #ff6b57;
+  --hit: #2f6fed;
+}
+
+html:has(body.vehicle-explore-shell),
+body.vehicle-explore-shell {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.vehicle-explore-shell {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #2d4f78 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #1d3a5c 0%, transparent 50%),
+    var(--sky-deep);
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+body.vehicle-explore-shell .screen {
+  position: relative;
+  height: 100dvh;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0.45rem 0.55rem 0.5rem;
+}
+
+/* One sealed game board */
+body.vehicle-explore-shell .game-panel {
+  position: relative;
+  isolation: isolate;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #15263a;
+  box-shadow:
+    0 0 0 3px rgba(255, 210, 74, 0.28),
+    0 18px 40px rgba(0, 0, 0, 0.38);
+}
+
+body.vehicle-explore-shell.scene-cutout-view .game-panel,
+body.vehicle-explore-shell .game-panel.is-cutout-view {
+  background: #1a2c42;
+}
+
+body.vehicle-explore-shell .vehicle-title {
+  position: relative;
+  z-index: 6;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.55rem 1rem 0.35rem;
+  text-align: center;
+  font-size: clamp(1.7rem, 3.6vw, 2.45rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: #fff8e4;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(255, 210, 74, 0.25);
+}
+
+body.vehicle-explore-shell .scene-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+body.vehicle-explore-shell .scene-composite {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+body.vehicle-explore-shell .scene-composite-plate {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+body.vehicle-explore-shell .scene-composite-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+body.vehicle-explore-shell .scene-hit-host {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Exact target + nearby tap marker */
+body.vehicle-explore-shell .scene-pin {
+  position: absolute;
+  z-index: 6;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+body.vehicle-explore-shell .scene-pin-tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 2px #101820;
+  pointer-events: none;
+}
+
+body.vehicle-explore-shell .scene-pin-stem {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+body.vehicle-explore-shell .scene-pin-stem line {
+  stroke: rgba(255, 210, 74, 0.95);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+body.vehicle-explore-shell .scene-hit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 7;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff 0 36%, var(--hit) 40% 100%);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 3.5px rgba(47, 111, 237, 0.95),
+    0 2px 6px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+body.vehicle-explore-shell .scene-hit::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+body.vehicle-explore-shell .scene-pin.is-active .scene-hit {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 5px var(--sun),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.vehicle-explore-shell .scene-pin.is-pop .scene-pin-tip {
+  animation: tip-pop 0.55s ease-out 1;
+}
+
+body.vehicle-explore-shell .scene-pin.is-pop .scene-hit {
+  animation: hit-glow 0.55s ease-out 1;
+}
+
+body.vehicle-explore-shell .scene-hit:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 5px;
+}
+
+@keyframes tip-pop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.8);
+  }
+}
+
+@keyframes hit-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 3.5px rgba(47, 111, 237, 0.95),
+      0 2px 6px rgba(0, 0, 0, 0.28);
+  }
+  40% {
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 8px var(--sun),
+      0 2px 10px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Bottom chrome */
+body.vehicle-explore-shell .game-chrome {
+  position: relative;
+  z-index: 8;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: linear-gradient(180deg, #ffe9b8 0%, #f3d48a 100%);
+  border-top: 3px solid rgba(24, 32, 51, 0.12);
+}
+
+body.vehicle-explore-shell .explore-hint {
+  margin: 0;
+  text-align: center;
+  color: #4a3a16;
+  font: 700 1.02rem/1.25 "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+body.vehicle-explore-shell .mode-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+body.vehicle-explore-shell .mode-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 10.5rem;
+  min-height: 3.75rem;
+  margin: 0;
+  padding: 12px 20px;
+  border: 3px solid var(--ocean-deep);
+  border-radius: 22px;
+  background: #fff;
+  color: #12407a;
+  font: 800 1.22rem/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--ocean-deep);
+  transition: transform 0.12s ease, background 0.15s ease, color 0.15s ease;
+}
+
+body.vehicle-explore-shell .mode-btn .mode-icon {
+  width: 1.65rem;
+  height: 1.65rem;
+  flex: 0 0 auto;
+}
+
+body.vehicle-explore-shell .mode-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--ocean-deep);
+}
+
+body.vehicle-explore-shell .mode-btn.is-active {
+  background: var(--sun);
+  border-color: var(--sun-deep);
+  color: #2a2108;
+  box-shadow: 0 4px 0 var(--sun-deep);
+}
+
+body.vehicle-explore-shell .mode-btn-inside {
+  min-width: 12rem;
+  min-height: 4rem;
+  font-size: 1.28rem;
+}
+
+body.vehicle-explore-shell .mode-btn-inside.is-active {
+  background: var(--mint);
+  border-color: var(--mint-deep);
+  color: #083820;
+  box-shadow: 0 4px 0 var(--mint-deep);
+}
+
+body.vehicle-explore-shell .mode-btn[data-view="front"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="back"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="trailer"].is-active {
+  background: var(--ocean);
+  border-color: var(--ocean-deep);
+  color: #06284d;
+  box-shadow: 0 4px 0 var(--ocean-deep);
+}
+
+/* Soft invite pulse: Look Inside only, 2–3 times, then gone */
+body.vehicle-explore-shell .mode-btn-inside.is-invite-pulse {
+  animation: invite-pulse 0.7s ease-in-out 3;
+}
+
+@keyframes invite-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 0 var(--ocean-deep), 0 0 0 0 rgba(61, 214, 140, 0);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 4px 0 var(--mint-deep), 0 0 0 10px rgba(61, 214, 140, 0.28);
+  }
+}
+
+/* Compact game lesson panel — not a white paper card */
+body.vehicle-explore-shell .lesson-panel {
+  position: relative;
+  width: min(36rem, 100%);
+  margin: 0 auto;
+  padding: 14px 48px 14px 16px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #20406a 0%, #162a46 100%);
+  border: 3px solid rgba(255, 210, 74, 0.55);
+  box-shadow: 0 10px 22px rgba(16, 28, 48, 0.35);
+  color: #f5f8ff;
+}
+
+body.vehicle-explore-shell .lesson-panel[hidden] {
+  display: none !important;
+}
+
+body.vehicle-explore-shell .lesson-title {
+  margin: 0 0 6px;
+  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--sun);
+}
+
+body.vehicle-explore-shell .lesson-text {
+  margin: 0 0 12px;
+  font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+  line-height: 1.35;
+  color: #e8eef8;
+}
+
+body.vehicle-explore-shell .lesson-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 2.85rem;
+  height: 2.85rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #0d1a2b;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 0 #050b14;
+}
+
+body.vehicle-explore-shell .lesson-close svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+body.vehicle-explore-shell .lesson-hear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 3.2rem;
+  min-width: 9rem;
+  margin: 0;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sun);
+  color: #2a2108;
+  font: 800 1.12rem/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--sun-deep);
+}
+
+body.vehicle-explore-shell .lesson-hear svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+body.vehicle-explore-shell .lesson-speech-note {
+  margin: 8px 0 0;
+  font-size: 0.92rem;
+  color: #b8c5d8;
+}
+
+/* One large Parts control + sheet */
+body.vehicle-explore-shell .parts-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+body.vehicle-explore-shell .parts-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 11rem;
+  min-height: 3.5rem;
+  margin: 0;
+  padding: 10px 18px;
+  border: 3px solid #8a5a12;
+  border-radius: 22px;
+  background: #fff3d0;
+  color: #4a3208;
+  font: 800 1.18rem/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #8a5a12;
+}
+
+body.vehicle-explore-shell .parts-toggle .mode-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+body.vehicle-explore-shell .parts-toggle-count {
+  min-width: 1.7rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #2a2108;
+  color: var(--sun);
+  font-size: 0.95rem;
+}
+
+body.vehicle-explore-shell .parts-menu.is-open .parts-toggle {
+  background: #2a2108;
+  color: var(--sun);
+  border-color: #2a2108;
+}
+
+body.vehicle-explore-shell .parts-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: min(22rem, 100%);
+  max-height: min(34vh, 16rem);
+  overflow: auto;
+  padding: 10px;
+  border-radius: 18px;
+  background: #2a2108;
+  border: 3px solid #8a5a12;
+  box-shadow: 0 10px 20px rgba(24, 32, 51, 0.25);
+}
+
+body.vehicle-explore-shell .parts-sheet[hidden] {
+  display: none !important;
+}
+
+body.vehicle-explore-shell .parts-item {
+  width: 100%;
+  min-height: 3.15rem;
+  margin: 0;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff6e8;
+  color: #2a2108;
+  font: 800 1.12rem/1.15 "Trebuchet MS", "Segoe UI", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #8a5a12;
+}
+
+body.vehicle-explore-shell .parts-item:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #8a5a12;
+}
+
+/* Nav */
+body.vehicle-explore-shell .route-nav {
+  position: fixed;
+  z-index: 40;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+body.vehicle-explore-shell .route-nav a {
+  min-height: 2.85rem;
+  min-width: 6.25rem;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: #fff;
+  font: 700 0.98rem/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+body.vehicle-explore-shell .route-nav a.route-home {
+  background: #101820;
+}
+
+body.vehicle-explore-shell .route-nav a.route-garage {
+  background: var(--ocean);
+  color: #06284d;
+}
+
+body.vehicle-explore-shell .route-nav a.route-fleet {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body.vehicle-explore-shell .route-nav svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+body.vehicle-explore-shell .route-nav a:focus-visible,
+body.vehicle-explore-shell .mode-btn:focus-visible,
+body.vehicle-explore-shell .parts-toggle:focus-visible,
+body.vehicle-explore-shell .parts-item:focus-visible,
+body.vehicle-explore-shell .lesson-close:focus-visible,
+body.vehicle-explore-shell .lesson-hear:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+body.vehicle-explore-shell .explore-diag {
+  position: fixed;
+  z-index: 50;
+  right: 10px;
+  bottom: 10px;
+  max-width: min(28rem, calc(100vw - 20px));
+  max-height: 38vh;
+  overflow: auto;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(12, 16, 22, 0.92);
+  color: #e8eef7;
+  font: 600 0.72rem/1.35 Consolas, "Segoe UI", monospace;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  body.vehicle-explore-shell .vehicle-title {
+    padding-top: 3.4rem;
+    font-size: clamp(1.55rem, 5.5vw, 2rem);
+  }
+
+  body.vehicle-explore-shell .mode-btn {
+    min-width: 8.75rem;
+    min-height: 3.45rem;
+    font-size: 1.08rem;
+    padding: 10px 14px;
+  }
+
+  body.vehicle-explore-shell .parts-sheet {
+    max-height: 26vh;
+  }
+
+  body.vehicle-explore-shell .route-nav a span {
+    display: none;
+  }
+
+  body.vehicle-explore-shell .route-nav a {
+    min-width: 2.85rem;
+    padding: 0;
+  }
+}
+
+@media (max-height: 720px) {
+  body.vehicle-explore-shell .vehicle-title {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    padding-top: 0.4rem;
+    padding-bottom: 0.2rem;
+  }
+
+  body.vehicle-explore-shell .mode-btn {
+    min-height: 3.25rem;
+  }
+
+  body.vehicle-explore-shell .lesson-title {
+    font-size: 1.3rem;
+  }
+
+  body.vehicle-explore-shell .lesson-text {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.vehicle-explore-shell .mode-btn-inside.is-invite-pulse,
+  body.vehicle-explore-shell .scene-pin.is-pop .scene-hit,
+  body.vehicle-explore-shell .scene-pin.is-pop .scene-pin-tip {
+    animation: none !important;
+  }
+
+  body.vehicle-explore-shell .mode-btn {
+    transition: none;
+  }
+}
+
+/* Explore visual refresh v3 — scoped: only lower controls and point interaction.
+   Existing scenes, hotspots, registry, vehicles and routes stay untouched. */
+body.vehicle-explore-shell {
+  --sun: #f5c451;
+  --sun-deep: #d19b28;
+}
+body.vehicle-explore-shell .game-panel {
+  box-shadow: 0 0 0 1px rgba(117,162,216,.32), 0 18px 40px rgba(0,0,0,.36);
+  border-radius: 22px;
+}
+body.vehicle-explore-shell .game-chrome {
+  padding: 10px 14px 14px;
+  gap: 9px;
+  background: linear-gradient(180deg,#172b43 0%,#101e31 100%);
+  border-top: 1px solid rgba(167,201,240,.24);
+  color: #eaf3ff;
+}
+body.vehicle-explore-shell .explore-hint {
+  color: #b8cbe3;
+  font: 600 clamp(.83rem,1.3vw,.98rem)/1.35 "Trebuchet MS","Segoe UI",sans-serif;
+}
+body.vehicle-explore-shell .mode-bar { gap: 10px; }
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-width: 9.5rem;
+  min-height: 2.9rem;
+  padding: 9px 16px;
+  border: 1px solid #547398;
+  border-radius: 14px;
+  background: #233a55;
+  color: #e9f3ff;
+  font: 700 clamp(.95rem,1.45vw,1.05rem)/1 "Trebuchet MS","Segoe UI",sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,.22);
+}
+body.vehicle-explore-shell .mode-btn .mode-icon { width: 1.3rem; height: 1.3rem; }
+body.vehicle-explore-shell .mode-btn.is-active,
+body.vehicle-explore-shell .mode-btn-inside.is-active,
+body.vehicle-explore-shell .mode-btn[data-view="front"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="back"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="trailer"].is-active {
+  background: #257fd4;
+  border-color: #6dbafa;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.14),0 2px 7px rgba(0,0,0,.22);
+}
+body.vehicle-explore-shell .mode-btn:active { transform: translateY(1px); box-shadow: none; }
+body.vehicle-explore-shell .lesson-panel {
+  width: min(34rem,100%);
+  padding: 12px 46px 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(117,171,233,.48);
+  background: linear-gradient(135deg,#233e5e,#1b304a);
+  box-shadow: 0 6px 14px rgba(0,0,0,.22);
+}
+body.vehicle-explore-shell .lesson-title {
+  color: #fff;
+  font-size: clamp(1.15rem,2vw,1.4rem);
+  margin-bottom: 5px;
+}
+body.vehicle-explore-shell .lesson-text {
+  color: #d9e8f7;
+  font-size: clamp(.9rem,1.5vw,1rem);
+  margin-bottom: 8px;
+}
+body.vehicle-explore-shell .lesson-close {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #12263d;
+  box-shadow: none;
+}
+body.vehicle-explore-shell .lesson-hear {
+  min-height: 2.35rem;
+  min-width: 6.5rem;
+  padding: 7px 12px;
+  border-radius: 11px;
+  background: #338ce0;
+  box-shadow: none;
+  color: #fff;
+  font-size: .93rem;
+}
+body.vehicle-explore-shell .lesson-hear svg { width: 1.1rem; height: 1.1rem; }
+body.vehicle-explore-shell .parts-toggle {
+  min-height: 2.65rem;
+  padding: 8px 15px;
+  border: 1px solid #547398;
+  border-radius: 13px;
+  background: #233a55;
+  color: #e9f3ff;
+  box-shadow: none;
+  font-size: 1rem;
+}
+body.vehicle-explore-shell .parts-sheet {
+  background: #1b304a;
+  border: 1px solid rgba(117,171,233,.45);
+  border-radius: 14px;
+}
+body.vehicle-explore-shell .parts-item {
+  background: #284767;
+  color: #fff;
+  box-shadow: none;
+  border-radius: 10px;
+  font-size: .95rem;
+}
+/* Larger visible dots and generous touch targets; don't change hotspot coordinates. */
+body.vehicle-explore-shell .scene-hit {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 2px #fff,0 0 0 4px #2387e6,0 2px 7px rgba(0,0,0,.35);
+}
+body.vehicle-explore-shell .scene-hit::before { width: 48px; height: 48px; }
+body.vehicle-explore-shell .scene-pin-name {
+  position: absolute;
+  z-index: 9;
+  top: 27px;
+  left: 0;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border-radius: 9px;
+  background: rgba(12,30,49,.96);
+  color: #fff;
+  font: 750 clamp(11px,1.4vw,15px)/1.2 "Trebuchet MS","Segoe UI",sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0,0,0,.35);
+  border: 1px solid rgba(136,193,248,.65);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+body.vehicle-explore-shell .scene-pin.is-active .scene-pin-name {
+  opacity: 1;
+  visibility: visible;
+}
+body.vehicle-explore-shell .scene-pin[style*="left: 7"] .scene-pin-name,
+body.vehicle-explore-shell .scene-pin[style*="left: 8"] .scene-pin-name,
+body.vehicle-explore-shell .scene-pin[style*="left: 9"] .scene-pin-name {
+  left: auto;
+  right: 0;
+  transform: translateX(0);
+}
+body.vehicle-explore-shell .scene-pin[style*="left: 0"] .scene-pin-name,
+body.vehicle-explore-shell .scene-pin[style*="left: 1"] .scene-pin-name {
+  left: 0;
+  right: auto;
+  transform: none;
+}
+@media (max-height: 650px) {
+  body.vehicle-explore-shell .game-chrome { padding: 6px 12px 8px; gap: 5px; }
+  body.vehicle-explore-shell .mode-btn { min-height: 2.5rem; padding: 6px 12px; }
+  body.vehicle-explore-shell .explore-hint { font-size: .78rem; }
+  body.vehicle-explore-shell .lesson-panel { padding-top: 8px; padding-bottom: 8px; }
+}
+
+/* Focused controls: vehicle stays primary; all navigation on one top line. */
+body.vehicle-explore-shell .game-panel { overflow: hidden; border-radius: 18px; }
+body.vehicle-explore-shell .vehicle-title { padding-top: .5rem; padding-bottom: .4rem; }
+body.vehicle-explore-shell .mode-bar {
+  position: absolute; top: .4rem; right: 1rem; z-index: 25;
+  display: flex; gap: 8px; flex-wrap: nowrap;
+}
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-width: 0; min-height: 2.5rem; padding: .45rem .85rem;
+  border-radius: 12px; font-size: clamp(.84rem,1vw,1rem);
+}
+body.vehicle-explore-shell .route-nav {
+  top: .8rem; left: 1rem; gap: 6px; flex-wrap: nowrap;
+}
+body.vehicle-explore-shell .route-nav a {
+  min-height: 2.45rem; min-width: auto; padding: 0 12px;
+  border-radius: 12px; font-size: .88rem;
+}
+/* Remove redundant bottom panels, hint, and parts menu; automatic TTS retained. */
+body.vehicle-explore-shell .game-chrome,
+body.vehicle-explore-shell .lesson-panel,
+body.vehicle-explore-shell .parts-menu,
+body.vehicle-explore-shell .explore-hint { display: none !important; }
+/* The visible dot sits exactly on its stored hotspot. Larger invisible tap target. */
+body.vehicle-explore-shell .scene-pin-stem,
+body.vehicle-explore-shell .scene-pin-tip { display: none; }
+body.vehicle-explore-shell .scene-hit {
+  width: 16px; height: 16px; border-radius: 50%;
+  transform: translate(-50%,-50%) !important;
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px #1476d9, 0 2px 5px rgba(0,0,0,.5);
+}
+body.vehicle-explore-shell .scene-hit::before {width: 44px;height: 44px;}
+body.vehicle-explore-shell .scene-pin-name {
+  top: 20px; font-size: clamp(14px,1.35vw,19px); font-weight: 800;
+  padding: 6px 10px; max-width: 210px; overflow: visible;
+  text-align:center; background: #102b49; border: 1px solid #79b8ff;
+}
+@media (max-width: 920px) {
+  body.vehicle-explore-shell .vehicle-title { padding-top: 3.15rem; }
+  body.vehicle-explore-shell .mode-bar { top: .55rem; right: .5rem; }
+  body.vehicle-explore-shell .route-nav { top: .55rem; left: .5rem; }
+  body.vehicle-explore-shell .route-nav a span { display: inline; }
+}
+@media (max-width: 620px) {
+  body.vehicle-explore-shell .mode-bar { top: 3.1rem; left: .4rem; right: .4rem; justify-content: center; }
+  body.vehicle-explore-shell .vehicle-title { padding-top: 5.8rem; }
+  body.vehicle-explore-shell .route-nav a span { display: none; }
+}
+
+
+/* One-screen game HUD v2. The vehicle and hotspots remain untouched. */
+body.vehicle-explore-shell {
+  background: #102136;
+}
+body.vehicle-explore-shell .screen {
+  padding: 0;
+  width: 100vw;
+  height: 100dvh;
+}
+body.vehicle-explore-shell .game-panel {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  background: #102136;
+}
+body.vehicle-explore-shell .game-hud {
+  position: relative;
+  z-index: 32;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(8px, 1vw, 18px);
+  width: 100%;
+  min-height: 82px;
+  padding: 10px clamp(10px, 1.5vw, 24px);
+  background: linear-gradient(180deg, #203d5e, #142b46);
+  border-bottom: 2px solid rgba(126, 188, 255, .35);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+}
+body.vehicle-explore-shell .vehicle-title {
+  grid-column: 2;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  max-width: min(29vw, 370px);
+  margin: 0;
+  padding: 10px 22px;
+  border: 2px solid #78bcff;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #348ce2 0%, #1265b8 100%);
+  box-shadow: 0 4px 0 #063b74, inset 0 1px rgba(255,255,255,.35);
+  color: #fff;
+  font: 900 clamp(20px, 2.25vw, 34px)/1.08 "Trebuchet MS", "Segoe UI", sans-serif;
+  text-shadow: 0 2px 2px rgba(6, 28, 55, .65);
+  letter-spacing: .01em;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+body.vehicle-explore-shell .route-nav {
+  position: static;
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(7px, .8vw, 12px);
+  min-width: 0;
+  width: auto;
+}
+body.vehicle-explore-shell .route-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px clamp(10px, 1.1vw, 18px);
+  border: 2px solid rgba(255,255,255,.55);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.26);
+  font: 800 clamp(14px, 1.12vw, 18px)/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  transition: transform .12s ease, filter .12s ease;
+}
+body.vehicle-explore-shell .route-nav a.route-home {
+  min-width: 54px;
+  width: 54px;
+  padding: 6px;
+  background: #294b6d;
+}
+body.vehicle-explore-shell .route-nav a.route-home span {
+  display: none;
+}
+body.vehicle-explore-shell .route-nav a.route-garage {
+  background: #257ddd;
+  color: #fff;
+}
+body.vehicle-explore-shell .route-nav a.route-find-it {
+  background: #21a673 !important;
+  color: #fff !important;
+  border-color: #9aefce;
+}
+body.vehicle-explore-shell .route-nav a:active,
+body.vehicle-explore-shell .mode-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.28);
+}
+body.vehicle-explore-shell .route-nav svg {
+  width: 25px;
+  height: 25px;
+}
+body.vehicle-explore-shell .hud-views {
+  grid-column: 3;
+  grid-row: 1;
+  min-width: 0;
+  justify-self: end;
+}
+body.vehicle-explore-shell .mode-bar {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: auto;
+  margin: 0;
+}
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px clamp(12px, 1.1vw, 18px);
+  border: 2px solid #89c6ff;
+  border-radius: 16px;
+  background: #294e75;
+  color: #fff;
+  font: 800 clamp(14px, 1.12vw, 18px)/1 "Trebuchet MS", "Segoe UI", sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 #102f50, inset 0 1px rgba(255,255,255,.25);
+}
+body.vehicle-explore-shell .mode-btn.is-active,
+body.vehicle-explore-shell .mode-btn-inside.is-active,
+body.vehicle-explore-shell .mode-btn[data-view="front"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="back"].is-active,
+body.vehicle-explore-shell .mode-btn[data-view="trailer"].is-active {
+  background: #2e96ed;
+  color: #fff;
+  border-color: #bcdeff;
+  box-shadow: 0 4px 0 #0d4e8b, inset 0 1px rgba(255,255,255,.28);
+}
+body.vehicle-explore-shell .mode-btn .mode-icon {
+  width: 24px;
+  height: 24px;
+}
+body.vehicle-explore-shell .scene-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  background: #101f32;
+}
+body.vehicle-explore-shell .game-chrome,
+body.vehicle-explore-shell .lesson-panel,
+body.vehicle-explore-shell .parts-menu,
+body.vehicle-explore-shell .explore-hint {
+  display: none !important;
+}
+/* Keep existing corrected hotspots and active-only part labels. */
+body.vehicle-explore-shell .scene-pin-name {
+  font-size: clamp(16px, 1.65vw, 23px);
+  padding: 8px 13px;
+  max-width: min(260px, 70vw);
+  font-weight: 900;
+}
+body.vehicle-explore-shell .scene-hit {
+  width: 18px;
+  height: 18px;
+}
+body.vehicle-explore-shell .scene-hit::before {
+  width: 48px;
+  height: 48px;
+}
+/* Tablet: keep every control inside the top of the single game screen. */
+@media (max-width: 1190px) {
+  body.vehicle-explore-shell .game-hud {
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    grid-template-rows: auto auto;
+    min-height: 0;
+    gap: 8px;
+    padding: 8px 12px 10px;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    max-width: min(70vw, 480px);
+    padding: 7px 18px;
+    font-size: clamp(19px, 2.5vw, 30px);
+  }
+  body.vehicle-explore-shell .route-nav {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  body.vehicle-explore-shell .hud-views {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    min-height: 49px;
+    font-size: clamp(13px, 1.5vw, 17px);
+  }
+  body.vehicle-explore-shell .route-nav a.route-home {
+    min-width: 49px;
+    width: 49px;
+  }
+  body.vehicle-explore-shell .route-nav a span {
+    display: inline;
+  }
+}
+@media (max-width: 680px) {
+  body.vehicle-explore-shell .game-hud {
+    padding: 7px 8px 9px;
+    gap: 7px 5px;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    max-width: 90vw;
+    font-size: clamp(18px, 3.2vw, 24px);
+    padding: 6px 14px;
+  }
+  body.vehicle-explore-shell .route-nav,
+  body.vehicle-explore-shell .mode-bar {
+    gap: 5px;
+  }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    min-height: 45px;
+    padding: 6px 8px;
+    border-radius: 12px;
+    font-size: clamp(11px, 2.15vw, 14px);
+  }
+  body.vehicle-explore-shell .route-nav a.route-home {
+    min-width: 45px;
+    width: 45px;
+  }
+  body.vehicle-explore-shell .route-nav svg,
+  body.vehicle-explore-shell .mode-btn .mode-icon {
+    width: 19px;
+    height: 19px;
+  }
+  body.vehicle-explore-shell .route-nav a.route-garage span {
+    display: none;
+  }
+  body.vehicle-explore-shell .scene-pin-name {
+    font-size: 17px;
+  }
+}
+@media (max-width: 420px) {
+  body.vehicle-explore-shell .game-hud {
+    grid-template-columns: 1fr;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    grid-column: 1;
+  }
+  body.vehicle-explore-shell .route-nav {
+    grid-column: 1;
+    justify-self: center;
+  }
+  body.vehicle-explore-shell .hud-views {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+  }
+}
+
+body.vehicle-explore-shell .game-hud { box-sizing: border-box; }
+
+/* Compact single-screen navigation, all vehicle views, 2026-11-06. */
+body.vehicle-explore-shell .game-hud {
+  min-height: 0;
+  padding: 5px 12px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+body.vehicle-explore-shell .vehicle-title {
+  padding: 6px 16px;
+  border-radius: 14px;
+  font-size: clamp(18px, 2vw, 29px);
+  line-height: 1.06;
+  box-shadow: 0 2px 0 #063b74;
+}
+body.vehicle-explore-shell .route-nav a,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 13px;
+  font-size: clamp(13px, 1.03vw, 17px);
+  box-shadow: 0 2px 0 #102f50;
+}
+body.vehicle-explore-shell .route-nav a.route-home {
+  min-width: 44px;
+  width: 44px;
+  padding: 6px;
+}
+body.vehicle-explore-shell .mode-bar .mode-btn[hidden] {
+  display: none !important;
+}
+body.vehicle-explore-shell .route-nav svg,
+body.vehicle-explore-shell .mode-btn .mode-icon {
+  width: 21px;
+  height: 21px;
+}
+body.vehicle-explore-shell .scene-stage {
+  min-height: 0;
+}
+@media (max-width: 1190px) {
+  body.vehicle-explore-shell .game-hud {
+    gap: 4px 8px;
+    padding: 5px 10px;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    padding: 4px 12px;
+    font-size: clamp(17px, 2.1vw, 26px);
+  }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    min-height: 42px;
+    padding: 5px 10px;
+  }
+  body.vehicle-explore-shell .route-nav a.route-home {
+    min-width: 42px;
+    width: 42px;
+  }
+}
+@media (max-width: 680px) {
+  body.vehicle-explore-shell .game-hud { padding: 4px 7px 6px; }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    min-height: 42px;
+    font-size: clamp(12px, 2vw, 14px);
+    padding: 5px 7px;
+  }
+}
+/* Tablets in landscape also get one compact header row. */
+@media (min-width: 800px) and (max-width: 1190px) {
+  body.vehicle-explore-shell .game-hud {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 7px;
+    padding: 7px 10px;
+  }
+  body.vehicle-explore-shell .route-nav {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: min(32vw, 320px);
+    font-size: clamp(18px, 2vw, 26px);
+  }
+  body.vehicle-explore-shell .hud-views {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+
+
+/* Seamless photo-backed sides; no artificial blue borders. */
+body.vehicle-explore-shell .scene-stage { isolation: isolate; }
+body.vehicle-explore-shell .scene-extended-photo {
+  position: absolute;
+  inset: -14px;
+  z-index: 1;
+  width: calc(100% + 28px);
+  height: calc(100% + 28px);
+  object-fit: cover;
+  object-position: center center;
+  filter: blur(18px) brightness(.82);
+  pointer-events: none;
+  user-select: none;
+}
+body.vehicle-explore-shell .scene-extended-photo[hidden] { display: none !important; }
+body.vehicle-explore-shell.scene-full-composite .scene-stage { background: #242b31; }
+body.vehicle-explore-shell.scene-cutout-view .scene-stage { background: #242b31; }
+body.vehicle-explore-shell .scene-composite { z-index: 4; }
+
+
+/* Corrected layout: no blurred or synthetic extensions. Entire scene is contained. */
+html:has(body.vehicle-explore-shell),
+body.vehicle-explore-shell {
+  background: #171a1e !important;
+}
+body.vehicle-explore-shell {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+body.vehicle-explore-shell .screen {
+  width: min(100vw, calc((100dvh - 58px) * 1672 / 941));
+  max-width: 100vw;
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 0;
+}
+body.vehicle-explore-shell .game-panel {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  background: #171a1e !important;
+}
+body.vehicle-explore-shell .scene-extended-photo {
+  display: none !important;
+}
+body.vehicle-explore-shell .scene-stage,
+body.vehicle-explore-shell.scene-full-composite .scene-stage,
+body.vehicle-explore-shell.scene-cutout-view .scene-stage {
+  background: #171a1e !important;
+}
+body.vehicle-explore-shell .game-hud {
+  min-height: 0;
+  padding: 5px 10px;
+}
+body.vehicle-explore-shell .vehicle-title {
+  padding: 7px 19px;
+  font-size: clamp(23px, 2.15vw, 32px);
+  line-height: 1.05;
+  font-weight: 900;
+}
+body.vehicle-explore-shell .route-nav a,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  font-size: clamp(17px, 1.25vw, 20px) !important;
+  font-weight: 900;
+  min-height: 46px;
+  padding: 7px 13px;
+}
+body.vehicle-explore-shell .route-nav a.route-home {
+  min-width: 46px;
+  width: 46px;
+  padding: 6px;
+}
+body.vehicle-explore-shell .scene-pin-name {
+  font-size: clamp(20px, 1.6vw, 25px);
+}
+@media (min-width: 800px) and (max-width: 1190px) {
+  body.vehicle-explore-shell .game-hud {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+  body.vehicle-explore-shell .route-nav,
+  body.vehicle-explore-shell .vehicle-title,
+  body.vehicle-explore-shell .hud-views {
+    grid-row: 1;
+  }
+  body.vehicle-explore-shell .route-nav { grid-column: 1; }
+  body.vehicle-explore-shell .vehicle-title { grid-column: 2; }
+  body.vehicle-explore-shell .hud-views { grid-column: 3; }
+}
+@media (max-width: 799px) {
+  body.vehicle-explore-shell .screen { width: 100vw; }
+  body.vehicle-explore-shell .game-hud { padding: 5px 7px; }
+  body.vehicle-explore-shell .vehicle-title { font-size: clamp(21px, 3vw, 26px); }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    font-size: clamp(14px, 2vw, 17px) !important;
+  }
+}
+
+
+/* Compact, original-resolution vehicle viewer. No blur and no crop. */
+html:has(body.vehicle-explore-shell),
+body.vehicle-explore-shell {
+  background: #171a1e !important;
+  overflow: hidden;
+}
+body.vehicle-explore-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.vehicle-explore-shell .screen {
+  width: min(1120px, calc(100vw - 24px)) !important;
+  max-width: 1120px;
+  height: min(740px, calc(100dvh - 20px)) !important;
+  max-height: calc(100dvh - 20px);
+  margin: auto;
+  padding: 0;
+}
+body.vehicle-explore-shell .game-panel {
+  border: 1px solid #526a83;
+  border-radius: 16px;
+  background: #171a1e !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.34);
+  overflow: hidden;
+}
+body.vehicle-explore-shell .scene-stage,
+body.vehicle-explore-shell.scene-full-composite .scene-stage,
+body.vehicle-explore-shell.scene-cutout-view .scene-stage {
+  background: #171a1e !important;
+}
+body.vehicle-explore-shell .scene-extended-photo { display: none !important; }
+body.vehicle-explore-shell .scene-composite-img {
+  image-rendering: auto;
+}
+body.vehicle-explore-shell .game-hud {
+  padding: 6px 12px;
+  gap: 6px 9px;
+}
+body.vehicle-explore-shell .vehicle-title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  padding: 6px 14px;
+}
+body.vehicle-explore-shell .route-nav a,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-height: 46px;
+  padding: 7px 13px;
+  font-size: clamp(17px, 1.3vw, 19px) !important;
+  font-weight: 900;
+}
+body.vehicle-explore-shell .route-nav a.route-home { width: 46px; min-width: 46px; }
+body.vehicle-explore-shell .scene-pin-name {
+  font-size: clamp(19px, 1.7vw, 24px);
+}
+@media (min-width: 800px) and (max-width: 1190px) {
+  body.vehicle-explore-shell .game-hud { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-rows: auto; }
+  body.vehicle-explore-shell .route-nav { grid-column: 1; grid-row: 1; }
+  body.vehicle-explore-shell .vehicle-title { grid-column: 2; grid-row: 1; }
+  body.vehicle-explore-shell .hud-views { grid-column: 3; grid-row: 1; }
+}
+@media (max-width: 799px) {
+  body.vehicle-explore-shell .screen {
+    width: calc(100vw - 8px) !important;
+    height: calc(100dvh - 8px) !important;
+    max-height: calc(100dvh - 8px);
+  }
+  body.vehicle-explore-shell .game-hud { padding: 6px; }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside { font-size: 14px !important; }
+}
+
+
+/* Harmonized Explore board — fix screen only vs vehicle scale confusion.
+   The approved Garage, scene PNGs, hotspots and working route navigation are unchanged. */
+html:has(body.vehicle-explore-shell),
+body.vehicle-explore-shell { background: #171a1e !important; }
+body.vehicle-explore-shell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body.vehicle-explore-shell .screen {
+  width: min(calc(100vw - 12px), calc((100dvh - 12px) * 1.73)) !important;
+  max-width: none !important;
+  height: calc(100dvh - 12px) !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: auto !important;
+}
+body.vehicle-explore-shell .game-panel {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0;
+  border: 1px solid #536779;
+  border-radius: 13px;
+  box-shadow: none;
+  overflow: hidden;
+  background: #171a1e !important;
+}
+body.vehicle-explore-shell .scene-extended-photo { display: none !important; }
+body.vehicle-explore-shell .scene-stage,
+body.vehicle-explore-shell.scene-full-composite .scene-stage,
+body.vehicle-explore-shell.scene-cutout-view .scene-stage { background: #171a1e !important; }
+body.vehicle-explore-shell .scene-composite-img { image-rendering: auto; }
+body.vehicle-explore-shell .game-hud { padding: 6px 10px; min-height: 0; }
+body.vehicle-explore-shell .vehicle-title { font-size: clamp(22px, 2.1vw, 32px); }
+body.vehicle-explore-shell .route-nav a,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  font-size: clamp(16px, 1.15vw, 20px) !important;
+  min-height: 46px;
+  font-weight: 900;
+}
+body.vehicle-explore-shell .scene-pin-name { font-size: clamp(20px, 1.6vw, 25px); }
+@media (max-width: 680px) {
+  body.vehicle-explore-shell .screen {
+    width: calc(100vw - 8px) !important;
+    height: calc(100dvh - 8px) !important;
+  }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside { font-size: clamp(13px, 2.6vw, 17px) !important; }
+}
+
+
+/* Guided first tap. All existing vehicle images, sizes, routes and hotspots remain unchanged. */
+body.vehicle-explore-shell .scene-stage .dot-tutorial-replay {
+  position: absolute;
+  z-index: 24;
+  top: clamp(10px, 1.2vw, 18px);
+  left: clamp(10px, 1.2vw, 18px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  max-width: calc(100% - 24px);
+  min-height: 47px;
+  padding: 8px 15px;
+  border: 2px solid #f6d76a;
+  border-radius: 16px;
+  background: rgba(11, 35, 66, 0.92);
+  box-shadow: 0 3px 0 rgba(0,0,0,.4), 0 2px 10px rgba(0,0,0,.24);
+  color: #fff;
+  font: 900 clamp(17px, 1.3vw, 23px)/1.15 "Trebuchet MS", "Segoe UI", sans-serif;
+  cursor: pointer;
+  pointer-events: auto;
+}
+body.vehicle-explore-shell .scene-stage .dot-tutorial-replay[hidden] { display: none !important; }
+body.vehicle-explore-shell .dot-tutorial-speaker { font-size: 25px; line-height: 1; }
+body.vehicle-explore-shell .dot-tutorial-replay:focus-visible {
+  outline: 3px solid #fff; outline-offset: 3px;
+}
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target { z-index: 20; }
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target .scene-hit {
+  animation: dot-tutorial-pulse 1.1s ease-in-out infinite !important;
+}
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {
+  content: "👆";
+  position: absolute;
+  z-index: 22;
+  display: block;
+  left: 18px;
+  top: 12px;
+  font: 36px/1 "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  filter: drop-shadow(0 1px 4px #061e3d);
+  pointer-events: none;
+  animation: dot-tutorial-point 1.1s ease-in-out infinite;
+}
+@keyframes dot-tutorial-pulse {
+  0%,100% { box-shadow: 0 0 0 2px #fff,0 0 0 4px #1f86e5,0 0 0 7px rgba(31,134,229,.2); }
+  50% { box-shadow: 0 0 0 2px #fff,0 0 0 8px #00d4ff,0 0 0 17px rgba(0,212,255,.3); }
+}
+@keyframes dot-tutorial-point {
+  0%,100% { transform: translate(6px, 6px) rotate(-18deg); }
+  50% { transform: translate(0,0) rotate(-18deg); }
+}
+@media(max-width:700px) {
+  body.vehicle-explore-shell .scene-stage .dot-tutorial-replay {
+    padding: 7px 12px; min-height: 43px; font-size: 17px;
+  }
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {font-size: 29px;}
+}
+@media(prefers-reduced-motion: reduce) {
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target .scene-hit,
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {animation: none !important;}
+}
+
+/* First-visit voice tutorial: one obvious start tap, then one highlighted dot.
+   No text banner on the side; the game scene and vehicle dimensions stay intact. */
+body.vehicle-explore-shell .dot-tutorial-replay { display: none !important; }
+body.vehicle-explore-shell .scene-stage .dot-guide-start {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 18, 34, .23);
+}
+body.vehicle-explore-shell .dot-guide-start[hidden],
+body.vehicle-explore-shell .dot-guide-replay[hidden] { display: none !important; }
+body.vehicle-explore-shell .scene-stage .dot-guide-play {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(100px, 11vw, 156px);
+  height: clamp(100px, 11vw, 156px);
+  border: 5px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(160deg, #40adff, #075ec3);
+  box-shadow: 0 0 0 8px rgba(255, 215, 70, .9), 0 0 0 22px rgba(255, 215, 70, .17), 0 11px 28px rgba(0, 0, 0, .48);
+  cursor: pointer;
+  animation: dot-guide-welcome 1.45s ease-in-out infinite;
+}
+body.vehicle-explore-shell .dot-guide-play-symbol {
+  font: 900 clamp(53px, 6vw, 80px)/1 "Segoe UI Symbol", sans-serif;
+  transform: translateX(5px);
+}
+body.vehicle-explore-shell .dot-guide-play-sound {
+  position: absolute;
+  top: -12px;
+  right: -18px;
+  font-size: clamp(28px, 3vw, 43px);
+  filter: drop-shadow(0 2px 3px #123);
+}
+body.vehicle-explore-shell .scene-stage .dot-guide-replay {
+  position: absolute;
+  z-index: 25;
+  top: 12px;
+  left: 14px;
+  width: 52px;
+  height: 52px;
+  border: 3px solid #ffdc69;
+  border-radius: 50%;
+  background: #135ea7;
+  color: #fff;
+  font-size: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  cursor: pointer;
+}
+body.vehicle-explore-shell .dot-guide-play:focus-visible,
+body.vehicle-explore-shell .dot-guide-replay:focus-visible {
+  outline: 5px solid #ffd84d;
+  outline-offset: 5px;
+}
+@keyframes dot-guide-welcome {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.065); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.vehicle-explore-shell .dot-guide-play { animation: none; }
+}
+
+/* One-gesture visual tutorial: no central Play button, no side text banner. */
+body.vehicle-explore-shell .dot-guide-start,
+body.vehicle-explore-shell .dot-guide-replay,
+body.vehicle-explore-shell .dot-tutorial-replay { display:none !important; }
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target { z-index: 26; }
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target .scene-hit {
+  animation: dot-tutorial-pulse 1.15s ease-in-out infinite !important;
+}
+/* The arrow and hand are both attached to the real pin, not the photograph. */
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target::before {
+  content: "➜";
+  position:absolute;
+  z-index:27;
+  left:-62px;
+  top:9px;
+  color:#00d9ff;
+  font:900 48px/1 "Segoe UI Symbol",sans-serif;
+  -webkit-text-stroke:2px #ffffff;
+  text-shadow:0 0 7px #004b84,0 3px 5px #11233d;
+  pointer-events:none;
+  transform:rotate(-31deg);
+  animation: guide-arrow-beckon 1.15s ease-in-out infinite;
+}
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {
+  content: "👆";
+  position:absolute;
+  z-index:28;
+  left:-106px;
+  top:33px;
+  font:58px/1 "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  filter:grayscale(1) brightness(1.55) drop-shadow(0 0 4px #006fe8) drop-shadow(0 3px 3px #10253e);
+  pointer-events:none;
+  animation:guide-hand-beckon 1.15s ease-in-out infinite;
+}
+@keyframes guide-hand-beckon {
+  0%,100% {transform:translate(-5px,6px) rotate(39deg);}
+  50% {transform:translate(4px,-3px) rotate(39deg);}
+}
+@keyframes guide-arrow-beckon {
+  0%,100% {transform:translate(-6px,7px) rotate(-31deg);opacity:.78;}
+  50% {transform:translate(2px,-2px) rotate(-31deg);opacity:1;}
+}
+@media (max-width:700px) {
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {
+    font-size:44px;left:-77px;top:28px;
+  }
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::before {
+    font-size:36px;left:-43px;top:8px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after,
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::before {animation:none !important;}
+}
+
+
+/* Approved navigation and hand kept. Align the whole header to the photo frame. */
+body.vehicle-explore-shell .game-hud {
+  box-sizing: border-box !important;
+  width: min(100%, var(--photo-board-width, 100%)) !important;
+  max-width: 100% !important;
+  align-self: center !important;
+  margin: 0 auto !important;
+  padding: 6px 9px !important;
+  border-radius: 12px 12px 0 0 !important;
+  border: 1px solid rgba(95, 204, 255, .65) !important;
+  border-bottom: 2px solid #2ac2ec !important;
+  background: linear-gradient(180deg, #17618b, #103c61) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 3px 9px rgba(0,0,0,.19) !important;
+}
+body.vehicle-explore-shell .vehicle-title {
+  background: linear-gradient(180deg, #10a8eb, #0873bc) !important;
+  border-color: #9be8ff !important;
+  color: #fff !important;
+  text-shadow: 0 1px 2px #07446a !important;
+  box-shadow: 0 2px 0 #075781, inset 0 1px 0 rgba(255,255,255,.34) !important;
+  font-weight: 900;
+}
+body.vehicle-explore-shell .route-nav,
+body.vehicle-explore-shell .hud-views { min-width: 0; }
+@media (max-width: 800px) {
+  body.vehicle-explore-shell .game-hud { padding: 5px 6px !important; }
+}
+
+/* Remove the obsolete outer frame that extended beyond the photo and header. */
+body.vehicle-explore-shell .game-panel { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+
+
+/* v7 playful child-friendly header colors and larger text */
+body.vehicle-explore-shell .game-hud {
+  border: 2px solid #ffc93b !important;
+  border-bottom: 3px solid #ffae00 !important;
+  border-radius: 16px 16px 0 0 !important;
+  background: linear-gradient(180deg, #fffdf4 0%, #ffe48a 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 6px 18px rgba(0,0,0,.16) !important;
+  padding: 7px 10px !important;
+}
+body.vehicle-explore-shell .route-nav a,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  min-height: 56px !important;
+  border-radius: 15px !important;
+  font: 900 clamp(17px, 1.2vw, 22px)/1 "Trebuchet MS", "Segoe UI", sans-serif !important;
+  box-shadow: 0 3px 0 rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+body.vehicle-explore-shell .route-nav a {
+  min-width: 0 !important;
+  padding: 0 16px !important;
+  border: 2px solid rgba(255,255,255,.72) !important;
+}
+body.vehicle-explore-shell .route-nav a.route-home {
+  min-width: 52px !important;
+  width: 52px !important;
+  padding: 0 !important;
+  border-radius: 16px !important;
+  background: linear-gradient(180deg, #59c8ff 0%, #2e94eb 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 0 #1662a4, inset 0 1px 0 rgba(255,255,255,.4) !important;
+}
+body.vehicle-explore-shell .route-nav a.route-home svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+body.vehicle-explore-shell .route-nav a.route-garage {
+  background: linear-gradient(180deg, #5caeff 0%, #2d83e7 100%) !important;
+  color: #ffffff !important;
+  border-color: #d8efff !important;
+}
+body.vehicle-explore-shell .route-nav a.route-find-it,
+body.vehicle-explore-shell .route-nav a.route-fleet {
+  background: linear-gradient(180deg, #2fca90 0%, #18a86d 100%) !important;
+  color: #ffffff !important;
+  border-color: #d3ffe8 !important;
+}
+body.vehicle-explore-shell .vehicle-title {
+  padding: 10px 24px !important;
+  border: 2px solid #fff4bb !important;
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, #2eb2ff 0%, #1184db 100%) !important;
+  color: #ffffff !important;
+  font: 900 clamp(24px, 2.1vw, 36px)/1 "Trebuchet MS", "Segoe UI", sans-serif !important;
+  letter-spacing: .01em !important;
+  box-shadow: 0 3px 0 #0d5d9b, inset 0 1px 0 rgba(255,255,255,.35) !important;
+  text-shadow: 0 2px 0 rgba(8,64,107,.38) !important;
+}
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  border: 2px solid #d9f0ff !important;
+  background: linear-gradient(180deg, #4b9df1 0%, #2d75cd 100%) !important;
+  color: #ffffff !important;
+}
+body.vehicle-explore-shell .mode-btn .mode-icon,
+body.vehicle-explore-shell .mode-btn-inside .mode-icon {
+  width: 24px !important;
+  height: 24px !important;
+}
+body.vehicle-explore-shell .mode-btn.is-active,
+body.vehicle-explore-shell .mode-btn-inside.is-active {
+  background: linear-gradient(180deg, #ffd455 0%, #ffbf1a 100%) !important;
+  color: #513500 !important;
+  border-color: #fff1be !important;
+  box-shadow: 0 3px 0 #b87800, inset 0 1px 0 rgba(255,255,255,.48) !important;
+}
+body.vehicle-explore-shell .mode-btn.is-active .mode-icon,
+body.vehicle-explore-shell .mode-btn-inside.is-active .mode-icon {
+  color: #513500 !important;
+}
+@media (max-width: 900px) {
+  body.vehicle-explore-shell .game-hud { padding: 6px 8px !important; }
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside { min-height: 50px !important; font-size: 16px !important; }
+  body.vehicle-explore-shell .vehicle-title { font-size: clamp(22px, 4.2vw, 28px) !important; }
+}
+
+
+/* v8: selected playful colors; interactive pointer, not a generated scene */
+body.vehicle-explore-shell .route-nav a.route-find-it,
+body.vehicle-explore-shell .route-nav a.route-fleet {
+  background: linear-gradient(180deg, #ff545c, #e40d25) !important;
+  border-color: #fff4ed !important;
+  color: #fff !important;
+  box-shadow: 0 3px 0 #a40b1d, inset 0 1px 0 rgba(255,255,255,.38) !important;
+}
+body.vehicle-explore-shell .route-nav a.route-home,
+body.vehicle-explore-shell .route-nav a.route-garage,
+body.vehicle-explore-shell .mode-btn,
+body.vehicle-explore-shell .mode-btn-inside {
+  background: linear-gradient(180deg, #22b6ff, #067be2) !important;
+  color: #fff !important;
+  border-color: #def6ff !important;
+}
+body.vehicle-explore-shell .mode-btn.is-active,
+body.vehicle-explore-shell .mode-btn-inside.is-active {
+  background: linear-gradient(180deg, #1bb6ff, #0a76d9) !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: 0 3px 0 #084b9b, inset 0 1px 0 rgba(255,255,255,.42) !important;
+}
+body.vehicle-explore-shell .mode-btn.is-active .mode-icon,
+body.vehicle-explore-shell .mode-btn-inside.is-active .mode-icon {
+  color: #fff !important;
+}
+/* A clearly readable white hand with ONE extended index finger.
+   Kept separate from the small cyan direction arrow; same selected hotspot. */
+body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {
+  content: "" !important;
+  position: absolute;
+  z-index: 28;
+  left: -105px;
+  top: 20px;
+  width: 68px;
+  height: 80px;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2288%22%20height%3D%22104%22%20viewBox%3D%220%200%2088%20104%22%3E%0A%3Cpath%20d%3D%22M27%2072%20L11%2053%20C7%2048%208%2043%2013%2040%20C17%2037%2021%2039%2025%2043%20L33%2053%20L33%2014%20C33%207%2037%204%2042%204%20C48%204%2051%209%2051%2014%20L51%2044%20C55%2039%2061%2040%2064%2044%20C68%2041%2074%2044%2075%2049%20C80%2047%2085%2051%2085%2058%20L85%2073%20C85%2088%2075%2098%2059%20100%20L44%20100%20C35%20100%2030%2093%2027%2086%20Z%22%0Afill%3D%22%23fff%22%20stroke%3D%22%230b3970%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M51%2044%20V57%20M64%2044%20V58%20M75%2049%20V59%22%20fill%3D%22none%22%20stroke%3D%22%230b3970%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 0 3px #1daeff) drop-shadow(0 3px 4px #09223d);
+  pointer-events: none;
+  animation: guide-hand-beckon 1.15s ease-in-out infinite;
+}
+@media (max-width:700px) {
+  body.vehicle-explore-shell .scene-pin.dot-tutorial-target::after {
+    left:-77px;
+    top:22px;
+    width:48px;
+    height:58px;
+  }
+}
+
+
+/* v9: ONLY the internal equipment views get a clean warm ivory canvas.
+   No change to outside photographs, controls, coordinates or navigation. */
+body.vehicle-explore-shell.scene-cutout-view,
+body.vehicle-explore-shell.scene-cutout-view .screen,
+body.vehicle-explore-shell.scene-cutout-view .game-panel,
+body.vehicle-explore-shell.scene-cutout-view .scene-stage {
+  background: radial-gradient(ellipse 75% 65% at 50% 47%, #fffaf0 0%, #fff2db 66%, #f1dfc2 100%) !important;
+}
+body.vehicle-explore-shell.scene-cutout-view .scene-composite,
+body.vehicle-explore-shell.scene-cutout-view .scene-composite-plate {
+  background: transparent !important;
+}
+/* Outside photographic views retain the already-approved image and frame. */
+
+
+/* alex-unified-explore-video-v1 */
+body.vehicle-explore-shell,
+body.vehicle-explore-shell .screen,
+body.vehicle-explore-shell .game-panel,
+body.vehicle-explore-shell .scene-stage {
+  background: #f4e6cf !important;
+}
+body.vehicle-explore-shell .screen {
+  padding-top: 0.2rem !important;
+}
+body.vehicle-explore-shell .game-panel {
+  box-shadow: 0 10px 24px rgba(46, 36, 12, 0.14) !important;
+}
+body.vehicle-explore-shell .vehicle-title {
+  margin-bottom: 0 !important;
+  padding-bottom: 0.1rem !important;
+}
+body.vehicle-explore-shell .scene-stage {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding-top: 2px !important;
+}
+body.vehicle-explore-shell .scene-composite {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding-top: 0 !important;
+}
+body.vehicle-explore-shell .scene-composite-plate {
+  margin-top: 0 !important;
+}
+body.vehicle-explore-shell .game-chrome {
+  margin-top: 0 !important;
+}
+body.vehicle-explore-shell .route-nav,
+body.vehicle-explore-shell .top-strip,
+body.vehicle-explore-shell .top-bar {
+  margin-bottom: 0 !important;
+}
+/* end alex-unified-explore-video-v1 */

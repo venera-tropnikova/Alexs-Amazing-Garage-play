@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "raiseBedPlayable": false,
+  "viewports": {
+    "1280x800": {
+      "issues": [],
+      "titleSample": "Dump body",
+      "info": {
+        "body": "notranslate vehicle-explore-shell scene-playable scene-full-composite",
+        "closed": "http://127.0.0.1:8877/preview/vehicle-explore/scene-art/dump-truck/closed-composite.png",
+        "bgVar": "",
+        "hits": 7,
+        "dock": [
+          "Cab",
+          "Cab door",
+          "Dump body",
+          "Front wheel",
+          "Middle wheel",
+          "Rear wheel",
+          "Far front wheel"
+        ],
+        "raiseToggle": 0,
+        "scrollX": 0
+      }
+    },
+    "1024x768": {
+      "issues": [],
+      "titleSample": "Dump body",
+      "info": {
+        "body": "notranslate vehicle-explore-shell scene-playable scene-full-composite",
+        "closed": "http://127.0.0.1:8877/preview/vehicle-explore/scene-art/dump-truck/closed-composite.png",
+        "bgVar": "",
+        "hits": 7,
+        "dock": [
+          "Cab",
+          "Cab door",
+          "Dump body",
+          "Front wheel",
+          "Middle wheel",
+          "Rear wheel",
+          "Far front wheel"
+        ],
+        "raiseToggle": 0,
+        "scrollX": 0
+      }
+    },
+    "768x1024": {
+      "issues": [],
+      "titleSample": "Dump body",
+      "info": {
+        "body": "notranslate vehicle-explore-shell scene-playable scene-full-composite",
+        "closed": "http://127.0.0.1:8877/preview/vehicle-explore/scene-art/dump-truck/closed-composite.png",
+        "bgVar": "",
+        "hits": 7,
+        "dock": [
+          "Cab",
+          "Cab door",
+          "Dump body",
+          "Front wheel",
+          "Middle wheel",
+          "Rear wheel",
+          "Far front wheel"
+        ],
+        "raiseToggle": 0,
+        "scrollX": 0
+      }
+    }
+  }
+}

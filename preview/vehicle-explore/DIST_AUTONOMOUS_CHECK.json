@@ -1,0 +1,235 @@
+{
+  "ok": true,
+  "base": "http://127.0.0.1:8890",
+  "documentRoot": "D:\\Alexs_Amazing_Garage\\dist",
+  "outsideDistRefs": [],
+  "routes": [
+    {
+      "name": "Fire Truck",
+      "id": "fire-truck",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=fire-truck",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=fire-truck",
+      "title": "Fire Truck",
+      "brokenImagesOutside": [],
+      "hotspotCount": 11,
+      "lesson": "Cab",
+      "partsCount": 11,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Airport Fire Truck",
+      "id": "airport-fire-truck",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=airport-fire-truck",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=airport-fire-truck",
+      "title": "Airport Fire Truck",
+      "brokenImagesOutside": [],
+      "hotspotCount": 8,
+      "lesson": "Cab",
+      "partsCount": 8,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Police Car",
+      "id": "police-car",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=police-car",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=police-car",
+      "title": "Police Car",
+      "brokenImagesOutside": [],
+      "hotspotCount": 7,
+      "lesson": "Cab",
+      "partsCount": 7,
+      "modeCount": 3,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Excavator",
+      "id": "excavator",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=excavator",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=excavator",
+      "title": "Excavator",
+      "brokenImagesOutside": [],
+      "hotspotCount": 6,
+      "lesson": "Cab",
+      "partsCount": 6,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Mobile Crane",
+      "id": "mobile-crane",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=mobile-crane",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=mobile-crane",
+      "title": "Mobile Crane",
+      "brokenImagesOutside": [],
+      "hotspotCount": 10,
+      "lesson": "Driver's cab",
+      "partsCount": 10,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Tractor",
+      "id": "tractor",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=tractor",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=tractor",
+      "title": "Tractor",
+      "brokenImagesOutside": [],
+      "hotspotCount": 6,
+      "lesson": "Cab",
+      "partsCount": 6,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Dump Truck",
+      "id": "dump-truck",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=dump-truck",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=dump-truck",
+      "title": "Dump Truck",
+      "brokenImagesOutside": [],
+      "hotspotCount": 6,
+      "lesson": "Cab",
+      "partsCount": 6,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Mars Rover",
+      "id": "mars-rover",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=mars-rover",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=mars-rover",
+      "title": "Mars Rover",
+      "brokenImagesOutside": [],
+      "hotspotCount": 8,
+      "lesson": "Body",
+      "partsCount": 8,
+      "modeCount": 2,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    },
+    {
+      "name": "Ambulance",
+      "id": "ambulance",
+      "ok": true,
+      "exploreHref": "vehicle-explore/explore.html?v=ambulance",
+      "finalUrl": "http://127.0.0.1:8890/vehicle-explore/explore.html?v=ambulance",
+      "title": "Ambulance",
+      "brokenImagesOutside": [],
+      "hotspotCount": 7,
+      "lesson": "Cab",
+      "partsCount": 7,
+      "modeCount": 3,
+      "brokenImagesAlt": [],
+      "brokenImagesLookInside": [],
+      "garageBack": "http://127.0.0.1:8890/garage.html",
+      "homeBack": "http://127.0.0.1:8890/index.html"
+    }
+  ],
+  "findIt": {
+    "ok": true,
+    "bays": 9,
+    "url": "http://127.0.0.1:8890/garage.html"
+  },
+  "sayIt": {
+    "interactiveControls": 0,
+    "ok": true
+  },
+  "tts": [
+    {
+      "vehicle": "Fire Truck",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Airport Fire Truck",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Police Car",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Excavator",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Mobile Crane",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Tractor",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Dump Truck",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Mars Rover",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    },
+    {
+      "vehicle": "Ambulance",
+      "hearPresent": true,
+      "ok": true,
+      "supported": true,
+      "speakingObserved": true
+    }
+  ],
+  "notes": []
+}

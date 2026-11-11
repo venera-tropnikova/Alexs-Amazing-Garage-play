@@ -1,0 +1,248 @@
+{
+  "base": "http://127.0.0.1:8877",
+  "ok": true,
+  "rootCauseNotes": [],
+  "loadedDocument": {
+    "url": "http://127.0.0.1:8877/garage.html",
+    "status": 200,
+    "sha256": "26bd7e3c83c3febfdf4eca1cf5602d0387a55f5bcff0bcdbfb4840ea75ea8e56",
+    "bytes": 14452,
+    "hasPanther": false,
+    "hasVehicleExplore": true,
+    "cacheControl": null,
+    "lastModified": "Wed, 04 Nov 2026 19:20:45 GMT",
+    "matchesDisk": true,
+    "diskSha256": "26bd7e3c83c3febfdf4eca1cf5602d0387a55f5bcff0bcdbfb4840ea75ea8e56"
+  },
+  "sources": {
+    "garage.html_inline_fleet_handler": "show(index) sets #explore.href = fleet[index][1]; click only stopName()",
+    "garage.html_uses_garage_fleet_js": false,
+    "disk_root_has_panther": false,
+    "disk_root_has_vehicle_explore": true,
+    "dist_has_panther": false,
+    "dist_has_vehicle_explore": true,
+    "garage_fleet_js_has_panther": false,
+    "garage_fleet_js_has_vehicle_explore": true
+  },
+  "routes": [
+    {
+      "name": "Fire Truck",
+      "id": "fire-truck",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=fire-truck",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=fire-truck",
+        "selectedLabel": "Fire Truck",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=fire-truck"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=fire-truck",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=fire-truck",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Airport Fire Truck",
+      "id": "airport-fire-truck",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=airport-fire-truck",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=airport-fire-truck",
+        "selectedLabel": "Airport Fire Truck",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=airport-fire-truck"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=airport-fire-truck",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=airport-fire-truck",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Police Car",
+      "id": "police-car",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=police-car",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=police-car",
+        "selectedLabel": "Police Car",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=police-car"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=police-car",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=police-car",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Excavator",
+      "id": "excavator",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=excavator",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=excavator",
+        "selectedLabel": "Excavator",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=excavator"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=excavator",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=excavator",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Mobile Crane",
+      "id": "mobile-crane",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=mobile-crane",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=mobile-crane",
+        "selectedLabel": "Mobile Crane",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=mobile-crane"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=mobile-crane",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=mobile-crane",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Tractor",
+      "id": "tractor",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=tractor",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=tractor",
+        "selectedLabel": "Tractor",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=tractor"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=tractor",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=tractor",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Dump Truck",
+      "id": "dump-truck",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=dump-truck",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=dump-truck",
+        "selectedLabel": "Dump Truck",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=dump-truck"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=dump-truck",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=dump-truck",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Mars Rover",
+      "id": "mars-rover",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=mars-rover",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=mars-rover",
+        "selectedLabel": "Mars Rover",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=mars-rover"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=mars-rover",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=mars-rover",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    },
+    {
+      "name": "Ambulance",
+      "id": "ambulance",
+      "ok": true,
+      "beforeClick": {
+        "exploreHref": "preview/vehicle-explore/explore.html?v=ambulance",
+        "exploreAbs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=ambulance",
+        "selectedLabel": "Ambulance",
+        "fleetUrl": "preview/vehicle-explore/explore.html?v=ambulance"
+      },
+      "expectedRel": "preview/vehicle-explore/explore.html?v=ambulance",
+      "exploreHitBox": {
+        "x": 692.265625,
+        "y": 9.59375,
+        "width": 142.921875,
+        "height": 73.59375
+      },
+      "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=ambulance",
+      "finalOk": true,
+      "garageBack": "http://127.0.0.1:8877/garage.html",
+      "homeBack": "http://127.0.0.1:8877/index.html"
+    }
+  ],
+  "findIt": {
+    "href": "find-it.html",
+    "opened": "http://127.0.0.1:8877/find-it.html",
+    "ok": true
+  },
+  "sayIt": {
+    "interactiveControls": 0,
+    "ok": true,
+    "note": "Say It! is artwork only; no navigation handler expected"
+  },
+  "homeRoundtrip": {
+    "toGarage": "http://127.0.0.1:8877/garage.html"
+  },
+  "distProbe": {
+    "before": {
+      "href": "../preview/vehicle-explore/explore.html?v=airport-fire-truck",
+      "abs": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=airport-fire-truck"
+    },
+    "finalUrl": "http://127.0.0.1:8877/preview/vehicle-explore/explore.html?v=airport-fire-truck",
+    "ok": true
+  }
+}

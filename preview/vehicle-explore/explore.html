@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
+  <base href="../../">
+  <title>Explore</title>
+  <link rel="stylesheet" href="preview/vehicle-explore/explore-shell.css">
+<style id="alex-light-outside-v2">
+body.vehicle-explore-shell.scene-full-composite,
+body.vehicle-explore-shell.scene-full-composite .game-panel,
+body.vehicle-explore-shell.scene-full-composite .scene-stage {background:#f8ead3 !important;}
+</style>
+</head>
+<body class="notranslate" translate="no">
+  <!--
+    Isolated unified Explore (layered study).
+    BG + CLOSED cutout + registry hotspots/TTS. Composites = composition reference only.
+    OPEN only when same-camera layers exist. ?v=<id>  &diag=1
+  -->
+  <main id="screen" class="screen"></main>
+  <script src="public/js/alex-browser-speech.js"></script>
+  <script src="preview/vehicle-explore/fleet.js"></script>
+  <script src="preview/vehicle-explore/explore-shell.js"></script>
+
+  <script>
+    // Navigation only. The Explore renderer, hotspots, views and voice are unchanged.
+    document.addEventListener("DOMContentLoaded", function () {
+      var nav = document.querySelector(".route-nav");
+      if (!nav || nav.querySelector(".route-find-it")) return;
+      var id = new URLSearchParams(location.search).get("v") || "fire-truck";
+      var valid = ["fire-truck", "airport-fire-truck", "police-car", "excavator", "mobile-crane", "tractor", "dump-truck", "mars-rover", "ambulance"];
+      if (valid.indexOf(id) === -1) id = valid[0];
+      var a = document.createElement("a");
+      a.className = "route-find-it";
+      a.href = new URL("find-it.html?v=" + encodeURIComponent(id), document.baseURI).href;
+      a.textContent = "Find It! →";
+      a.setAttribute("aria-label", "Go to Find It! and return to this vehicle");
+      a.style.background = "#ffd43b";
+      a.style.color = "#10243f";
+      nav.appendChild(a);
+    });
+  </script>
+<script src="public/js/watch-mission-v2.js?v=2"></script>
+</body>
+</html>

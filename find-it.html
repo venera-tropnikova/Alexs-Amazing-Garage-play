@@ -162,7 +162,7 @@
       <img class="pick-bg" src="public/images/garage-background-9-bays.png" alt="" width="1448" height="1086">
       <svg class="bay-glow" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true"></svg>
       <!-- Clickable area on the EXISTING painted Explore button. No new visible controls. -->
-      <a class="find-hit-explore" id="find-hit-explore" href="vehicle-explore/explore.html?v=fire-truck" aria-label="Explore selected vehicle"></a>
+      <a class="find-hit-explore" id="find-hit-explore" href="preview/vehicle-explore/explore.html?v=fire-truck" aria-label="Explore selected vehicle"></a>
       <div class="find-copy">
         <p class="find-task" id="find-task" aria-live="polite"></p>
         <p class="find-feedback" id="find-feedback" aria-live="polite"></p>
@@ -193,7 +193,7 @@
         }
       }
       var link = document.getElementById("find-hit-explore");
-      link.href = "vehicle-explore/explore.html?v=" + encodeURIComponent(selectedVehicle);
+      link.href = "preview/vehicle-explore/explore.html?v=" + encodeURIComponent(selectedVehicle);
       link.setAttribute("aria-label", "Explore " + selectedVehicle.replace(/-/g, " "));
     })();
   </script>

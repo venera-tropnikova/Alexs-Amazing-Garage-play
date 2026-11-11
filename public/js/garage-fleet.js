@@ -2,55 +2,55 @@ var GARAGE_FLEET_DATA = {
   "fleet": [
     [
       "Fire Truck",
-      "vehicle-explore/explore.html?v=fire-truck",
+      "preview/vehicle-explore/explore.html?v=fire-truck",
       "public/audio/pick-fire-truck.wav",
       "public/images/garage-review/fire-truck.png"
     ],
     [
       "Airport Fire Truck",
-      "vehicle-explore/explore.html?v=airport-fire-truck",
+      "preview/vehicle-explore/explore.html?v=airport-fire-truck",
       "public/audio/pick-airport-fire-truck.wav",
       "public/images/garage-review/airport-fire-truck.png"
     ],
     [
       "Police Car",
-      "vehicle-explore/explore.html?v=police-car",
+      "preview/vehicle-explore/explore.html?v=police-car",
       "public/audio/pick-police-car.wav",
       "public/images/garage-review/police-car.png"
     ],
     [
       "Excavator",
-      "vehicle-explore/explore.html?v=excavator",
+      "preview/vehicle-explore/explore.html?v=excavator",
       "public/audio/pick-excavator.wav",
       "public/images/garage-review/excavator.png"
     ],
     [
       "Mobile Crane",
-      "vehicle-explore/explore.html?v=mobile-crane",
+      "preview/vehicle-explore/explore.html?v=mobile-crane",
       "public/audio/pick-mobile-crane.wav",
       "public/images/garage-review/mobile-crane.png"
     ],
     [
       "Tractor",
-      "vehicle-explore/explore.html?v=tractor",
+      "preview/vehicle-explore/explore.html?v=tractor",
       "public/audio/pick-tractor.wav",
       "public/images/garage-review/tractor.png"
     ],
     [
       "Dump Truck",
-      "vehicle-explore/explore.html?v=dump-truck",
+      "preview/vehicle-explore/explore.html?v=dump-truck",
       "public/audio/pick-dump-truck.wav",
       "public/images/garage-review/dump-truck.png"
     ],
     [
       "Mars Rover",
-      "vehicle-explore/explore.html?v=mars-rover",
+      "preview/vehicle-explore/explore.html?v=mars-rover",
       "public/audio/pick-mars-rover.wav",
       "public/images/truck-36822-art/mars-rover.png"
     ],
     [
       "Ambulance",
-      "vehicle-explore/explore.html?v=ambulance",
+      "preview/vehicle-explore/explore.html?v=ambulance",
       "public/audio/pick-ambulance.wav",
       "public/images/garage-review/ambulance.png"
     ]
