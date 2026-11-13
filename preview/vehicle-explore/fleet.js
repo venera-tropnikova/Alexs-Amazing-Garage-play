@@ -14,12 +14,6 @@
 
   function scenePlayable(opts) {
     var views = opts.views || [];
-    // Approved learning view: one isolated vehicle with interactive hotspots.
-    // The full-background composites are references, not the study image.
-    if (views[0] && opts.referenceCutout) {
-      views[0].src = opts.referenceCutout;
-      views[0].kind = "cutout";
-    }
     var main = views[0];
     return {
       visualStatus: "closed-etalon",
