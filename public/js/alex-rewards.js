@@ -12,7 +12,7 @@ function render(mode){
  overlay.classList.toggle('wrong',mode==='wrong');
  overlay.classList.toggle('finished',mode==='finished'||mode==='stars');
  var item=texts[Math.max(count-1,0)];
- if(mode==='wrong'){title.textContent='LOOK AGAIN, ALEX!';line.textContent='Try again!';boy.src=imgs[3];award.textContent='?';}
+ if(mode==='wrong'){title.textContent='TRY AGAIN!';line.textContent='';boy.src=imgs[3];award.textContent='?';}
  else if(mode==='finished'){title.textContent='SUPER GARAGE HERO!';line.textContent='You found all nine!';boy.src=imgs[4];award.textContent='';}
  else if(mode==='stars'){title.textContent='YOUR STARS, ALEX!';line.textContent='Great work!';boy.src=imgs[4];award.textContent='';}
  else{title.textContent=item[0];line.textContent=item[1];boy.src=imgs[item[2]];award.textContent='';}
