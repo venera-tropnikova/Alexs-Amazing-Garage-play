@@ -234,3 +234,23 @@
  text-shadow:0 3px 0 #b47f26,0 0 18px #ffe48bb0!important;
  animation:none!important;
 }
+
+/* ALEX-WRONG-BIG-TEXT-V2: readable encouragement, wrong card only. */
+.alex7-overlay.wrong .alex7-card{
+ border-color:#ffe276!important;
+ background:radial-gradient(ellipse at 25% 70%,#2dd6f5 0%,transparent 48%),radial-gradient(ellipse at 83% 22%,#7457ed 0%,transparent 57%),linear-gradient(130deg,#1e9cf1,#1958c8 70%,#263eb0)!important;
+}
+.alex7-overlay.wrong .alex7-content{
+ justify-content:center!important;gap:clamp(10px,3vh,25px)!important;
+}
+.alex7-overlay.wrong .alex7-title{
+ color:#ffe55b!important;font-size:clamp(40px,6vw,76px)!important;
+ line-height:1.06!important;white-space:nowrap!important;
+ text-shadow:0 4px 0 #a65c08,0 7px 12px #082c7b,0 0 18px #ffdc6c7f!important;
+}
+.alex7-overlay.wrong .alex7-line{display:none!important}
+.alex7-overlay.wrong .alex7-award{font-size:clamp(78px,13vh,126px)!important;color:#ffe564!important}
+@media(max-width:650px){
+ .alex7-overlay.wrong .alex7-title{font-size:clamp(27px,6.4vw,46px)!important}
+ .alex7-overlay.wrong .alex7-award{font-size:clamp(58px,12vh,82px)!important}
+}
