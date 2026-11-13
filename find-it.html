@@ -156,6 +156,23 @@
   </style>
 <link rel="stylesheet" href="public/css/alex-rewards.css?v=15">
 <link rel="stylesheet" href="public/alex-rewards.css">
+
+<style id="alex-find-it-watch-mission-v1">
+/* Cover the unused painted Say It button with the same button as Garage. */
+.pick-stage .alex-garage-top-mission{
+ position:absolute!important;z-index:90!important;left:83.85%!important;top:3.87%!important;
+ width:14.44%!important;height:6.63%!important;box-sizing:border-box!important;
+ border:2px solid #66caff!important;border-radius:999px!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;gap:4px!important;
+ background:linear-gradient(180deg,#269dff 0%,#0751c7 100%)!important;
+ box-shadow:0 3px 0 #003475,0 0 10px #0099ff88,inset 0 1px 0 #ffffff90!important;
+ color:white!important;font:900 clamp(10px,1.4vw,20px)/1 'Trebuchet MS','Segoe UI',Arial,sans-serif!important;
+ text-shadow:0 1px 2px #062e79!important;cursor:pointer!important;padding:0 3px!important;
+ white-space:nowrap!important;touch-action:manipulation;
+}
+.pick-stage .alex-garage-top-mission:focus-visible{outline:3px solid #ffe16f;outline-offset:2px}
+@media(max-width:700px){.pick-stage .alex-garage-top-mission{font-size:clamp(8px,1.6vw,11px)!important;border-width:1px!important}}
+</style>
 </head>
 <body>
   <main class="pick find-it" data-sound="local" data-rights="unconfirmed">
@@ -205,5 +222,25 @@
   </script>
 <script src='public/js/alex-v17-rewards-addon.js'></script>
 <script src='public/js/alex-v18-finale.js'></script>
+
+<script id="alex-find-it-watch-mission-script-v1">
+(function(){'use strict';
+ var stage=document.querySelector('.pick-stage');if(!stage)return;
+ var button=document.createElement('button');button.type='button';
+ button.className='alex-garage-top-mission';button.textContent='▶ Watch Mission';
+ button.setAttribute('aria-label','Watch mission for the selected vehicle');
+ button.addEventListener('click',function(){
+  var ids=['fire-truck','airport-fire-truck','police-car','excavator','mobile-crane','tractor','dump-truck','mars-rover','ambulance'];
+  var params=new URLSearchParams(location.search),selected=params.get('v');
+  if(ids.indexOf(selected)===-1){
+   var choice=0;try{choice=Number(sessionStorage.getItem('garage-choice'))||0;}catch(e){}
+   if(!Number.isInteger(choice)||choice<0||choice>=ids.length)choice=0;
+   selected=ids[choice];
+  }
+  location.assign('vehicle-action/mission-videos/index.html?v='+encodeURIComponent(selected));
+ });
+ stage.appendChild(button);
+})();
+</script>
 </body>
 </html>
