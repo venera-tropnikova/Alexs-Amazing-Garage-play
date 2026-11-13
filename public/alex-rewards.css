@@ -222,3 +222,15 @@
 @media (prefers-reduced-motion:reduce) {
   .alex7-overlay .alex-gallery-car.fresh img { animation:none!important; }
 }
+
+/* ALEX-WRONG-CARD-CLEAN-V1: Hide the empty collection on incorrect choices.
+   Correct-answer gallery, earned stars and final celebration stay unchanged. */
+.alex7-overlay.wrong .alex7-progress,
+.alex7-overlay.wrong .alex7-count { display:none!important; }
+.alex7-overlay.wrong .alex7-content { gap:clamp(10px,2.4vh,24px)!important; }
+.alex7-overlay.wrong .alex7-award {
+ display:block!important; font-size:clamp(64px,10vh,98px)!important;
+ line-height:1!important; color:#ffe478!important;
+ text-shadow:0 3px 0 #b47f26,0 0 18px #ffe48bb0!important;
+ animation:none!important;
+}
