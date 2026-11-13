@@ -254,3 +254,17 @@
  .alex7-overlay.wrong .alex7-title{font-size:clamp(27px,6.4vw,46px)!important}
  .alex7-overlay.wrong .alex7-award{font-size:clamp(58px,12vh,82px)!important}
 }
+
+/* ALEX-WRONG-NAME-V3: recognize his name; two readable lines. */
+.alex7-overlay.wrong .alex7-title {
+ white-space:pre-line!important;
+ font-size:clamp(39px,5.4vw,64px)!important;
+ line-height:1.16!important;
+ text-align:center!important;
+}
+.alex7-overlay.wrong .alex7-award {
+ font-size:clamp(70px,10vh,100px)!important;
+}
+@media(max-width:650px){
+ .alex7-overlay.wrong .alex7-title{font-size:clamp(27px,6vw,42px)!important;}
+}
