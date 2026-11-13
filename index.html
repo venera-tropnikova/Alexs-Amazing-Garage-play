@@ -50,66 +50,67 @@ body .stage > a.start-hit:focus-visible {outline:4px solid #ffe08a;outline-offse
   var stage = document.querySelector('.stage');
   var hit = stage && stage.querySelector('.start-hit');
   if (!stage || !hit) return;
+
   var video = document.createElement('video');
   video.src = 'assets/video/00_Alex_Welcome.mp4';
   video.preload = 'auto';
-  video.autoplay = true;
-  video.muted = true; // browsers allow muted autoplay, never autoplay with sound
-  video.defaultMuted = true;
+  video.autoplay = false;
+  video.muted = false;
+  video.volume = 1;
   video.playsInline = true;
   video.setAttribute('playsinline', '');
   video.setAttribute('webkit-playsinline', '');
+  video.setAttribute('aria-hidden', 'true');
   video.setAttribute('poster', 'public/images/cover-base.png');
   video.controls = false;
   video.loop = false;
   video.disablePictureInPicture = true;
   stage.insertBefore(video, hit);
-  var state='preview', entering=false;
+
+  // ready -> starting -> playing -> finished -> garage
+  var state = 'ready';
+  var entering = false;
   function goGarage() {
     if (entering) return;
-    entering=true;
+    entering = true;
     video.pause();
     window.location.assign(hit.href);
   }
-  function startWithSound(){
-    if(state==='starting'||state==='playing') return;
-    state='starting';
-    try {video.pause();video.currentTime=0;}catch(_){}
-    video.muted=false;
-    video.defaultMuted=false;
-    video.volume=1;
-    video.style.display='block';
+  function startVideo() {
+    if (state !== 'ready') return;
+    state = 'starting';
+    video.muted = false;
+    video.volume = 1;
+    try { video.currentTime = 0; } catch (_) {}
     var promise;
-    try {promise=video.play();}catch(err){promise=Promise.reject(err);}
-    Promise.resolve(promise).then(function(){state='playing';},function(err){
-      state='preview';
-      video.muted=true;
-      console.warn('Sound playback needs another tap:',err);
+    try { promise = video.play(); } catch (error) { promise = Promise.reject(error); }
+    Promise.resolve(promise).then(function () {
+      if (state === 'starting') state = 'playing';
+    }, function (error) {
+      if (state !== 'starting') return;
+      state = 'ready'; // retry with a new user click; never switch silently to muted playback
+      video.pause();
+      video.style.display = 'none';
+      console.warn('Welcome video could not start with audio:', error);
     });
   }
-  hit.addEventListener('click',function(e){
-    e.preventDefault();
-    if(state==='preview'||state==='preview-ended') startWithSound();
-    else if(state==='finished') goGarage();
+  hit.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (state === 'ready') startVideo();
+    else if (state === 'finished') goGarage();
+    // During playback/starting, touching anywhere must NOT interrupt Alex.
   });
-  video.addEventListener('playing',function(){
-    video.style.display='block';
+  video.addEventListener('playing', function () {
+    if (state === 'starting') state = 'playing';
+    video.style.display = 'block';
   });
-  video.addEventListener('ended',function(){
-    if(state==='preview'){state='preview-ended';return;}
-    state='finished';
-    goGarage();
+  video.addEventListener('ended', function () {
+    state = 'finished';
   });
-  video.addEventListener('error',function(){
-    video.style.display='none';
-    state='preview';
-    console.error('Welcome video unavailable:',video.currentSrc);
-  });
-  video.style.display='block';
-  var autoplay=video.play();
-  if(autoplay&&autoplay.catch)autoplay.catch(function(err){
-    console.warn('Muted autoplay unavailable; tap to play welcome video.',err);
-    video.style.display='none';
+  video.addEventListener('error', function () {
+    video.style.display = 'none';
+    if (state !== 'finished') state = 'ready';
+    console.error('Missing or unreadable welcome video: assets/video/00_Alex_Welcome.mp4');
   });
 })();
 </script>
