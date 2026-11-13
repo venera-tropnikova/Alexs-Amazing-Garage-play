@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Watch Mission — Alex's Amazing Garage</title>
+<style>
+:root {--blue:#1767c6;--gold:#f1bf2a}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;color:#173254;background:linear-gradient(180deg,#f7ecd9,#efdfc3)}
+a{text-decoration:none}
+.mission-shell{width:100%;height:100dvh;max-height:100dvh;overflow:hidden;display:grid;grid-template-rows:66px minmax(0,1fr);gap:7px;padding:7px 10px}
+.mission-topbar{width:100%;height:66px;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;padding:6px 10px;background:linear-gradient(#faebc6,#efd48a);border:2px solid var(--gold);border-radius:17px;box-shadow:0 6px 17px #452f171a}
+.nav-left,.nav-right{display:flex;align-items:center;min-width:0;gap:7px;flex-wrap:nowrap}.nav-right{justify-content:flex-end}
+.top-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 10px;border:2px solid var(--blue);border-radius:12px;background:linear-gradient(#38aaff,#2485e8);box-shadow:0 3px 0 #174b88;color:#fff;font-size:clamp(12px,1vw,16px);font-weight:900;white-space:nowrap}
+.top-btn.icon{min-width:42px;padding:0 8px}.top-btn.find{background:linear-gradient(#ff6767,#ef3131);border-color:#b92c2c;box-shadow:0 3px 0 #a12424}.top-btn.watch{background:linear-gradient(#ffd454,#ffbd1f);border-color:#d69a00;box-shadow:0 3px 0 #b68008;color:#503500}.top-btn.back{min-width:0}
+.title-pill{min-width:0;max-width:100%;padding:8px 14px;border:2px solid var(--blue);border-radius:15px;background:linear-gradient(#38abff,#2485e8);box-shadow:0 3px 0 var(--blue);color:#fff;text-align:center;white-space:nowrap;font-size:clamp(21px,2.1vw,34px);font-weight:900;line-height:1.08}
+.player-wrap{height:100%;min-height:0;min-width:0;display:flex;align-items:stretch;justify-content:center;overflow:hidden}
+.player-card{height:100%;min-height:0;width:min(1230px,100%);min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:9px 12px 10px;background:linear-gradient(#f7ead5,#f1e0c1);border:2px solid #f0c64c;border-radius:20px;box-shadow:0 9px 20px #21212722;overflow:hidden}
+.player-card>.eyebrow,.player-card>#title,.player-card>#description,.player-card>.help{display:none!important}
+.video-frame{position:relative;isolation:isolate;flex:0 1 auto;align-self:center;height:auto;width:min(100%,1180px,calc((100dvh - 190px) * 16 / 9));max-width:100%;max-height:100%;min-height:0;aspect-ratio:16/9;overflow:hidden;border:3px solid #237cd8;border-radius:15px;background:#0f1f31;box-shadow:0 8px 22px #10243833}
+.video-frame video{display:block;width:100%;height:100%;object-fit:contain;background:#07111d}
+.alex19-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;padding:15px 28px;border:3px solid #fff2be;border-radius:16px;background:linear-gradient(#ffda59,#f2a91d);font:900 24px 'Trebuchet MS',sans-serif;color:#18355a;cursor:pointer}.alex19-play[hidden]{display:none!important}
+.error{position:absolute;bottom:58px;z-index:2;margin:0;color:#b62626;font-size:13px;font-weight:800}.error:empty{display:none}
+.actions{flex:0 0 auto;align-self:center;width:min(100%,1180px,calc((100dvh - 190px) * 16 / 9));display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:42px;margin:0;padding:0}
+.switch{width:100%;min-width:0;min-height:42px;padding:5px 14px;border:2px solid #d69a00;border-radius:12px;background:linear-gradient(#ffd455,#ffbd20);box-shadow:0 3px 0 #bb8800;color:#563300;font:900 clamp(14px,1.15vw,18px) 'Trebuchet MS',sans-serif;cursor:pointer}.switch:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:1150px){.mission-topbar{gap:4px;padding:6px}.nav-left,.nav-right{gap:4px}.top-btn{padding:0 7px;font-size:12px}.top-btn.icon{min-width:39px}.title-pill{font-size:clamp(19px,2vw,27px);padding:8px 10px}}
+@media(max-width:850px){.mission-shell{grid-template-rows:100px minmax(0,1fr)}.mission-topbar{height:100px;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:30px 46px}.title-pill{grid-column:1/-1;grid-row:1;justify-self:center;padding:3px 10px}.nav-left{grid-column:1;grid-row:2}.nav-right{grid-column:2;grid-row:2}.top-btn{min-height:38px}.player-card{padding:7px 9px}.actions{gap:7px}}
+@media(max-width:610px){.mission-shell{grid-template-rows:124px minmax(0,1fr);padding:4px;gap:4px}.mission-topbar{height:124px;display:flex;flex-wrap:wrap;gap:4px;align-content:center;justify-content:center}.nav-left,.nav-right{flex-wrap:wrap;justify-content:center}.title-pill{order:-1;width:100%;font-size:20px}.player-card{padding:5px;gap:5px}.top-btn{min-height:30px;font-size:11px}.switch{min-height:36px;padding:3px;font-size:12px}.actions{min-height:36px}.video-frame,.actions{width:min(100%,calc((100dvh - 220px) * 16 / 9))}}
+</style>
+</head>
+<body>
+<main class="mission-shell">
+  <header class="mission-topbar" aria-label="Mission navigation">
+    <div class="nav-left">
+      <a class="top-btn icon" href="../../index.html" aria-label="Home">🏠</a>
+      <a class="top-btn" href="../../garage.html">Garage</a>
+      <a class="top-btn find" id="findIt" href="../../find-it.html?v=fire-truck">Find It!</a>
+      <a class="top-btn watch" href="#" aria-current="page">▶ Watch Mission</a>
+    </div>
+    <div class="title-pill" id="titlePill">Watch Mission</div>
+    <div class="nav-right">
+      <a id="backExplore" class="top-btn back" href="../../preview/vehicle-explore/explore.html?v=fire-truck">← Back to Explore</a>
+    </div>
+  </header>
+
+  <section class="player-wrap">
+    <div class="player-card">
+      <p class="eyebrow">Alex's Amazing Garage</p>
+      <h1 id="title">Watch Mission</h1>
+      <p id="description">Watch the vehicle in action!</p>
+      <div class="video-frame"><video id="film" controls playsinline preload="metadata" aria-label="Mission video"></video></div>
+      <p class="error" id="error" role="status"></p>
+      <div class="actions">
+        <button id="previous" class="switch" type="button">← Previous Mission</button>
+        <button id="next" class="switch" type="button">Next Mission →</button>
+      </div>
+      <p class="help">Press Play to watch the mission video. Use Previous and Next to move through all vehicles.</p>
+    </div>
+  </section>
+</main>
+<script>
+'use strict';
+const fleet = [
+  {id:'fire-truck',title:'Fire Truck',file:'fire-truck-kitten-rescue-01.mp4'},
+  {id:'airport-fire-truck',title:'Airport Fire Truck',file:'airport-fire-truck-aircraft-rescue-01.mp4'},
+  {id:'police-car',title:'Police Car',file:'police-car-lost-puppy-01.mp4'},
+  {id:'excavator',title:'Excavator',file:'excavator-loading-dump-truck-01.mp4'},
+  {id:'mobile-crane',title:'Mobile Crane',file:'mobile-crane-lifting-beam-01.mp4'},
+  {id:'tractor',title:'Tractor',file:'tractor-pumpkin-farm-01.mp4'},
+  {id:'dump-truck',title:'Dump Truck',file:'dump-truck-unloading-soil-01.mp4'},
+  {id:'mars-rover',title:'Mars Rover',file:'mars-rover-rock-analysis-01.mp4'},
+  {id:'ambulance',title:'Ambulance',file:'ambulance-patient-rescue-01.mp4'}
+];
+const params = new URLSearchParams(location.search);
+const key = params.get('v') || 'fire-truck';
+let index = fleet.findIndex(v => v.id === key);
+if (index < 0) index = 0;
+const item = fleet[index];
+const title = document.getElementById('title');
+const titlePill = document.getElementById('titlePill');
+const description = document.getElementById('description');
+const backExplore = document.getElementById('backExplore');
+const findIt = document.getElementById('findIt');
+
+document.title = item.title + ' Mission — Alex\'s Amazing Garage';
+title.textContent = item.title + ' Mission';
+titlePill.textContent = item.title;
+description.textContent = 'Watch the ' + item.title.toLowerCase() + ' in action!';
+backExplore.href = '../../preview/vehicle-explore/explore.html?v=' + encodeURIComponent(item.id);
+findIt.href = '../../find-it.html?v=' + encodeURIComponent(item.id);
+
+const film = document.getElementById('film');
+film.src = 'assets/' + item.file;
+film.addEventListener('error', () => {
+  document.getElementById('error').textContent = 'Video unavailable. Please check that all mission files were installed.';
+});
+
+const previous = document.getElementById('previous');
+const next = document.getElementById('next');
+previous.disabled = index === 0;
+next.disabled = index === fleet.length - 1;
+previous.onclick = () => { if (index > 0) location.href = '?v=' + encodeURIComponent(fleet[index - 1].id); };
+next.onclick = () => { if (index < fleet.length - 1) location.href = '?v=' + encodeURIComponent(fleet[index + 1].id); };
+</script>
+<script src='../../public/js/alex-v19-video.js'></script>
+</body>
+</html>

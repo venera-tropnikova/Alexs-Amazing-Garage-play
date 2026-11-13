@@ -502,7 +502,7 @@
       scene: scenePlayable({
         bg: "public/images/backgrounds/tractor-bg.png",
         referenceCutout: "public/images/truck-36822-art/John Deere 8R 410.png",
-        openReference: "preview/vehicle-action/tractor-pumpkin-harvest/assets/tractor-with-driver-trailer.png",
+        openReference: "public/images/truck-36822-art/tractor-with-empty-trailer.png",
         secondState: "hitch-optional",
         views: [
           {
@@ -523,9 +523,9 @@
           {
             id: "trailer",
             label: "Trailer",
-            hint: "Meet the driver and his empty farm trailer. Tap to learn.",
+            hint: "Explore the tractor and its empty farm trailer. Tap to learn.",
             kind: "cutout",
-            src: "preview/vehicle-action/tractor-pumpkin-harvest/assets/tractor-with-driver-trailer.png",
+            src: "public/images/truck-36822-art/tractor-with-empty-trailer.png",
             parts: [
               {
                 id: "eq-engine",
@@ -549,10 +549,10 @@
               }
             ],
             hotspots: {
-              "eq-engine": { x: 82, y: 47 },
-              "eq-weights": { x: 96, y: 70 },
-              "eq-trailer": { x: 20, y: 50 },
-              "eq-cab": { x: 62, y: 26 }
+              "eq-engine": { x: 20, y: 48 },
+              "eq-weights": { x: 6, y: 65 },
+              "eq-trailer": { x: 78, y: 53 },
+              "eq-cab": { x: 35, y: 27 }
             }
           }
         ],

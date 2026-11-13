@@ -219,25 +219,51 @@
     if (index !== target) {
       locked = true;
       feedback.textContent = data.sound.hint.text;
-      playLine(data.sound.hint);
+      if (!guided && window.AlexRewardUI) window.AlexRewardUI.onWrong();
+      if (!(window.AlexRewardUI && !guided && window.AlexRewardUI.playWrongAudio)) playLine(data.sound.hint);
       window.setTimeout(function () { locked = false; }, 450);
       return;
     }
     locked = true;
     lastIndex = target;
+    if (window.AlexAwards) window.AlexAwards.unlock(vehicleIds[index]);
     slots[index].classList.add("is-selected");
     slots[index].setAttribute("aria-pressed", "true");
     var praise = lineFor(data.sound.praise, index);
     feedback.textContent = praise.text;
+    if (!guided && window.AlexRewardUI) window.AlexRewardUI.onCorrect(index);
+    if (window.AlexAwardsFlow && window.AlexAwardsFlow.onCorrect(vehicleIds[index])) return;
     if (guided) {
       var finish = document.getElementById("find-next");
       if (finish) {
         finish.hidden = false;
         finish.focus();
       }
-      playLine(praise);
+      // Use the original Jessica MP3 for the chosen vehicle in guided play.
+      // Browser speech is only a fallback when the recording cannot start.
+      var jessicaFiles = [
+        '01_fire-truck.mp3','02_airport-fire-truck.mp3','03_police-car.mp3',
+        '04_excavator.mp3','05_mobile-crane.mp3','06_tractor.mp3',
+        '07_dump-truck.mp3','08_mars-rover.mp3','09_ambulance.mp3'
+      ];
+      stopClip();
+      var original = new Audio('assets/audio/rewards/vehicles/' + jessicaFiles[index]);
+      clip = original;
+      document.body.appendChild(original);
+      var fallbackUsed = false;
+      function speechFallback() {
+        if (fallbackUsed || clip !== original) return;
+        fallbackUsed = true;
+        stopClip();
+        playLine(praise);
+      }
+      original.addEventListener('error', speechFallback, { once: true });
+      try {
+        var started = original.play();
+        if (started && typeof started.catch === 'function') started.catch(speechFallback);
+      } catch (_error) { speechFallback(); }
     } else {
-      playLine(praise, nextTarget);
+      if (window.AlexRewardUI) window.AlexRewardUI.finishPraise(nextTarget); else nextTarget();
     }
   }
 
@@ -307,13 +333,8 @@
     back.href = "preview/vehicle-explore/explore.html?v=" + encodeURIComponent(activeId);
     var next = document.getElementById("find-next");
     if (next) {
-      if (activeId === "tractor") {
-        next.href = "preview/vehicle-action/tractor-pumpkin-harvest/";
-        next.textContent = "Next: Pumpkin Harvest →";
-      } else {
-        next.href = "preview/vehicle-action/coming-soon.html?v=" + encodeURIComponent(activeId);
-        next.textContent = "Next: Machine in Action →";
-      }
+      next.href = "vehicle-action/mission-videos/index.html?v=" + encodeURIComponent(activeId);
+      next.textContent = "Next: Watch Mission →";
     }
   }
   replay.addEventListener("click", replayTask);

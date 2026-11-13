@@ -154,6 +154,8 @@
       border-radius: 15px;
     }
   </style>
+<link rel="stylesheet" href="public/css/alex-rewards.css?v=15">
+<link rel="stylesheet" href="public/alex-rewards.css">
 </head>
 <body>
   <main class="pick find-it" data-sound="local" data-rights="unconfirmed">
@@ -170,12 +172,16 @@
       <div class="find-actions">
         <a class="find-garage" id="find-garage" href="garage.html">Garage</a>
         <button class="find-replay" id="find-replay" type="button">Listen again</button>
+        <a class="find-replay" id="find-next" href="#" hidden>Next: Watch Mission →</a>
       </div>
       <div id="bays"></div>
     </div>
   </main>
   <script src="public/js/alex-browser-speech.js"></script>
   <script src="public/js/garage-fleet.js"></script>
+  <script src="public/js/alex-awards.js"></script>
+  <script src="public/js/alex-awards-finale.js"></script>
+  <script src="public/js/alex-rewards.js?v=15"></script>
   <script src="public/js/find-it.js"></script>
 
   <script>
@@ -197,5 +203,7 @@
       link.setAttribute("aria-label", "Explore " + selectedVehicle.replace(/-/g, " "));
     })();
   </script>
+<script src='public/js/alex-v17-rewards-addon.js'></script>
+<script src='public/js/alex-v18-finale.js'></script>
 </body>
 </html>

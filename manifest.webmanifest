@@ -1,0 +1,21 @@
+{
+  "name": "Alex's Amazing Garage",
+  "short_name": "Alex's Garage",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1259a4",
+  "theme_color": "#1458b8",
+  "icons": [
+    {
+      "src": "public/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "public/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

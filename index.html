@@ -1,8 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="public/icons/favicon.png">
+<link rel="apple-touch-icon" href="public/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#1458b8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
   <title>Alex's Amazing Garage</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,7 +22,97 @@
       height="1024"
       alt="Alex's Amazing Garage"
     >
-    <a class="start-hit" href="garage.html">Start Adventure</a>
+    <a class="start-hit" href="garage.html" aria-label="Start Adventure">Start Adventure</a>
   </main>
+<style id="alex-welcome-v17-style">
+/* One responsive 3:2 game stage; no scrollbars, moving hotspots or extra controls. */
+html,body {width:100%;height:100%;overflow:hidden}
+body {min-height:100svh;min-height:100dvh}
+body .stage {position:relative;aspect-ratio:3/2;width:min(100vw,150dvh);max-height:100dvh;overflow:hidden;cursor:pointer}
+body .stage > img {display:block;width:100%;height:100%;object-fit:cover}
+body .stage > video {
+ position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+ background:#101418;pointer-events:none;display:none
+}
+body .stage > a.start-hit {
+ position:absolute;inset:0;width:100%;height:100%;left:0;top:0;
+ z-index:10;background:transparent!important;border:0!important;
+ box-shadow:none!important;color:transparent!important;font-size:0;
+ border-radius:0!important;cursor:pointer;
+}
+body .stage > a.start-hit:hover {box-shadow:none!important}
+body .stage > a.start-hit:focus-visible {outline:4px solid #ffe08a;outline-offset:-4px}
+
+</style>
+<script id="alex-welcome-click-to-play">
+(function () {
+  'use strict';
+  var stage = document.querySelector('.stage');
+  var hit = stage && stage.querySelector('.start-hit');
+  if (!stage || !hit) return;
+
+  var video = document.createElement('video');
+  video.src = 'assets/video/00_Alex_Welcome.mp4';
+  video.preload = 'auto';
+  video.autoplay = false;
+  video.muted = false;
+  video.volume = 1;
+  video.playsInline = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+  video.setAttribute('aria-hidden', 'true');
+  video.setAttribute('poster', 'public/images/cover-base.png');
+  video.controls = false;
+  video.loop = false;
+  video.disablePictureInPicture = true;
+  stage.insertBefore(video, hit);
+
+  // ready -> starting -> playing -> finished -> garage
+  var state = 'ready';
+  var entering = false;
+  function goGarage() {
+    if (entering) return;
+    entering = true;
+    video.pause();
+    window.location.assign(hit.href);
+  }
+  function startVideo() {
+    if (state !== 'ready') return;
+    state = 'starting';
+    video.muted = false;
+    video.volume = 1;
+    try { video.currentTime = 0; } catch (_) {}
+    var promise;
+    try { promise = video.play(); } catch (error) { promise = Promise.reject(error); }
+    Promise.resolve(promise).then(function () {
+      if (state === 'starting') state = 'playing';
+    }, function (error) {
+      if (state !== 'starting') return;
+      state = 'ready'; // retry with a new user click; never switch silently to muted playback
+      video.pause();
+      video.style.display = 'none';
+      console.warn('Welcome video could not start with audio:', error);
+    });
+  }
+  hit.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (state === 'ready') startVideo();
+    else if (state === 'finished') goGarage();
+    // During playback/starting, touching anywhere must NOT interrupt Alex.
+  });
+  video.addEventListener('playing', function () {
+    if (state === 'starting') state = 'playing';
+    video.style.display = 'block';
+  });
+  video.addEventListener('ended', function () {
+    state = 'finished';
+  });
+  video.addEventListener('error', function () {
+    video.style.display = 'none';
+    if (state !== 'finished') state = 'ready';
+    console.error('Missing or unreadable welcome video: assets/video/00_Alex_Welcome.mp4');
+  });
+})();
+</script>
 </body>
 </html>

@@ -1860,3 +1860,122 @@ body.vehicle-explore-shell .top-bar {
   margin-bottom: 0 !important;
 }
 /* end alex-unified-explore-video-v1 */
+/* alex-alignment-v4-explore START */
+/* Alex aligned-screen v4: layout only; scene artwork and hotspot geometry preserved. */
+@media (min-width: 801px) {
+  body.vehicle-explore-shell .screen {
+    box-sizing:border-box !important;
+    width:min(100vw, 1530px) !important;
+    max-width:100vw !important;
+    height:100dvh !important;
+    max-height:100dvh !important;
+    padding:8px 8px 5px !important;
+    overflow:hidden !important;
+  }
+  body.vehicle-explore-shell .game-panel {
+    height:100% !important;
+    min-height:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    overflow:hidden !important;
+  }
+  body.vehicle-explore-shell .game-hud {
+    box-sizing:border-box !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(200px,auto) minmax(0,1fr) !important;
+    grid-template-rows:1fr !important;
+    width:100% !important;
+    height:72px !important;
+    min-height:72px !important;
+    max-height:72px !important;
+    gap:8px !important;
+    padding:7px 10px !important;
+    align-items:center !important;
+  }
+  body.vehicle-explore-shell .route-nav {
+    position:static !important;
+    grid-column:1 !important;
+    grid-row:1 !important;
+    flex-wrap:nowrap !important;
+    justify-self:start !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    gap:6px !important;
+  }
+  body.vehicle-explore-shell .vehicle-title {
+    grid-column:2 !important;
+    grid-row:1 !important;
+    justify-self:center !important;
+    margin:0 !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    padding:7px 12px !important;
+    font-size:clamp(22px,2.2vw,34px) !important;
+    white-space:nowrap !important;
+    line-height:1.08 !important;
+  }
+  body.vehicle-explore-shell .hud-views {
+    grid-column:3 !important;
+    grid-row:1 !important;
+    min-width:0 !important;
+    justify-self:end !important;
+    max-width:100% !important;
+  }
+  body.vehicle-explore-shell .mode-bar {position:static !important; flex-wrap:nowrap !important; gap:5px !important;}
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {
+    box-sizing:border-box !important;
+    min-width:0 !important;
+    width:auto !important;
+    min-height:44px !important;
+    height:44px !important;
+    padding:0 10px !important;
+    font-size:clamp(12px,1.03vw,16px) !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    flex-shrink:0 !important;
+  }
+  body.vehicle-explore-shell .route-nav a.route-home {min-width:44px !important; width:44px !important; padding:0 !important;}
+  body.vehicle-explore-shell .scene-stage {flex:1 1 auto !important; min-height:0 !important; padding:0 !important; overflow:hidden !important;}
+  /* Image and scene-hit-host are children of scene-composite-plate: keep them together. */
+  body.vehicle-explore-shell.scene-full-composite .scene-composite,
+  body.vehicle-explore-shell.scene-cutout-view .scene-composite {
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+  }
+  body.vehicle-explore-shell .scene-composite-plate {margin:0 !important; max-height:100% !important;}
+  body.vehicle-explore-shell .scene-composite-img {max-height:calc(100dvh - 94px) !important; object-fit:contain !important;}
+}
+@media (min-width:801px) and (max-width:1180px) {
+  body.vehicle-explore-shell .game-hud {grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important; gap:5px !important; padding:5px !important;}
+  body.vehicle-explore-shell .route-nav {gap:3px !important;}
+  body.vehicle-explore-shell .route-nav a,
+  body.vehicle-explore-shell .mode-btn,
+  body.vehicle-explore-shell .mode-btn-inside {padding:0 6px !important; font-size:12px !important; min-height:40px !important; height:40px !important;}
+  body.vehicle-explore-shell .route-nav a.route-home {min-width:40px !important;width:40px !important;}
+  body.vehicle-explore-shell .vehicle-title {font-size:clamp(18px,2vw,25px) !important;padding:7px 8px !important;}
+}
+/* Small devices need a controlled two-row header, not clipped buttons. */
+@media (max-width:800px) {
+  body.vehicle-explore-shell .game-hud {height:auto !important; min-height:0 !important; max-height:none !important; display:flex !important; flex-wrap:wrap !important; align-items:center !important; justify-content:center !important; gap:6px !important; padding:6px !important;}
+  body.vehicle-explore-shell .route-nav,body.vehicle-explore-shell .mode-bar {position:static !important;display:flex !important;flex-wrap:wrap !important;justify-content:center !important;gap:4px !important;}
+  body.vehicle-explore-shell .vehicle-title {order:-1 !important;margin:0 !important;padding:5px 10px !important;font-size:clamp(18px,3vw,25px) !important;}
+  body.vehicle-explore-shell .route-nav a,body.vehicle-explore-shell .mode-btn,body.vehicle-explore-shell .mode-btn-inside {min-height:39px !important;height:39px !important;padding:0 7px !important;font-size:12px !important;}
+  body.vehicle-explore-shell .scene-composite {align-items:center !important;justify-content:center !important;}
+}
+
+/* alex-alignment-v4-explore END */
+
+/* Approved Alex Explore adjustment: align outer game frame and HUD with scene image.
+   Desktop only; scene artwork, hotspot coordinates, navigation, and cards untouched. */
+@media (min-width: 801px) {
+  body.vehicle-explore-shell .screen {align-items:center !important;}
+  body.vehicle-explore-shell .game-panel {
+    width:min(100%, calc((100dvh - 94px) * 16 / 9)) !important;
+    max-width:100% !important;
+    align-self:center !important;
+  }
+}

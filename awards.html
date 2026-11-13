@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google" content="notranslate">
+<title>My Garage Awards — Alex's Amazing Garage</title>
+<style>
+:root{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;color:#fff;color-scheme:dark}*{box-sizing:border-box}html{min-height:100%}body{margin:0;min-height:100svh;background:radial-gradient(ellipse at 50% -10%,#315b8c 0%,transparent 48%),linear-gradient(145deg,#111e35,#0a1427 65%,#142f48);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 12% 47%,#2b619d1e,transparent 36%),radial-gradient(ellipse at 87% 48%,#edae4b12,transparent 28%);z-index:-1}
+.shell{width:min(1430px,calc(100% - 28px));margin:12px auto 24px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;border:2px solid #dbaf40;background:linear-gradient(180deg,#f7e3ad,#e6c574);padding:9px 12px;border-radius:19px;box-shadow:0 7px 22px #0004}.brand{color:#143e6f;font-weight:1000;font-size:clamp(18px,2.2vw,26px);text-align:center}.nav{color:white;text-decoration:none;border:2px solid #1d5ca4;border-radius:13px;background:linear-gradient(#39abff,#237bd8);min-height:47px;min-width:112px;display:inline-flex;align-items:center;justify-content:center;padding:9px 15px;font-size:17px;font-weight:900;box-shadow:0 3px 0 #174b88}.hero{text-align:center;padding:18px 0 16px}.kicker{margin:0;color:#eaca70;font-size:clamp(11px,1vw,14px);font-weight:900;letter-spacing:.25em;text-transform:uppercase}.hero h1{font-size:clamp(31px,4.8vw,53px);line-height:1.05;margin:7px 0 6px;color:#fff;text-shadow:0 3px 10px #0007}.sub{font-size:clamp(15px,1.7vw,19px);margin:0;color:#cad8ef;font-weight:700}.progress{margin:13px auto 0;max-width:530px;display:flex;gap:15px;align-items:center;justify-content:center}.counter{color:#ffdd82;white-space:nowrap;font-weight:900;font-size:clamp(17px,1.8vw,22px)}.track{flex:1;max-width:260px;background:#0a172d;border:1px solid #7791aa;border-radius:20px;height:13px;overflow:hidden;box-shadow:inset 0 2px 7px #0008}.fill{height:100%;background:linear-gradient(90deg,#f5b631,#fff4a7);width:0;border-radius:20px;transition:width .4s}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.award{min-width:0;position:relative;overflow:hidden;border-radius:23px;border:2px solid #687f99;background:radial-gradient(ellipse at 50% 47%,#435b75 0%,#233650 56%,#14243b 100%);box-shadow:0 10px 19px #02091788,inset 0 1px 0 #fff2;isolation:isolate;min-height:212px;display:flex;flex-direction:column}.award.earned{border-color:#dca847;background:radial-gradient(ellipse at 50% 43%,#49739e 0%,#203a5e 47%,#0c1d35 100%);box-shadow:0 9px 21px #020917a6,inset 0 0 24px #fbd38512}.award:before{content:"";position:absolute;left:8%;right:8%;top:8px;height:1px;background:linear-gradient(90deg,transparent,#fff5,transparent)}.stage{flex:1;min-height:142px;position:relative;display:flex;align-items:center;justify-content:center;padding:2px 10px 0}.stage:after{content:"";position:absolute;bottom:5px;left:13%;right:13%;height:17px;background:radial-gradient(ellipse,#081020b0,transparent 70%);filter:blur(5px);z-index:-1}.photo{display:block;width:100%;height:145px;object-fit:contain;filter:drop-shadow(0 13px 7px #0009);transition:transform .2s ease}.earned .photo{filter:drop-shadow(0 13px 7px #000a)}.award:not(.earned) .photo{filter:grayscale(1) brightness(.55) drop-shadow(0 10px 8px #0008);opacity:.54}.award .glow{pointer-events:none;position:absolute;inset:5px 0 auto;height:125px;background:radial-gradient(ellipse at 50% 85%,#71b7ff45,transparent 63%)}.award:not(.earned) .glow{opacity:.15}.plate{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:6px;background:linear-gradient(180deg,#122844,#0c1a31);border-top:1px solid #7c8ca2;padding:9px 13px;min-height:59px}.earned .plate{border-color:#b89959}.name{font-size:clamp(15px,1.6vw,20px);font-weight:900;color:#fff;line-height:1.06}.award:not(.earned) .name{color:#a5b5ca}.mark{flex:none;min-width:68px;padding:5px 8px;text-align:center;border-radius:999px;border:1px solid #8f9aaa;color:#9caec4;font-size:10px;font-weight:1000;letter-spacing:.05em}.earned .mark{border-color:#e4b859;background:#dcb259;color:#142b46}.trophy{margin:17px auto 0;max-width:850px;padding:12px 18px;border-radius:19px;border:1px solid #b89558;background:linear-gradient(100deg,#1a3353,#0c2039,#1a3353);display:flex;gap:14px;align-items:center;justify-content:center;text-align:left;box-shadow:0 8px 20px #0006}.trophy-icon{font-size:43px;filter:drop-shadow(0 2px 9px #d49e4d66)}.trophy strong{display:block;font-size:clamp(20px,2.2vw,27px);color:#ffe39a}.trophy p{margin:3px 0 0;color:#d6e4fb;font-size:clamp(13px,1.3vw,16px);font-weight:700}.trophy.locked{border-color:#65748b;opacity:.76}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:13px}.actions a{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(#39a7ff,#1e75d2);border:2px solid #5eb8ff;border-radius:12px;padding:11px 22px;color:white;text-decoration:none;font-size:18px;font-weight:900;min-height:48px}.actions[hidden]{display:none}.hint{text-align:center;color:#8da7c5;font-size:12px;margin:14px 0 4px}
+@media(max-width:800px){.shell{width:calc(100% - 16px)}.grid{gap:9px}.award{min-height:160px;border-radius:14px}.stage{min-height:99px;padding:2px 3px}.photo{height:105px}.plate{padding:7px 8px;min-height:54px;align-items:flex-start;flex-direction:column}.mark{font-size:9px;padding:3px 7px}.top{gap:6px}.nav{min-width:0;font-size:13px;min-height:41px;padding:7px}.trophy{padding:11px}}
+@media(max-width:500px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.award{min-height:160px}.photo{height:106px}.name{font-size:14px}.hero{padding:18px 0 12px}.top .brand{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.fill,.photo{transition:none}}
+</style><style id="alex-unified-frame-v2">
+/* Alex unified game frame: same gold top bar and one-screen layout */
+html,body{height:100%;}
+body{background:linear-gradient(180deg,#f7ecd9,#efdfc3);}
+.shell{width:100%;max-width:none;margin:0;padding:8px 10px;min-height:100dvh;display:flex;flex-direction:column;gap:0;}
+.top{flex:0 0 auto;min-height:76px;padding:8px 12px;border:2px solid #f1bf2a;background:linear-gradient(180deg,#faebc6 0%,#efd48a 100%);box-shadow:0 8px 20px rgba(69,49,9,.12);border-radius:20px;}
+.brand{font:900 clamp(25px,2.4vw,38px)/1.05 'Trebuchet MS','Segoe UI',sans-serif;color:#fff;min-width:min(340px,65vw);background:linear-gradient(180deg,#38abff,#2485e8);border:2px solid #1767c6;box-shadow:0 3px 0 #1767c6;border-radius:17px;padding:10px 18px;}
+.nav{min-height:44px;border-radius:14px;min-width:110px;font-size:18px;}
+.hero{flex:0 0 auto;padding:5px 0 7px;}
+.progress{margin:0 auto;gap:11px;}
+.counter{font-size:17px;color:#173254;}
+.track{height:12px;background:#e2d2b8;border-color:#d2a94c;}
+.grid{width:min(1360px,100%);margin:0 auto;flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;}
+.award{min-height:0;min-width:0;border-radius:16px;border-width:2px;box-shadow:0 4px 11px #07162633;}
+.stage{min-height:0;flex:1 1 auto;overflow:hidden;padding:0 6px;}
+.photo{height:100%;width:100%;max-height:100%;object-fit:contain;}
+.plate{flex:0 0 auto;min-height:35px;padding:4px 11px;}
+.name{font-size:clamp(13px,1.25vw,18px);}
+.mark{font-size:9px;}
+.award .glow{height:85%;}
+.trophy{flex:0 0 auto;min-height:36px;max-width:800px;margin:6px auto 0;padding:3px 10px;gap:10px;border-radius:13px;}
+.trophy-icon{font-size:25px;}
+.trophy strong{font-size:17px;}
+.trophy p{display:none;}
+.actions{flex:0 0 auto;margin-top:5px;gap:10px;}
+.actions a{min-height:36px;padding:5px 20px;font-size:15px;}
+@media(min-width:801px) and (min-height:500px){
+  body{height:100dvh;min-height:0;overflow:hidden;}
+  .shell{height:100dvh;min-height:0;overflow:hidden;}
+}
+@media(min-width:801px) and (max-height:740px){
+  .top{min-height:61px}.brand{font-size:25px;padding:6px 14px}.nav{min-height:40px}
+  .hero{padding:3px 0 4px}.plate{min-height:30px}.trophy{min-height:31px;margin-top:4px}.actions a{min-height:32px}
+}
+@media(max-width:800px){
+ body{overflow:auto}.shell{height:auto;min-height:100dvh;padding:7px}.top{min-height:58px}.brand{min-width:0;font-size:18px;padding:8px 5px}.nav{min-width:0;font-size:13px;padding:5px 7px}
+ .grid{flex:none;grid-template-rows:none;gap:7px}.award{min-height:140px}.stage{min-height:90px}.photo{height:100%;max-height:115px}.plate{min-height:36px;padding:4px}.name{font-size:12px}.mark{font-size:8px;min-width:0;padding:3px}
+}
+@media(max-width:500px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.award{min-height:145px}.brand{font-size:15px}}
+</style>
+</head><body>
+<main class="shell"><header class="top"><a class="nav" href="garage.html">← Garage</a><div class="brand">My Garage Awards</div><a class="nav" href="find-it.html">Find It! →</a></header>
+<section class="hero"><div class="progress" aria-label="Awards progress"><span class="counter" id="counter">0 / 9</span><div class="track"><div class="fill" id="fill"></div></div></div></section>
+<section class="grid" id="grid" aria-label="Vehicle awards"></section>
+<section class="trophy locked" id="final"><span class="trophy-icon" aria-hidden="true">🏆</span><div><strong>Super Garage Hero!</strong><p id="final-help">Collect all nine vehicles to win the grand trophy.</p></div></section>
+<div class="actions" id="replay-actions" hidden><a href="find-it.html?replay=1">Play Again</a><a href="garage.html">Garage</a></div>
+</main>
+<script src="public/js/alex-awards.js"></script>
+<script>
+(function(){'use strict';
+ var awards=window.AlexAwards,got=awards.read(),grid=document.getElementById('grid');
+ awards.fleet.forEach(function(item){var unlocked=!!got[item[0]],card=document.createElement('article');card.className='award'+(unlocked?' earned':'');
+ var glow=document.createElement('div');glow.className='glow';
+ var stage=document.createElement('div');stage.className='stage';
+ var image=document.createElement('img');image.className='photo';image.src='public/images/awards/'+item[0]+'.webp';image.alt=item[1];image.loading='lazy';
+ stage.append(glow,image);
+ var plate=document.createElement('div');plate.className='plate';var name=document.createElement('span');name.className='name';name.textContent=item[1];var mark=document.createElement('span');mark.className='mark';mark.textContent=unlocked?'★ EARNED':'LOCKED';
+ plate.append(name,mark);card.append(stage,plate);grid.appendChild(card);
+ });
+ var n=awards.count();document.getElementById('counter').textContent=n+' / 9 UNLOCKED';document.getElementById('fill').style.width=(n/9*100)+'%';
+ if(n===9){document.getElementById('final').classList.remove('locked');document.getElementById('final-help').textContent='Amazing work, Alex! You found every vehicle!';document.getElementById('replay-actions').hidden=false;}
+})();
+</script></body></html>

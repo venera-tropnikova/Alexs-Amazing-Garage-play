@@ -1,0 +1,224 @@
+.alex7-overlay[hidden],.alex7-actions[hidden]{display:none!important}
+.alex7-overlay{position:fixed;inset:0;z-index:2147483640;display:grid;place-items:center;padding:12px;background:#061630a8;backdrop-filter:blur(5px);font-family:'Trebuchet MS','Segoe UI',Arial,sans-serif}
+.alex7-card{position:relative;isolation:isolate;box-sizing:border-box;width:min(940px,94vw);height:min(510px,80dvh);min-height:265px;overflow:hidden;border:4px solid #ffdf71;border-radius:28px;background:radial-gradient(ellipse at 24% 69%,#2ad0f1 0%,transparent 45%),radial-gradient(ellipse at 81% 22%,#6e62e8 0%,transparent 50%),linear-gradient(126deg,#188ced,#1e70de 60%,#1248a8);box-shadow:0 8px #b67b22,0 24px 70px #02143dbb;color:#fff;animation:alex7pop .27s ease-out}
+.alex7-rays{position:absolute;inset:0;z-index:-1;background:repeating-conic-gradient(from 5deg at 26% 66%,transparent 0deg 11deg,#ffffff16 12deg 16deg,transparent 17deg 26deg);pointer-events:none}
+.alex7-boy{position:absolute;z-index:1;left:0;bottom:-1%;width:44%;height:99%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 7px 12px #174b9199);pointer-events:none}
+.alex7-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(4px,1vh,12px);margin-left:43%;height:100%;padding:12px clamp(8px,2vw,22px);box-sizing:border-box;text-align:center;min-width:0}
+.alex7-title{margin:0;font-size:clamp(24px,3.4vw,46px);line-height:1.05;font-weight:1000;text-shadow:0 3px #10418d,0 5px 12px #0b285b}
+.alex7-line{margin:0;font-size:clamp(18px,2.1vw,27px);line-height:1.14;font-weight:900;color:#ffecab;text-shadow:0 2px 5px #103f8a}
+.alex7-award{font-size:clamp(52px,9vh,84px);line-height:1;color:#ffe15e;text-shadow:0 0 13px #ffe586,0 3px #ae7016;animation:alex7glow 1.25s ease-in-out infinite alternate}
+.alex7-progress{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));width:100%;gap:2px;padding:8px;border-radius:18px;background:#073b90aa;box-sizing:border-box}
+.alex7-progress span{font-size:clamp(15px,2.1vw,29px);line-height:1;color:#91b0df}.alex7-progress .earned{color:#ffe171;text-shadow:0 0 9px #fff4af,0 2px #aa7122}.alex7-progress .fresh{animation:alex7star .65s ease-out}
+.alex7-count{margin:0;color:#ffe47a;font-size:clamp(19px,2.1vw,27px);font-weight:1000}
+.alex7-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;width:100%}.alex7-actions button{font-family:inherit;font-size:clamp(13px,1.3vw,17px);font-weight:900;min-height:42px;padding:7px 11px;border:2px solid #fff0c3;border-radius:13px;background:linear-gradient(#ffd85f,#f59d2e);color:#173d80;box-shadow:0 3px #af7622;cursor:pointer}
+.alex7-actions button:nth-child(2){background:linear-gradient(#6ad9ff,#258ddb);color:#fff}.alex7-actions button:nth-child(3){background:linear-gradient(#76dfad,#19ae80);color:#fff}
+.alex7-spark{position:absolute;z-index:3;color:#fff6ae;font-size:28px;pointer-events:none;animation:alex7spark 1.3s ease-out both}.alex7-spark.one{top:6%;left:6%}.alex7-spark.two{right:5%;top:7%;animation-delay:.2s}.alex7-spark.three{bottom:8%;left:42%;animation-delay:.3s}
+.alex7-overlay.wrong .alex7-card{background:radial-gradient(ellipse at 27% 62%,#59c7ff,transparent 52%),linear-gradient(125deg,#1891ea,#4355ce);border-color:#a4eeff}.alex7-overlay.wrong .alex7-award{color:#f3faff;animation:none}
+@keyframes alex7pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}@keyframes alex7glow{from{transform:scale(.93)}to{transform:scale(1.08);filter:drop-shadow(0 0 12px #ffe67c)}}@keyframes alex7star{0%{opacity:.25;transform:scale(.2)}65%{transform:scale(1.4)}100%{opacity:1;transform:scale(1)}}@keyframes alex7spark{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(-6px)}}
+@media(max-width:650px){.alex7-card{width:98vw;height:min(460px,80dvh)}.alex7-boy{width:51%;left:-5%}.alex7-content{margin-left:37%;padding:7px}.alex7-title{font-size:clamp(20px,4.5vw,31px)}.alex7-line{font-size:clamp(16px,3.4vw,20px)}.alex7-award{font-size:46px}.alex7-actions button{min-height:37px;font-size:12px;padding:5px 7px}}
+@media(max-height:580px){.alex7-card{height:min(355px,90dvh);min-height:0}.alex7-content{gap:3px}.alex7-award{font-size:39px}.alex7-title{font-size:clamp(19px,3vw,32px)}.alex7-actions button{min-height:34px}}
+@media(prefers-reduced-motion:reduce){.alex7-card,.alex7-award,.alex7-progress .fresh,.alex7-spark{animation:none!important}}
+
+.alex8-listen{border:2px solid #fff0b2;border-radius:12px;background:#124a9a;color:#fff;font:900 clamp(12px,1.2vw,17px) 'Trebuchet MS',sans-serif;padding:7px 14px;min-height:37px;cursor:pointer;box-shadow:0 2px 8px #002b6280}
+.alex8-listen:disabled{opacity:.7;cursor:wait}
+.alex8-listen[hidden]{display:none!important}
+@media(max-height:580px){.alex8-listen{min-height:30px;padding:3px 9px}}
+
+/* alex-finale-layout-v15 */
+/* V15: exact same outer overlay size; trophy belongs ONLY to approved Alex artwork. */
+.alex7-overlay.finished .alex7-boy { width:45%; left:0; bottom:0; height:100%; object-fit:contain; object-position:center bottom; }
+.alex7-overlay.finished .alex7-content { margin-left:43%; gap:clamp(3px,.8vh,8px); padding:10px clamp(10px,1.6vw,18px); }
+.alex7-overlay.finished .alex7-award { display:none!important; }
+.alex7-overlay .alex8-listen { display:none!important; }
+.alex7-overlay.finished .alex7-title { font-size:clamp(23px,3vw,42px); line-height:1.06; }
+.alex7-overlay.finished .alex7-line { font-size:clamp(16px,1.8vw,26px); }
+.alex7-overlay.finished .alex7-actions { width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.alex7-overlay.finished .alex7-actions[hidden] { display:none!important; }
+.alex7-overlay.finished .alex7-actions button { width:100%; min-width:0; padding:7px 3px; white-space:nowrap; font-size:clamp(11px,1.1vw,16px); line-height:1.08; }
+.alex7-overlay.finished .alex7-card { max-height:calc(100dvh - 24px); }
+@media(max-width:650px){
+ .alex7-overlay.finished .alex7-boy{width:43%;left:-2%;}
+ .alex7-overlay.finished .alex7-content{margin-left:38%;padding:7px;}
+ .alex7-overlay.finished .alex7-title{font-size:clamp(18px,4vw,28px);}
+ .alex7-overlay.finished .alex7-actions button{font-size:clamp(10px,2.35vw,13px);min-height:38px;}
+}
+@media(max-height:480px){
+ .alex7-overlay.finished .alex7-title{font-size:clamp(17px,2.5vw,27px);}
+ .alex7-overlay.finished .alex7-content{gap:2px;}
+ .alex7-overlay.finished .alex7-progress{padding:4px;}
+ .alex7-overlay.finished .alex7-actions button{min-height:32px;padding:4px 2px;}
+}
+
+/* alex-v17-finale-layout */
+/* V17: Single screen, trophy ONLY in Alex's hands. */
+.alex7-overlay.finished .alex7-boy{width:34%!important;left:3%!important;max-height:79%!important;bottom:9%!important;height:79%!important;object-fit:contain!important;object-position:center bottom!important;z-index:4!important}
+.alex7-overlay.finished .alex7-content{margin-left:35%!important;margin-right:1%!important;position:relative!important;z-index:5!important;gap:clamp(2px,.6vh,7px)!important}
+.alex7-overlay.finished .alex7-award{display:none!important}
+.alex7-overlay .alex8-listen{display:none!important}
+.alex7-overlay.finished .alex7-card{position:relative;overflow:hidden!important;max-width:min(96vw,1150px)!important;max-height:calc(100dvh - 14px)!important}
+.alex7-overlay.finished .alex7-title{font-size:clamp(23px,2.8vw,40px)!important;line-height:1.06!important}
+.alex7-overlay.finished .alex7-actions{width:100%!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+.alex7-overlay.finished .alex7-actions[hidden]{display:none!important}
+.alex7-overlay.finished .alex7-actions button{width:100%!important;min-width:0!important;max-width:100%!important;white-space:nowrap!important;font-size:clamp(11px,1.05vw,16px)!important;padding:6px 2px!important}
+.alex17-fleet{display:none;position:absolute;inset:0;z-index:2;pointer-events:none}
+.alex7-overlay.finished .alex17-fleet{display:block}
+.alex17-fleet img{position:absolute;width:13%;height:12%;object-fit:contain;filter:drop-shadow(0 2px 3px #0008);opacity:.85}
+.alex17-fleet img.topcar{top:0.5%}.alex17-fleet img.bottomcar{bottom:0.5%}
+.alex17-fleet img:nth-child(1){left:3%}.alex17-fleet img:nth-child(2){left:21%}.alex17-fleet img:nth-child(3){left:39%}.alex17-fleet img:nth-child(4){left:57%}.alex17-fleet img:nth-child(5){left:78%}
+.alex17-fleet img:nth-child(6){left:4%}.alex17-fleet img:nth-child(7){left:25%}.alex17-fleet img:nth-child(8){left:50%}.alex17-fleet img:nth-child(9){left:79%}
+@media(max-width:680px){.alex7-overlay.finished .alex7-boy{width:32%!important;left:1%!important}.alex7-overlay.finished .alex7-content{margin-left:32%!important}.alex17-fleet img{height:9%}}
+@media(max-height:620px){.alex17-fleet img{height:8%;opacity:.7}.alex7-overlay.finished .alex7-boy{max-height:75%!important;height:75%!important}.alex7-overlay.finished .alex7-title{font-size:clamp(18px,2.6vw,32px)!important}}
+
+/* alex-v18-finale-layout */
+/* V18 final: 2 small at top, 7 prominent below. Trophy only in Alex's hands. */
+.alex7-overlay.finished .alex17-fleet{position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none!important;display:block!important}
+.alex7-overlay.finished .alex17-fleet img{
+ position:absolute!important;max-width:unset!important;object-fit:contain!important;
+ opacity:.94!important;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))!important;
+}
+.alex7-overlay.finished .alex17-fleet img.topcar{top:1%!important;bottom:auto!important;height:11%!important;width:12%!important}
+.alex7-overlay.finished .alex17-fleet img.topcar:nth-child(1){left:3%!important}
+.alex7-overlay.finished .alex17-fleet img.topcar:nth-child(2){left:85%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar{
+ bottom:12%!important;top:auto!important;height:19%!important;width:12.5%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(3){left:1%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(4){left:15%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(5){left:29%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(6){left:43%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(7){left:57%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(8){left:71%!important}
+.alex7-overlay.finished .alex17-fleet img.bottomcar:nth-child(9){left:85%!important}
+.alex7-overlay.finished .alex7-boy{width:29%!important;left:2%!important;height:73%!important;max-height:73%!important;bottom:18%!important;z-index:4!important}
+.alex7-overlay.finished .alex7-content{margin-left:30%!important;z-index:5!important;padding-bottom:17%!important}
+.alex7-overlay.finished .alex7-actions{z-index:7!important;position:relative!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+.alex7-overlay.finished .alex7-actions button{min-width:0!important;max-width:100%!important;white-space:nowrap!important}
+.alex7-overlay.finished .alex7-award,.alex7-overlay .alex8-listen{display:none!important}
+@media(max-height:650px){.alex7-overlay.finished .alex17-fleet img.bottomcar{height:15%!important;bottom:14%!important}.alex7-overlay.finished .alex7-boy{height:67%!important;bottom:23%!important}.alex7-overlay.finished .alex7-content{padding-bottom:14%!important}}
+
+/* alex-v19-finale-layout */
+/* V19: Two clearly visible actions; no misleading My Stars duplicate gallery. */
+.alex7-overlay.finished .alex7-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(8px,1vw,18px)!important}
+.alex7-overlay .alex7-actions [data-act="stars"]{display:none!important}
+.alex7-overlay.finished .alex7-actions button{min-width:0!important;width:100%!important;max-width:100%!important}
+
+/* RECOVERY TEST: Remove decorative vehicles from the finale; protect Alex and trophy. */
+.alex7-overlay.finished .alex17-fleet,
+.alex7-overlay.finished .alex17-fleet img { display:none !important; }
+.alex7-overlay.finished .alex7-boy { bottom:0 !important; height:95% !important; max-height:95% !important; left:2% !important; width:33% !important; }
+.alex7-overlay.finished .alex7-content { margin-left:34% !important; padding-bottom:12px !important; }
+
+/* ALEX-COLLECTION-V2: gallery ABOVE, independent stars bar BELOW. */
+.alex7-overlay:not(.wrong) .alex7-award{display:none!important}
+.alex7-overlay:not(.wrong) .alex7-progress{
+ display:flex!important;flex-direction:column!important;grid-template-columns:none!important;
+ gap:clamp(4px,.8vh,9px)!important;width:100%!important;min-height:0!important;
+ padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;
+ border-radius:0!important;align-items:stretch!important;
+}
+.alex7-overlay .alex-gallery{display:flex;flex-direction:column;align-items:center;gap:clamp(1px,.45vh,5px);width:100%;min-width:0}
+.alex7-overlay .alex-gallery-row{display:flex;justify-content:center;align-items:center;gap:clamp(4px,.8vw,10px);width:100%;min-width:0}
+.alex7-overlay .alex-gallery-car{flex:0 1 18.4%;min-width:0;height:clamp(42px,8.1vh,70px);display:flex;justify-content:center;align-items:center}
+.alex7-overlay .alex-gallery-car img{width:100%;height:100%;display:block;object-fit:contain;opacity:.12;filter:grayscale(1) brightness(.45)}
+.alex7-overlay .alex-gallery-car.earned img{opacity:1;filter:drop-shadow(0 3px 3px #041f4cb5) drop-shadow(0 0 5px #87dcff)}
+.alex7-overlay .alex-gallery-car.fresh img{animation:alexCarArrival .9s ease-out both}
+.alex7-overlay .alex-star-bar{width:100%;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));
+ gap:1px;padding:5px 6px;border-radius:15px;border:1px solid #8bc6ff91;
+ background:linear-gradient(180deg,#134a9b,#0c3070);box-shadow:inset 0 3px 11px #0007,0 3px 9px #05225c44}
+.alex7-overlay .alex7-progress .alex-gallery-star{font-size:clamp(20px,2.3vw,30px)!important;line-height:1.2!important;text-align:center;color:#6e91c4!important;opacity:.8!important;text-shadow:none!important}
+.alex7-overlay .alex7-progress .alex-gallery-star.earned{color:#ffec65!important;opacity:1!important;text-shadow:0 0 6px #fff9b0,0 0 13px #ffc528,0 0 21px #ffb516!important}
+.alex7-overlay .alex7-progress .alex-gallery-star.fresh{animation:alexNewStarBurst 1.25s ease-out both}
+.alex7-overlay:not(.wrong) .alex7-count{font-size:clamp(28px,3.5vw,44px)!important}
+@media(max-height:650px){.alex7-overlay .alex-gallery-car{height:clamp(30px,6.5vh,50px)}.alex7-overlay .alex-star-bar{padding:3px 5px}}
+@media(max-width:700px){.alex7-overlay .alex-gallery-car{height:clamp(23px,7vh,44px)}.alex7-overlay .alex-gallery-row{gap:2px}.alex7-overlay .alex7-progress .alex-gallery-star{font-size:clamp(13px,3vw,21px)!important}}
+.alex7-overlay.finished .alex-gallery-car{height:clamp(25px,6vh,48px)}
+@keyframes alexCarArrival{0%{opacity:0;transform:translateY(10px) scale(.65)}60%{transform:translateY(-3px) scale(1.15)}100%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.alex7-overlay .alex-gallery-car.fresh img,.alex7-overlay .alex-gallery-star.fresh{animation:none!important}}
+
+/* ALEX-COLLECTION-V3: hide unearned vehicles, brighten text, shift gallery mildly left. */
+.alex7-overlay .alex-gallery-car:not(.earned) img{visibility:hidden!important;opacity:0!important;filter:none!important}
+.alex7-overlay:not(.wrong):not(.finished) .alex7-content{transform:translateX(-12px)}
+.alex7-overlay:not(.wrong):not(.finished) .alex7-title{color:#fff!important;text-shadow:0 3px 0 #12468d,0 0 12px #dceeff80!important}
+.alex7-overlay:not(.wrong):not(.finished) .alex7-line{color:#fff0a6!important;text-shadow:0 2px 6px #163b8b,0 0 10px #ffe0918c!important}
+@media(max-width:700px){.alex7-overlay:not(.wrong):not(.finished) .alex7-content{transform:translateX(-5px)}}
+
+/* ALEX-TITLES-V4: Approved collection layout stays unchanged. */
+.alex7-overlay:not(.wrong):not(.finished) .alex7-title{
+  color:#ffe05b!important;
+  font-size:clamp(29px,3.6vw,50px)!important;
+  line-height:1.06!important;
+  text-shadow:0 3px 0 #9c5700,0 5px 12px #102a72,0 0 15px #ffdf6690!important;
+}
+.alex7-overlay:not(.wrong):not(.finished) .alex7-line{
+  color:#fff09a!important;
+  font-size:clamp(22px,2.6vw,32px)!important;
+  line-height:1.1!important;
+  text-shadow:0 2px 0 #9c6500,0 4px 10px #14316e,0 0 11px #ffea6980!important;
+}
+@media(max-width:680px){
+.alex7-overlay:not(.wrong):not(.finished) .alex7-title{font-size:clamp(20px,4.4vw,32px)!important}
+.alex7-overlay:not(.wrong):not(.finished) .alex7-line{font-size:clamp(16px,3.4vw,23px)!important}
+}
+
+/* ALEX-TITLES-V5: gold celebration typography on all successful praise cards. */
+.alex7-overlay.finished .alex7-title{
+  color:#ffe05b!important;
+  font-size:clamp(27px,3.4vw,46px)!important;
+  line-height:1.06!important;
+  text-shadow:0 3px 0 #9c5700,0 5px 12px #102a72,0 0 15px #ffdf6690!important;
+}
+.alex7-overlay.finished .alex7-line{
+  color:#fff09a!important;
+  font-size:clamp(19px,2.35vw,30px)!important;
+  line-height:1.1!important;
+  text-shadow:0 2px 0 #9c6500,0 4px 10px #14316e,0 0 11px #ffea6980!important;
+}
+/* Wrong-answer feedback stays visually distinct from successful praise. */
+.alex7-overlay.wrong .alex7-title{color:#ffffff!important;text-shadow:0 3px 0 #16418f,0 5px 12px #082e70!important}
+.alex7-overlay.wrong .alex7-line{color:#d6f5ff!important;text-shadow:0 3px 8px #154387!important}
+@media(max-width:680px){
+ .alex7-overlay.finished .alex7-title{font-size:clamp(19px,4.2vw,30px)!important}
+ .alex7-overlay.finished .alex7-line{font-size:clamp(16px,3.3vw,22px)!important}
+}
+@media(max-height:620px){
+ .alex7-overlay.finished .alex7-title{font-size:clamp(19px,2.6vw,31px)!important}
+ .alex7-overlay.finished .alex7-line{font-size:clamp(16px,2vw,23px)!important}
+}
+
+/* ALEX-ORDERED-REWARDS-V6: Approved visual; sequential unlock order. */
+.alex7-overlay .alex-gallery-row{justify-content:flex-start!important;gap:clamp(4px,.6vw,9px)!important}
+.alex7-overlay .alex-gallery-car{flex:0 0 calc((100% - 4 * clamp(4px,.6vw,9px))/5)!important;height:clamp(64px,10.4vh,104px)!important;overflow:visible!important}
+.alex7-overlay .alex-gallery-car.earned img{width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;filter:drop-shadow(0 5px 4px #031b4788) drop-shadow(0 0 5px #8ad9ff70)!important}
+.alex7-overlay .alex-gallery-car:not(.earned){visibility:hidden!important}
+.alex7-overlay .alex7-progress .alex-gallery-star{font-size:clamp(23px,2.8vw,35px)!important}
+@media(max-height:670px){.alex7-overlay .alex-gallery-car{height:clamp(50px,8.8vh,74px)!important}}
+@media(max-width:700px){.alex7-overlay .alex-gallery-car{height:clamp(38px,8vh,66px)!important}}
+
+
+/* V8: Bigger vehicle illustrations, second row of four centered.
+   Do not change gallery order, stars, Alex artwork or the card dimensions. */
+.alex7-overlay:not(.wrong) .alex-gallery-row:last-child {
+  justify-content: center !important;
+}
+.alex7-overlay:not(.wrong) .alex-gallery-car.earned img {
+  transform: scale(1.18);
+  transform-origin: center center;
+}
+.alex7-overlay:not(.wrong) .alex-gallery-car.fresh img {
+  animation: alexCarArrivalV8 .9s ease-out both;
+}
+@keyframes alexCarArrivalV8 {
+  0% { opacity:0; transform:translateY(10px) scale(.68); }
+  60% { transform:translateY(-3px) scale(1.29); }
+  100% { opacity:1; transform:scale(1.18); }
+}
+@media (max-width:700px) {
+  .alex7-overlay:not(.wrong) .alex-gallery-car.earned img { transform:scale(1.08); }
+  @keyframes alexCarArrivalV8 {
+    0% { opacity:0; transform:translateY(8px) scale(.67); }
+    65% { transform:translateY(-2px) scale(1.15); }
+    100% { opacity:1; transform:scale(1.08); }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .alex7-overlay .alex-gallery-car.fresh img { animation:none!important; }
+}
